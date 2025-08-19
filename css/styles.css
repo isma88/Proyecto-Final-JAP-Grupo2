@@ -188,3 +188,20 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+ .login-card {
+      background-color: rgba(255, 182, 193, 0.9); /* Rosa clarito */
+      border-radius: 15px;
+    }
+
+    /* Botón rosa intenso */
+    .btn-rosa {
+      background-color: #e75480; /* Rosa intenso */
+      color: white;
+      border: none;
+    }
+
+    .btn-rosa:hover {
+      background-color: hsl(339, 67%, 52%); /* Más oscuro al pasar el mouse */
+      color: white;
+    }
+ 
