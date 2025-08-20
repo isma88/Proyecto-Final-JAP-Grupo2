@@ -1,8 +1,6 @@
-
-
 body {
-    background-image: url(/img/bg2.jpg);
-     background-repeat: no-repeat;
+    background-image: url(/img/1Background.jpg);
+    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -10,21 +8,21 @@ body {
 }
 
 header {
-  
+    
     position: relative;
     top: 0;
     left: 0;
     right: 0;
-    padding: 2rem 9%;
+    padding: 3rem 9%;
     display: flex;
     
 
-    z-index: 1;
+   
 }
 
 header .logo {
     position: absolute;
-    top: 0;
+    top: 2.4rem;
     left: 0;
     
 }
@@ -39,7 +37,7 @@ header img {
    position: absolute;
     top: 0;
     right: 0; 
-    width: 80%;  
+    width: 100%;  
     height: 2.5rem;
     margin: 0px 0px;
     border-radius: 10px;
@@ -83,7 +81,7 @@ position: relative;
     position: relative;
     margin-top: 2rem;
     left: 65%;
-    border: 0.5rem solid #e1d9d9;
+    border: 0.5rem solid #E8E8E8;
     border-radius: 10px;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
     width: 45%;    
@@ -102,7 +100,7 @@ input {
     outline: none;
     font-size: 1rem;
     background-color: #E8E8E8;
-    
+   
     
 
 }
@@ -126,10 +124,13 @@ button {
 }
 
 button:hover {
-    background-color: rgb(238, 209, 234);
+    background-color: #f485dc;
     padding-left: 30px;    
-    z-index: 2;
+    
 }
+
+
+
 
 
 @media (max-width: 600px) {
@@ -243,8 +244,9 @@ z-index: 3;
     border-radius: 0.5rem; 
     border: 0.5rem solid transparent; 
     transform: translate(3%, -3%);
-    background-size: cover;
-    background: no-repeat;
+    width: 100%;
+    
+
 }
     
 
@@ -258,7 +260,8 @@ z-index: 3;
 
 .products .box-container .box .image {
 
-    background: color(rgb(202, 89, 161));
+    
+    background-color: rgb(202, 89, 161); 
     background-repeat: no-repeat;
     background-size: cover;
     
@@ -294,11 +297,9 @@ z-index: 3;
     font-weight: bolder;
     text-align: left;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    color: rgb(98, 19, 87);
+    color: rgb(255, 255, 255);
 
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index: 2;
+    
 }
 
 .products .box-container .box .image p2 {
@@ -308,11 +309,12 @@ z-index: 3;
     font-weight:bold;
     margin-top: -20px;
     font-size: 0.8rem;
-    color: rgb(61, 57, 57);
+     color: rgb(254, 222, 238);
     padding: 0.4rem;
     
     
-    background-repeat: no-repeat;  
+
+    
 }
 
 .products .box-container .box .image .price { 
@@ -323,10 +325,8 @@ z-index: 3;
     text-align: left;
     padding: 0.5rem;
     margin-top: -30px;
-
-    background-repeat: no-repeat;
-    background-size: cover; 
-    z-index: 2;
+     color: rgb(254, 222, 238);
+    
 }
 
  .products .box-container .box .image .price .precio {
@@ -335,13 +335,10 @@ z-index: 3;
     font-weight: bolder;
     text-align: left;
     position: relative;
-    z-index: 3;
+    color: rgb(255, 255, 255);
     
 
-
-    background-repeat: no-repeat;
-    background-size: cover; 
-    z-index: 3;
+   
 }
 
 
@@ -353,12 +350,10 @@ z-index: 3;
     font-size: 0.8rem;
     font-weight: lighter;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: rgb(98, 19, 87);
+    color: rgb(254, 222, 238);
     padding: 0.3rem;
     
-    background-repeat: no-repeat;
-    background-size: cover; 
-    z-index: 2;
+    
 }
 
 .container a {
