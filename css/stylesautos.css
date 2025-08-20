@@ -1,6 +1,8 @@
-* {
-    background-image: url(file:///C:/Users/Usuario/Documents/GitHub/Proyecto-Final-JAP-Grupo2/img/Dise%C3%B1o%20sin%20t%C3%ADtulo.jpg);
-    background-repeat: no-repeat;
+
+
+body {
+    background-image: url(/img/bg2.jpg);
+     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -8,7 +10,7 @@
 }
 
 header {
-    background-color:  rgba(250, 165, 204, 0.767);
+  
     position: relative;
     top: 0;
     left: 0;
@@ -75,7 +77,6 @@ position: relative;
 
 .barra {
     background-color: #E8E8E8;
-    background-image: url(file:///C:/Users/Usuario/Documents/GitHub/Proyecto-Final-JAP-Grupo2/img/Dise%C3%B1o%20sin%20t%C3%ADtulo3.jpg);
     display: flex;
     justify-content: center;
     align-items:center;
@@ -101,7 +102,6 @@ input {
     outline: none;
     font-size: 1rem;
     background-color: #E8E8E8;
-    background-image: url(file:///C:/Users/Usuario/Documents/GitHub/Proyecto-Final-JAP-Grupo2/img/Dise%C3%B1o%20sin%20t%C3%ADtulo3.jpg);
     
     
 
@@ -198,7 +198,6 @@ button:hover {
     width: 80%;  
     padding: 0;
     padding-right: 0; 
-
     box-shadow: 0 4px 4px 0 rgba(228, 18, 172, 0.2);  
     overflow: hidden;
 
@@ -244,8 +243,6 @@ z-index: 3;
     border-radius: 0.5rem; 
     border: 0.5rem solid transparent; 
     transform: translate(3%, -3%);
-
-    background-image: url(file:///C:/Users/Usuario/Documents/GitHub/Proyecto-Final-JAP-Grupo2/img/Dise%C3%B1o%20sin%20t%C3%ADtulo.jpg);
     background-size: cover;
     background: no-repeat;
 }
@@ -261,7 +258,6 @@ z-index: 3;
 
 .products .box-container .box .image {
 
-    background-image: url(file:///C:/Users/Usuario/Documents/GitHub/Proyecto-Final-JAP-Grupo2/img/Dise%C3%B1o%20sin%20t%C3%ADtulo%202.jpg); 
     background: color(rgb(202, 89, 161));
     background-repeat: no-repeat;
     background-size: cover;
@@ -300,7 +296,6 @@ z-index: 3;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: rgb(98, 19, 87);
 
-    background-image: url(file:///C:/Users/Usuario/Documents/GitHub/Proyecto-Final-JAP-Grupo2/img/Dise%C3%B1o%20sin%20t%C3%ADtulo%202.jpg); 
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 2;
@@ -317,8 +312,6 @@ z-index: 3;
     padding: 0.4rem;
     
     
-
-    background-image: url(file:///C:/Users/Usuario/Documents/GitHub/Proyecto-Final-JAP-Grupo2/img/Dise%C3%B1o%20sin%20t%C3%ADtulo%202.jpg); 
     background-repeat: no-repeat;  
 }
 
@@ -331,7 +324,6 @@ z-index: 3;
     padding: 0.5rem;
     margin-top: -30px;
 
-    background-image: url(file:///C:/Users/Usuario/Documents/GitHub/Proyecto-Final-JAP-Grupo2/img/Dise%C3%B1o%20sin%20t%C3%ADtulo%202.jpg); 
     background-repeat: no-repeat;
     background-size: cover; 
     z-index: 2;
@@ -346,7 +338,7 @@ z-index: 3;
     z-index: 3;
     
 
-    background-image: url(file:///C:/Users/Usuario/Documents/GitHub/Proyecto-Final-JAP-Grupo2/img/Dise%C3%B1o%20sin%20t%C3%ADtulo%202.jpg); 
+
     background-repeat: no-repeat;
     background-size: cover; 
     z-index: 3;
@@ -364,7 +356,6 @@ z-index: 3;
     color: rgb(98, 19, 87);
     padding: 0.3rem;
     
-    background-image: url(file:///C:/Users/Usuario/Documents/GitHub/Proyecto-Final-JAP-Grupo2/img/Dise%C3%B1o%20sin%20t%C3%ADtulo%202.jpg); 
     background-repeat: no-repeat;
     background-size: cover; 
     z-index: 2;
