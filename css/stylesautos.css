@@ -378,3 +378,11 @@ z-index: 3;
     z-index: 2;
 }
 
+.container a {
+    color: rgb(118, 36, 118);
+
+}
+
+.container a:hover {
+    color: #eca02f;
+}
