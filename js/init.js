@@ -52,15 +52,7 @@ if (!logged) {
   document.getElementById(
     "nickname"
     // muestra el nombre si está logueado
-  ).innerHTML = `<div class="dropdown">
-  <a class="btn btn-secondary dropdown-toggle" href="" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-    ${logged}
-  </a>
-
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <li><a class="dropdown-item" href="" id='cerrar'>Cerrar sesion</a></li>
-  </ul>
-</div>`;
+  ).innerHTML = `<a class="nav-link" id='cerrar' href="sell.html">${logged}</a>`;
 }
 //cierra la sesion
 document.getElementById('cerrar').addEventListener('click', function (){
