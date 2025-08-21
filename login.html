@@ -11,27 +11,37 @@
   <link href="css/styles.css" rel="stylesheet">
   <style>
     body {
-      background-color: rgb(248, 249, 250);
+      background-color: hsl(350, 100%, 88%); /* Fondo rosa */
+      
     }
+
+    
   </style>
 </head>
-
-<body>
-  <main class="mt-5">
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+  
+<body class="d-flex justify-content-center align-items-center vh-100">
+  <img src="img/login_JaP.png" alt="Logo" class="position-absolute top-0 start-0 m-1" width="450">
+  <img src="img/login-e-mercado.png" alt="Logo" class="position-absolute top-0 end-0 m-3" width="350">
+  <div class="card shadow p-4 login-card" style="width: 22rem;">
+      <h3 class="text-center mb-4">Iniciar Sesión</h3>
+    
+    <form id="loginForm">
+      <div class="mb-3">
+        <label for="usuario" class="form-label">Usuario</label>
+        <input type="text" class="form-control" id="usuario" placeholder="Ingresa tu usuario" required>
       </div>
+
+      <div class="mb-3">
+        <label for="contraseña" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" id="contraseña" placeholder="Ingresa tu contraseña" required>
+      </div>
+
+      <button type="submit" class="btn btn-rosa w-100" id="boton">Insertar</button>
+    </form>
+  
+      
     </div>
-  </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
-    </div>
-  </footer>
+    
   <script src="js/login.js"></script>
 </body>
 
