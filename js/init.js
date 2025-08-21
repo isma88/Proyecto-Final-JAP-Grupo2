@@ -42,11 +42,27 @@ let getJSONData = function (url) {
     });
 };
 
+
+// mira si el usuario está logueado
 const logged = localStorage.getItem("usuario");
 if (!logged) {
+  // lo envia a login si no
   window.location.href = "login.html";
 } else {
   document.getElementById(
     "nickname"
-  ).innerHTML = `<a class="nav-link" href="">${logged}</a>`;
+    // muestra el nombre si está logueado
+  ).innerHTML = `<div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    ${logged}
+  </a>
+
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <li><a class="dropdown-item" href="" id='cerrar'>Cerrar sesion</a></li>
+  </ul>
+</div>`;
 }
+//cierra la sesion
+document.getElementById('cerrar').addEventListener('click', function (){
+  localStorage.clear()
+})
