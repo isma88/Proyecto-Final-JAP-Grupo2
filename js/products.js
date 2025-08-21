@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function(e){
    getJSONData(current_products).then(function(result){
         if (result.status === "ok"){
             let list = result.data.products
-            console.log(list)
+            
             
             productList(list)                
         }
