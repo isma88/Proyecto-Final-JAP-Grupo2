@@ -212,6 +212,8 @@ font-weight: bolder;
 position: relative;
 z-index: 3; 
 }
+
+
     
 }
 
@@ -364,3 +366,4 @@ z-index: 3;
 .container a:hover {
     color: #f004b5;
 }
+
