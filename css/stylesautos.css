@@ -83,7 +83,7 @@ input {
 
 }
 
-button { 
+.Boton { 
     background-color: #E8E8E8;;
     padding: 10px 20px;
     position: absolute;
@@ -324,3 +324,39 @@ a:hover {
     color: #f004b5;
 }
 
+.navbar-toggler {
+    background-color: rgb(255, 199, 199); 
+    box-shadow: none;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    box-shadow: none;
+}
+
+
+.navbar-toggler-icon {
+    background-color: rgb(255, 199, 199);
+}   
+
+.nav-item .nav-link {
+    color: rgb(135, 133, 162);
+   
+}
+.nav-item:hover {
+    background-color: rgb(248, 248, 248);  
+    z-index: 2;
+}
+
+
+
+
+.dropdown-item {
+    background-color: transparent;
+    color: rgb(135, 133, 162);;
+    cursor: pointer;
+    border: none;
+    padding: 10px 0;
+    font-weight: bold;
+}
