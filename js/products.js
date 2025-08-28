@@ -20,7 +20,7 @@ function productList(list) {
               <p  class="card-text" >${description}</p>
                 <p class="mt-auto card-text text-end"><small class="text-muted ">vendidos ${soldCount}</small></p>
             </div>
-            <div class='card-footer shadow-sm'>
+            <div class='card-footer font-monospace text-center fs-4 fw-bold rounded shadow-sm'>
               <small class=''> ${currency}${cost} </small> 
             </div>
           </div>

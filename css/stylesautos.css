@@ -11,7 +11,8 @@
     background-color: var(--color-contraste);
     color: var(--color-fondo);
     & .card-footer {
-        background-color: var(--color-boton);
+        background-color: var(--color-fondo);
+         color: var(--color-contraste);
     }
 
     & .card-title {
