@@ -36,7 +36,7 @@ header {
     right: 0;
     padding: 3rem 9%;
     display: flex;
-    
+    margin-bottom: 12vh;
 
    
 }
@@ -99,9 +99,10 @@ position: relative;
     display: flex;
     justify-content: center;
     align-items:center;
-    position: relative;
+    position: absolute;
     margin-top: 2rem;
-    left: 75%;
+    margin-right: 12vw;
+    right: 0%;
     border: 0.5rem solid #E8E8E8;
     border-radius: 10px;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
@@ -191,6 +192,7 @@ button:hover {
         left: 0%;
         width: 360px;
         border-radius: 20px;
+        margin-right: 0;
     }
 
   .barra input { 
@@ -254,7 +256,7 @@ z-index: 3;
         left: 0%;
         margin-top: 15vh;
         margin-bottom: 2px;
-       
+       position: relative !important 
     }
     .barra, .barra input {
         bottom: auto;
