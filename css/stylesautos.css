@@ -1,13 +1,13 @@
 
   :root{
     --color-primario: rgb(255, 185, 185)!important;
-    --color-fondo: rgb(255, 221, 210)!important;
+    --color-fondo: rgb(167 129 201)!important;
     --color-contraste: rgb(246, 246, 246)!important;
-    --color-boton: rgb(255, 141, 199)!important;
+    --color-boton: rgb(234 178 206)!important;
   }
 
  .col .card, .shadow, .rounded, .h-100{
-    text-shadow: 1px 1px 2px black;
+    
     background-color: var(--color-contraste);
     color: var(--color-fondo);
     & .card-footer {
@@ -15,6 +15,7 @@
     }
 
     & .card-title {
+        text-shadow: 1px 1px 2px black;
         color: var(--color-boton);
     }
 }
