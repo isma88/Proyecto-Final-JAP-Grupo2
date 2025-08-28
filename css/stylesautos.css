@@ -50,28 +50,6 @@ header img {
 }
 
 
-.Menu a {
-display: inline-block; 
-color: rgb(187, 20, 151);
-font-size: 1rem;    
-font-weight: bolder;
-position: relative;
-
-}
-
-.Menu a:hover {
-    padding-left: 30px;    
-    z-index: 2;
-}
-
-
-
-.nav-item {
-    display: contents;
-    box-sizing: border-box;
-    bottom: 10rem;
-}
-
 
 .barra {
     background-color: #E8E8E8;
@@ -190,28 +168,7 @@ button:hover {
     width: 0.5rem;
 }
 
-.Menu {
 
-    position: absolute;
-    top: 0;
-    right: 0; 
-    left: 7%;
-    width: 80%;  
-    padding: 0;
-    padding-right: 0; 
-    box-shadow: 0 4px 4px 0 rgba(228, 18, 172, 0.2);  
-    overflow: hidden;
-
-}
-
-.Menu a {
-display: inline-block; 
-color: rgb(187, 20, 151);
-font-size: 1rem;    
-font-weight: bolder;
-position: relative;
-z-index: 3; 
-}
 
 
     
@@ -358,12 +315,12 @@ z-index: 3;
     
 }
 
-.container a {
+a {
     color: rgb(118, 36, 118);
 
 }
 
-.container a:hover {
+a:hover {
     color: #f004b5;
 }
 
