@@ -34,27 +34,39 @@
 
      
           
-               <nav class="navbar navbar-expand-sm fixed-top navbar-light rounded-4 shadow-sm py-1">        
-         <div class="container-fluid">
-
-        <div class="navbar" id="navbarNav"></div>
-          <ul class="navbar-nav w-100 d-flex flex-row justify-content-center">
-            <li class="nav-item ">
-              <a class="nav-link me-3 fw-bold" style="color: rgb(212, 22, 152);" href="index.html">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active me-3 fw-bold" style="color: rgb(212, 22, 152);" href="categories.html">Categorías</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link me-3 fw-bold" style="color: rgb(212, 22, 152);" href="sell.html">Vender</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link me-3 fw-bold" style="color: rgb(212, 22, 152);" href="login.html">Usuario</a> 
-            </li>
-            <li class="nav-item" id="nickname"></li>
-          </ul>
-        </div>
       
+           <nav class="navbar navbar-expand-lg navbar-light; p-1 d-flex flex-row shadow-sm rounded-4 fixed-top ">
+      <div class="container">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav w-100 justify-content-between">
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active fw-bold" href="categories.html">Categorías</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="sell.html">Vender</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="login.html">Usuario</a>
+            </li>
+            <li class="nav-item">
+            <button id="nickname">Cerrar Sesion</button> 
+            </li>
+          </ul> 
+        </div>
       </div>
     </nav>
   
