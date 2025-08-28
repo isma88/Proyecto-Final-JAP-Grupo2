@@ -1,3 +1,25 @@
+
+  :root{
+    --color-primario: rgb(255, 185, 185)!important;
+    --color-fondo: rgb(255, 221, 210)!important;
+    --color-contraste: rgb(246, 246, 246)!important;
+    --color-boton: rgb(255, 141, 199)!important;
+    ;
+  }
+
+ .col .card, .shadow, .rounded, .h-100{
+    text-shadow: 1px 1px 2px black;
+    background-color: var(--color-contraste);
+    color: var(--color-fondo);
+    & .card-footer {
+        background-color: var(--color-boton);
+    }
+
+    & .card-title {
+        color: var(--color-boton);
+    }
+}
+
 body {
     background-image: url(/img/1Background.jpg);
     background-repeat: no-repeat;
@@ -364,3 +386,5 @@ z-index: 3;
 .container a:hover {
     color: #f004b5;
 }
+
+
