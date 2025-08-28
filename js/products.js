@@ -13,14 +13,14 @@ function productList(list) {
 
     content +=
       `<div class="col">
-          <div class="card shadow rounded h-100">
+          <div class="card shadow rounded-3 h-100 p-1">
             <img src="${image}" class="card-img-top" alt="...">
             <div class="card-body d-flex flex-column h-100">
               <h5 class="card-title">${name}</h5>
               <p  class="card-text" >${description}</p>
                 <p class="mt-auto card-text text-end"><small class="text-muted ">vendidos ${soldCount}</small></p>
             </div>
-            <div class='card-footer'>
+            <div class='card-footer shadow-sm'>
               <small class=''> ${currency}${cost} </small> 
             </div>
           </div>
