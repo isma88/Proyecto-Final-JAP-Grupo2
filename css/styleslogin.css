@@ -33,31 +33,52 @@ body {
   max-width: 50vw;
   top: 2vh;
   left: 2vw;
+  filter: drop-shadow(1px 1px 1px);
 }
 
 #eMercado {
   max-width: 40vw;
   top: 2vh;
   right: 2vw;
+  filter: drop-shadow(1px 1px 1px);
 }
 #jap-emercado {
-  visibility: hidden;
+  display: none;
 }
+
+.card { 
+  width: 24rem;
+
+
+  }
 
 @media (max-width: 600px) {
   #logojap,
   #eMercado {
     display: none;
+    
   }
   #jap-emercado {
     visibility: visible;
-    height: 13rem;
+    width: 90vw;
     filter: brightness(0) invert(1) grayscale(1) contrast(100)
       drop-shadow(2px 2px 2px);
+        display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
   }
   #imagenes {
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    
   }
+
+  .card { 
+    width: 72vw;
+  }
+
+  
 }
