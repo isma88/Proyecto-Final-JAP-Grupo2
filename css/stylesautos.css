@@ -113,11 +113,12 @@ input {
     position: absolute;
     top: 3rem;
     left: 0;
+    padding-left: 4.1rem;
     
 }
 
     header img {
-    height: 13rem;
+    height: 11.4rem;
     }
 
     .barra {
@@ -307,39 +308,24 @@ a:hover {
     color: #f004b5;
 }
 
-.navbar-toggler {
-    background-color: rgb(255, 199, 199); 
-    box-shadow: none;
-}
-
-.navbar-toggler:focus,
-.navbar-toggler:active,
-.navbar-toggler-icon:focus {
-    box-shadow: none;
-}
-
-
-.navbar-toggler-icon {
-    background-color: rgb(116, 109, 109);
-}   
-
 .nav-item .nav-link {
-    color: rgb(117, 113, 113); 
+    color: rgb(231, 80, 163); 
    
 }
+
+
 .nav-item:hover {
-    background-color: rgb(248, 248, 248);  
+    padding-left: 10px;    
+    
 }
 
 
 .dropdown-item {
     background-color: transparent;
-    color: rgb(135, 133, 162);;
-    cursor: pointer;
+    color: rgb(218, 57, 183);
     border: none;
     padding: 10px 0;
     font-weight: bold;
-    display: block;
     
 }
 
@@ -349,12 +335,12 @@ a:hover {
     
 }
 
-.dropdown-menu {
-    display: none;
-    
-}
-
 .dropdown:hover .dropdown-menu {
     display: block;
+    background-color: transparent;
+
 }
+
+
+
 
