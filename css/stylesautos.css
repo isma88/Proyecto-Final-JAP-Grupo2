@@ -6,6 +6,10 @@
     --color-boton: rgb(234 178 206)!important;
   }
 
+  .card {
+    cursor: pointer;
+  }
+
  .col .card, .shadow, .rounded, .h-100{
     
     background-color: var(--color-contraste);
@@ -13,6 +17,12 @@
     & .card-footer {
         background-color: var(--color-fondo);
          color: var(--color-contraste);
+         transition: filter 0.1s ease; 
+    }
+
+    & .card-footer:hover {
+        filter: brightness(85%);
+    
     }
 
     & .card-title {
