@@ -41,23 +41,23 @@ body {
   right: 2vw;
 }
 #jap-emercado {
-  visibility: visible;
-  flex: content;
-  align-items: center;
-  justify-content: center;
+  visibility: hidden;
 }
 
 @media (max-width: 600px) {
-  body {
-    #logojap,
-    #eMercado {
-      visibility: hidden;
-    }
-    #jap-emercado {
-      visibility: visible;
-      height: 13rem;
-      filter: brightness(0) invert(1) grayscale(1) contrast(100)
-        drop-shadow(2px 2px 2px);
-    }
+  #logojap,
+  #eMercado {
+    display: none;
+  }
+  #jap-emercado {
+    visibility: visible;
+    height: 13rem;
+    filter: brightness(0) invert(1) grayscale(1) contrast(100)
+      drop-shadow(2px 2px 2px);
+  }
+  #imagenes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
