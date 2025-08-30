@@ -1,3 +1,36 @@
+
+  :root{
+    --color-primario: rgb(255, 185, 185)!important;
+    --color-fondo: rgb(167 129 201)!important;
+    --color-contraste: rgb(246, 246, 246)!important;
+    --color-boton: rgb(234 178 206)!important;
+  }
+
+  .card {
+    cursor: pointer;
+  }
+
+ .col .card, .shadow, .rounded, .h-100{
+    
+    background-color: var(--color-contraste);
+    color: var(--color-fondo);
+    & .card-footer {
+        background-color: var(--color-fondo);
+         color: var(--color-contraste);
+         transition: filter 0.1s ease; 
+    }
+
+    & .card-footer:hover {
+        filter: brightness(85%);
+    
+    }
+
+    & .card-title {
+        text-shadow: 1px 1px 2px black;
+        color: var(--color-boton);
+    }
+}
+
 body {
     background-image: url(/img/1Background.jpg);
     background-repeat: no-repeat;
@@ -15,7 +48,7 @@ header {
     right: 0;
     padding: 3rem 9%;
     display: flex;
-    
+    margin-bottom: 12vh;
 
    
 }
@@ -24,53 +57,14 @@ header .logo {
     position: absolute;
     top: 2.4rem;
     left: 0;
-    
+    margin-top: 2vh;
 }
 
 header img {
     height: 8rem;
-
+    filter: drop-shadow(1px 1px 1px)
 }
 
-.Menu {
-
-   position: absolute;
-    top: 0;
-    right: 0; 
-    width: 100%;  
-    height: 2.5rem;
-    margin: 0px 0px;
-    border-radius: 10px;
-    text-align: center;
-    border-right: 1px  transparent;
-    
-    box-shadow: 0 4px 4px 0 rgba(228, 18, 172, 0.2);  
-    overflow: hidden;
-
-}
-
-
-.Menu a {
-display: inline-block; 
-color: rgb(187, 20, 151);
-font-size: 1rem;    
-font-weight: bolder;
-position: relative;
-
-}
-
-.Menu a:hover {
-    padding-left: 30px;    
-    z-index: 2;
-}
-
-
-
-.nav-item {
-    display: contents;
-    box-sizing: border-box;
-    bottom: 10rem;
-}
 
 
 .barra {
@@ -78,13 +72,15 @@ position: relative;
     display: flex;
     justify-content: center;
     align-items:center;
-    position: relative;
+    position: absolute;
     margin-top: 2rem;
-    left: 65%;
+    margin-right: 12vw;
+    right: 0%;
     border: 0.5rem solid #E8E8E8;
     border-radius: 10px;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
-    width: 45%;    
+
+       
 }
 
 .icono {
@@ -105,7 +101,7 @@ input {
 
 }
 
-button { 
+.Boton { 
     background-color: #E8E8E8;;
     padding: 10px 20px;
     position: absolute;
@@ -123,7 +119,7 @@ button {
     
 }
 
-button:hover {
+.Boton:hover {
     background-color: #f485dc;
     padding-left: 30px;    
     
@@ -133,7 +129,7 @@ button:hover {
 
 
 
-@media (max-width: 600px) {
+@media only screen and (max-width: 768px) {
 
     header {
     position: relative;
@@ -149,23 +145,28 @@ button:hover {
     }
 
     header .logo {
-    position: absolute;
-    top: 3rem;
-    left: 0;
+      display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
     
 }
 
     header img {
     height: 13rem;
+    filter: brightness(0) invert(1) grayscale(1) contrast(100) drop-shadow(2px 2px 2px);
+    
+
     }
 
     .barra {
         position: relative;
         bottom: -90px;
-        left: -4%;
-        transform:translate(90px 4%);
+        left: 0%;
         width: 360px;
         border-radius: 20px;
+        margin-right: 0;
     }
 
   .barra input { 
@@ -190,28 +191,33 @@ button:hover {
     width: 0.5rem;
 }
 
-.Menu {
 
-    position: absolute;
-    top: 0;
-    right: 0; 
-    left: 7%;
-    width: 80%;  
-    padding: 0;
-    padding-right: 0; 
-    box-shadow: 0 4px 4px 0 rgba(228, 18, 172, 0.2);  
-    overflow: hidden;
 
+
+    
 }
 
-.Menu a {
-display: inline-block; 
-color: rgb(187, 20, 151);
-font-size: 1rem;    
-font-weight: bolder;
-position: relative;
-z-index: 3; 
+@media only screen and (max-width: 360px) { 
+   header img { 
+    height: 50vw; 
+    
 }
+    header {
+        
+        padding-bottom: 5vh;
+    }
+    .barra { 
+        border-radius: 8px;
+        left: 0%;
+        margin-top: 15vh;
+        margin-bottom: 2px;
+       position: relative !important 
+    }
+    .barra, .barra input {
+        bottom: auto;
+        width: 80vw;
+        
+    }
     
 }
 
@@ -262,8 +268,8 @@ z-index: 3;
 
     
     background-color: rgb(202, 89, 161); 
-    background-repeat: no-repeat;
-    background-size: cover;
+   background-repeat: no-repeat;
+   background-size: cover;
     
 
     border-radius: 1.5rem; 
@@ -356,11 +362,105 @@ z-index: 3;
     
 }
 
-.container a {
+a {
     color: rgb(118, 36, 118);
 
 }
 
-.container a:hover {
+a:hover {
     color: #f004b5;
 }
+
+
+.navbar {
+height: 7%;
+
+
+}
+
+.nav-item .nav-link {
+    color: rgb(192, 27, 170); 
+    height: 1cm;
+   
+}
+
+.nav-link.active {
+    color: rgb(118, 36, 118) !important;
+}
+
+
+.nav-item:hover {
+    padding-right: 5px; 
+    background-color: rgb(255, 255, 255); 
+    transition: 0.3s;
+}
+
+
+.dropdown-item {
+    background-color: transparent;
+    color: rgb(118, 36, 118);
+    border: none;
+    padding: 10px 0;
+    font-weight: bold;
+    text-align: center;
+    
+    
+}
+
+.dropdown-item:hover {
+    color: #f004b5;
+}
+
+
+.dropdown-toggle {
+    font-weight: bold;
+    line-height: 1%;
+    text-align: center;
+    
+}
+
+
+
+.dropdown-toggle::after {
+    text-align: center;  
+}
+
+
+@media (max-width: 990px) {
+
+
+.navbar-toggler  {
+ position: absolute;
+ top: 0.2rem;
+ right: 0.2rem;
+ 
+}
+
+.navbar-collapse {
+    position: absolute;
+    top: 2.8rem;
+     right: -2rem;
+     direction: rtl;
+}
+
+.nav-link {
+   font-size: 15px;
+   
+}
+
+.dropdown-item {
+    font-size: 15px;
+    background-color: rgb(255, 255, 255);
+    z-index: 4;
+    
+}
+
+
+
+}
+
+
+
+
+
+
