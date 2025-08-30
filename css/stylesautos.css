@@ -308,39 +308,99 @@ a:hover {
     color: #f004b5;
 }
 
+
+.navbar {
+height: 7%;
+}
+
 .nav-item .nav-link {
-    color: rgb(231, 80, 163); 
+    color: rgb(192, 27, 170); 
+    height: 1cm;
    
+}
+
+.nav-link.active {
+    color: rgb(118, 36, 118) !important;
 }
 
 
 .nav-item:hover {
-    padding-left: 10px;    
-    
+    padding-right: 5px;  
 }
 
 
 .dropdown-item {
     background-color: transparent;
-    color: rgb(218, 57, 183);
+    color: rgb(118, 36, 118);
     border: none;
     padding: 10px 0;
     font-weight: bold;
+    text-align: center;
     
+}
+
+.dropdown-item:hover {
+    color: #f004b5;
 }
 
 
 .dropdown-toggle {
     font-weight: bold;
+    line-height: 1%;
+    text-align: center;
+}
+
+
+.dropdown-toggle::before {
+    text-align: center;
+    margin-top: -100%;
+    border-top: 100%;
+    position: relative;
     
 }
 
-.dropdown:hover .dropdown-menu {
-    display: block;
-    background-color: transparent;
 
+.dropdown-toggle::after {
+    text-align: center;
+    margin-top: -100%;
+    border-top: 100%;
+    position: relative;
+    
 }
 
 
+@media (max-width: 990px) {
 
+.navbar {
+
+height: 15%;
+}
+
+.navbar-toggler  {
+ position: absolute;
+ top: 0.2rem;
+ right: 0.2rem;
+}
+
+.navbar-collapse {
+    position: absolute;
+    top: 2.8rem;
+     right: -2rem;
+     direction: rtl;
+}
+
+.nav-link {
+   font-size: 15px;
+   
+}
+
+.dropdown-item {
+    font-size: 15px;
+    background-color: rgb(255, 255, 255);
+    z-index: 4;
+    
+}
+
+
+}
 
