@@ -312,6 +312,7 @@ a:hover {
 .navbar {
 height: 7%;
 
+
 }
 
 .nav-item .nav-link {
@@ -326,8 +327,9 @@ height: 7%;
 
 
 .nav-item:hover {
-    padding-right: 5px;  
-    
+    padding-right: 5px; 
+    background-color: rgb(255, 255, 255); 
+    transition: 0.3s;
 }
 
 
@@ -368,6 +370,7 @@ height: 7%;
  position: absolute;
  top: 0.2rem;
  right: 0.2rem;
+ 
 }
 
 .navbar-collapse {
