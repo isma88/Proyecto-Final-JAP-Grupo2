@@ -311,6 +311,7 @@ a:hover {
 
 .navbar {
 height: 7%;
+
 }
 
 .nav-item .nav-link {
@@ -337,6 +338,7 @@ height: 7%;
     font-weight: bold;
     text-align: center;
     
+    
 }
 
 .dropdown-item:hover {
@@ -348,33 +350,18 @@ height: 7%;
     font-weight: bold;
     line-height: 1%;
     text-align: center;
-}
-
-
-.dropdown-toggle::before {
-    text-align: center;
-    margin-top: -100%;
-    border-top: 100%;
-    position: relative;
     
 }
+
 
 
 .dropdown-toggle::after {
-    text-align: center;
-    margin-top: -100%;
-    border-top: 100%;
-    position: relative;
-    
+    text-align: center;  
 }
 
 
 @media (max-width: 990px) {
 
-.navbar {
-
-height: 15%;
-}
 
 .navbar-toggler  {
  position: absolute;
@@ -403,4 +390,9 @@ height: 15%;
 
 
 }
+
+
+
+
+
 
