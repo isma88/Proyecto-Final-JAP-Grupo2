@@ -27,15 +27,12 @@ function sortListCostDec() {
 
 function sortListCostRange() {
   let min = document.getElementById('min').value
-  if (min == "") {
-    min = 0
-  }
-  console.log(min)
+  if (min == "") min = 0
+
   let max = document.getElementById('max').value
-  if (max == "") {
-    max = 99999999
-  }
-  console.log(max)
+  if (max == "") max = 99999999
+  
+
 
   filteredlist = list.filter(a => a.cost > min && a.cost < max)
   productList(filteredlist)
@@ -43,11 +40,22 @@ function sortListCostRange() {
 }
 
 function search() {
-  let string = document.getElementById('search').value
-  console.log()
-  document.getElementById('carta').filter(() => {
-    this.toggle(this.text().toLowerCase().indexOf(string) > -1)
-  }) 
+  let search = document.getElementById('search').value
+  
+  itemGrid =  document.getElementById('items')
+  cards = document.getElementsByName('card')
+
+  for (i = 0; i < cards.length; i++){
+    //console.log(cards[i].getElementsByTagName('h5')[0].innerHTML.toLowerCase().indexOf(search))
+    if(cards[i].getElementsByTagName('h5')[0].innerHTML.toLowerCase().indexOf(search) > -1 ) {
+
+      cards[i].style.display = ''
+
+    } else {
+      cards[i].style.display = 'none'
+    }
+
+  }
 
 }
 
@@ -66,7 +74,7 @@ function productList(list) {
     let description = product.description
 
     content +=
-      `<div class="col" id='carta'>
+      `<div class="col" id='carta' name='card'>
           <div class="card shadow rounded-3 h-100 p-1">
             <img src="${image}" class="card-img-top" alt="...">
             <div class="card-body d-flex flex-column h-100">
