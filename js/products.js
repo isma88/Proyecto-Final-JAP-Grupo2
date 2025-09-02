@@ -25,8 +25,6 @@ function sortListCostDec() {
 }
 
 
-
-
 function sortListCostRange() {
   let min = document.getElementById('min').value
   if (min == "") {
@@ -35,12 +33,21 @@ function sortListCostRange() {
   console.log(min)
   let max = document.getElementById('max').value
   if (max == "") {
-    max = 999999999999999999999999999999
+    max = 99999999
   }
   console.log(max)
 
   filteredlist = list.filter(a => a.cost > min && a.cost < max)
   productList(filteredlist)
+
+}
+
+function search() {
+  let string = document.getElementById('search').value
+  console.log()
+  document.getElementById('carta').filter(() => {
+    this.toggle(this.text().toLowerCase().indexOf(string) > -1)
+  }) 
 
 }
 
@@ -59,7 +66,7 @@ function productList(list) {
     let description = product.description
 
     content +=
-      `<div class="col">
+      `<div class="col" id='carta'>
           <div class="card shadow rounded-3 h-100 p-1">
             <img src="${image}" class="card-img-top" alt="...">
             <div class="card-body d-flex flex-column h-100">
@@ -94,3 +101,5 @@ document.getElementById('sortListCostDec').addEventListener('click', sortListCos
 document.getElementById('sortListCostAsc').addEventListener('click', sortListCostAsc)
 
 document.getElementById('rangeValue').addEventListener('click', sortListCostRange)
+
+document.getElementById('search').addEventListener('keyup',search)
