@@ -3,7 +3,7 @@ const current_catID = localStorage.getItem('catID')
 let current_products = PRODUCTS_URL + current_catID + EXT_TYPE
 console.log(current_products)
 let list = []
-let filteredlist = list
+let filteredlist = []
 
 function compareSort(a, b) {
   return a.cost - b.cost
@@ -12,8 +12,8 @@ function compareSort(a, b) {
 
 
 function sortListCostAsc() {
-
   filteredlist.sort(compareSort)
+  
   productList(filteredlist)
 }
 
@@ -49,6 +49,7 @@ function productList(list) {
 
 
   let content = '';
+
   for (product of list) {
     let image = product.image
     let name = product.name
@@ -81,7 +82,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
   getJSONData(current_products).then(function (result) {
     if (result.status === "ok") {
       list = result.data.products
+      filteredlist = list
       productList(list)
+
     }
   });
 })
