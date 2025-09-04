@@ -92,9 +92,9 @@ function productList(list) {
     let cost = product.cost
     let soldCount = product.soldCount
     let description = product.description
-
+    let id = product.id
     content +=
-      `<div class="col" id='carta' name='card'>
+      `<div class="col"  name='card'>
           <div class="card shadow rounded-3 h-100 p-1">
             <img src="${image}" class="card-img-top" alt="...">
             <div class="card-body d-flex flex-column h-100">
@@ -131,3 +131,5 @@ document.getElementById('rangeValue').addEventListener('click', sortListCostRang
 document.getElementById('search').addEventListener('keyup',search)
 
 document.getElementById('range').addEventListener('input', moneyFilter)
+
+document.geElementyClas
