@@ -78,6 +78,11 @@ function moneyFilter() {
   }
 }
 
+function setItemId(id)  {
+  localStorage.setItem('ItemId', id)
+  window.location = "product-info.html"
+  }
+
 
 
 function productList(list) {
@@ -94,7 +99,7 @@ function productList(list) {
     let description = product.description
     let id = product.id
     content +=
-      `<div class="col"  name='card'>
+      `<div class="col" onclick='setItemId(${id})' name='card'>
           <div class="card shadow rounded-3 h-100 p-1">
             <img src="${image}" class="card-img-top" alt="...">
             <div class="card-body d-flex flex-column h-100">
@@ -130,6 +135,5 @@ document.getElementById('sortListCostAsc').addEventListener('click', sortListCos
 document.getElementById('rangeValue').addEventListener('click', sortListCostRange)
 document.getElementById('search').addEventListener('keyup',search)
 
-document.getElementById('range').addEventListener('input', moneyFilter)
+//document.getElementById('range').addEventListener('input', moneyFilter)
 
-document.geElementyClas
