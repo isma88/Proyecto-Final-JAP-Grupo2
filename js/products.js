@@ -1,8 +1,90 @@
 
-let current_products = PRODUCTS_URL + '101' + EXT_TYPE
+const current_catID = localStorage.getItem('catID')
+let current_products = PRODUCTS_URL + current_catID + EXT_TYPE
+console.log(current_products)
+let list = []
+let filteredlist = []
+
+function compareSort(a, b) {
+  return a.cost - b.cost
+
+}
+
+
+function sortListCostAsc() {
+  filteredlist.sort(compareSort)
+  
+  productList(filteredlist)
+}
+
+function sortListCostDec() {
+
+  filteredlist.sort(compareSort)
+  filteredlist.reverse()
+  productList(filteredlist)
+}
+
+
+function sortListCostRange() {
+  let min = document.getElementById('min').value
+  if (min == "") min = 0
+
+  let max = document.getElementById('max').value
+  if (max == "") max = 99999999
+  
+
+
+  filteredlist = list.filter(a => a.cost > min && a.cost < max)
+  productList(filteredlist)
+
+}
+
+function search() {
+  let search = document.getElementById('search').value
+  
+  cards = document.getElementsByName('card')
+
+  for (i = 0; i < cards.length; i++){
+    //console.log(cards[i].getElementsByTagName('h5')[0].innerHTML.toLowerCase().indexOf(search))
+    if(cards[i].getElementsByTagName('h5')[0].innerHTML.toLowerCase().indexOf(search) > -1 ) {
+
+      cards[i].style.display = ''
+
+    } else {
+      cards[i].style.display = 'none'
+    }
+
+  }
+
+}
+
+function moneyFilter() {
+  let search = document.getElementById('range').value
+  
+  cards = document.getElementsByName('card')
+
+  for (i = 0; i < cards.length; i++){
+    //console.log(cards[i].getElementsByTagName('h5')[0].innerHTML.toLowerCase().indexOf(search))
+   // console.log(cards[i].getElementsByTagName('label')[0].innerHTML)
+   console.log(search)
+    if(Number(cards[i].getElementsByTagName('label')[0].innerHTML) < search) {
+
+      cards[i].style.display = ''
+
+    } else {
+      cards[i].style.display = 'none'
+    }
+
+  }
+}
+
+
 
 function productList(list) {
+
+
   let content = '';
+
   for (product of list) {
     let image = product.image
     let name = product.name
@@ -12,7 +94,7 @@ function productList(list) {
     let description = product.description
 
     content +=
-      `<div class="col">
+      `<div class="col" id='carta' name='card'>
           <div class="card shadow rounded-3 h-100 p-1">
             <img src="${image}" class="card-img-top" alt="...">
             <div class="card-body d-flex flex-column h-100">
@@ -21,7 +103,7 @@ function productList(list) {
                 <p class="mt-auto card-text text-end"><small class="text-muted ">vendidos ${soldCount}</small></p>
             </div>
             <div class='card-footer font-monospace text-center fs-4 fw-bold rounded shadow-sm'>
-              <small class=''> ${currency}${cost} </small> 
+              <small class=''> ${currency}<label>${cost}</label> </small> 
             </div>
           </div>
         </div>`
@@ -34,12 +116,18 @@ function productList(list) {
 document.addEventListener("DOMContentLoaded", function (e) {
   getJSONData(current_products).then(function (result) {
     if (result.status === "ok") {
-      let list = result.data.products
-
-
+      list = result.data.products
+      filteredlist = list
       productList(list)
+
     }
   });
-
-
 })
+
+
+document.getElementById('sortListCostDec').addEventListener('click', sortListCostDec)
+document.getElementById('sortListCostAsc').addEventListener('click', sortListCostAsc)
+document.getElementById('rangeValue').addEventListener('click', sortListCostRange)
+document.getElementById('search').addEventListener('keyup',search)
+
+document.getElementById('range').addEventListener('input', moneyFilter)
