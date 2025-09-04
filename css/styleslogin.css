@@ -20,13 +20,13 @@ body {
 
 .btn-rosa {
   background-color: #e75480;
-  color: white;
+  color: var(--color-contraste);
   border: none;
 }
 
 .btn-rosa:hover {
   background-color: hsl(339, 67%, 52%);
-  color: white;
+  color: var(--color-contraste);
 }
 
 #logojap {
@@ -46,39 +46,31 @@ body {
   display: none;
 }
 
-.card { 
+.card {
   width: 24rem;
-
-
-  }
+}
 
 @media (max-width: 600px) {
   #logojap,
   #eMercado {
     display: none;
-    
   }
   #jap-emercado {
     visibility: visible;
     width: 90vw;
     filter: brightness(0) invert(1) grayscale(1) contrast(100)
       drop-shadow(2px 2px 2px);
-        display: block;
-  margin-left: auto;
-  margin-right: auto;
-  
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
   #imagenes {
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    
   }
 
-  .card { 
+  .card {
     width: 72vw;
   }
-
-  
 }
