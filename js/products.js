@@ -42,7 +42,6 @@ function sortListCostRange() {
 function search() {
   let search = document.getElementById('search').value
   
-  itemGrid =  document.getElementById('items')
   cards = document.getElementsByName('card')
 
   for (i = 0; i < cards.length; i++){
@@ -58,6 +57,27 @@ function search() {
   }
 
 }
+
+function moneyFilter() {
+  let search = document.getElementById('range').value
+  
+  cards = document.getElementsByName('card')
+
+  for (i = 0; i < cards.length; i++){
+    //console.log(cards[i].getElementsByTagName('h5')[0].innerHTML.toLowerCase().indexOf(search))
+   // console.log(cards[i].getElementsByTagName('label')[0].innerHTML)
+   console.log(search)
+    if(Number(cards[i].getElementsByTagName('label')[0].innerHTML) < search) {
+
+      cards[i].style.display = ''
+
+    } else {
+      cards[i].style.display = 'none'
+    }
+
+  }
+}
+
 
 
 function productList(list) {
@@ -83,7 +103,7 @@ function productList(list) {
                 <p class="mt-auto card-text text-end"><small class="text-muted ">vendidos ${soldCount}</small></p>
             </div>
             <div class='card-footer font-monospace text-center fs-4 fw-bold rounded shadow-sm'>
-              <small class=''> ${currency}${cost} </small> 
+              <small class=''> ${currency}<label>${cost}</label> </small> 
             </div>
           </div>
         </div>`
@@ -107,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 document.getElementById('sortListCostDec').addEventListener('click', sortListCostDec)
 document.getElementById('sortListCostAsc').addEventListener('click', sortListCostAsc)
-
 document.getElementById('rangeValue').addEventListener('click', sortListCostRange)
-
 document.getElementById('search').addEventListener('keyup',search)
+
+document.getElementById('range').addEventListener('input', moneyFilter)
