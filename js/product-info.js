@@ -1,19 +1,24 @@
 let list = [];
+const current_catID = localStorage.getItem("catID");
+let current_products = PRODUCTS_URL + current_catID + EXT_TYPE;
 
 document.addEventListener("DOMContentLoaded", function (e) {
   getJSONData(current_products).then(function (result) {
     if (result.status === "ok") {
       list = result.data;
-      filteredlist = list;
-      productList(list);
+      console.log(list);
+      listElements();
     }
   });
 });
 
-let name = list.data.product.name;
-let description = list.product.description;
-let cost = list.product.cost;
-let currency = list.product.currency;
-let image = list.product.image;
+const listElements = () => {
+  let name = list.catName;
+  let productName = list.product.name;
+  let productDescription = list.product.desription;
+  let productCost = list.product.cost;
+  let productCurrency = list.product.currency;
 
-console.log(name);
+  console.log(name);
+  console.log(productCost);
+};
