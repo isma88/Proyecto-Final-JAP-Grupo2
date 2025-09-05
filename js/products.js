@@ -10,18 +10,18 @@ function compareSort(a, b) {
 
 }
 
-
 function sortListCostAsc() {
   filteredlist.sort(compareSort)
-  
   productList(filteredlist)
+
 }
 
 function sortListCostDec() {
-
   filteredlist.sort(compareSort)
   filteredlist.reverse()
+
   productList(filteredlist)
+
 }
 
 
@@ -31,22 +31,19 @@ function sortListCostRange() {
 
   let max = document.getElementById('max').value
   if (max == "") max = 99999999
-  
 
-
-  filteredlist = list.filter(a => a.cost > min && a.cost < max)
+  filteredlist = list.filter(a => a.cost >= min && a.cost <= max)
   productList(filteredlist)
 
 }
 
 function search() {
   let search = document.getElementById('search').value
-  
+
   cards = document.getElementsByName('card')
 
-  for (i = 0; i < cards.length; i++){
-    //console.log(cards[i].getElementsByTagName('h5')[0].innerHTML.toLowerCase().indexOf(search))
-    if(cards[i].getElementsByTagName('h5')[0].innerHTML.toLowerCase().indexOf(search) > -1 ) {
+  for (i = 0; i < cards.length; i++) {
+    if (cards[i].getElementsByTagName('h5')[0].innerHTML.toLowerCase().indexOf(search) > -1) {
 
       cards[i].style.display = ''
 
@@ -58,30 +55,13 @@ function search() {
 
 }
 
-function moneyFilter() {
-  let search = document.getElementById('range').value
-  
-  cards = document.getElementsByName('card')
 
-  for (i = 0; i < cards.length; i++){
-    //console.log(cards[i].getElementsByTagName('h5')[0].innerHTML.toLowerCase().indexOf(search))
-   // console.log(cards[i].getElementsByTagName('label')[0].innerHTML)
-   console.log(search)
-    if(Number(cards[i].getElementsByTagName('label')[0].innerHTML) < search) {
 
-      cards[i].style.display = ''
-
-    } else {
-      cards[i].style.display = 'none'
-    }
-
-  }
-}
-
-function setItemId(id)  {
+function setItemId(id) {
   localStorage.setItem('ItemId', id)
   window.location = "product-info.html"
-  }
+
+}
 
 
 
@@ -129,11 +109,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
   });
 })
 
-
 document.getElementById('sortListCostDec').addEventListener('click', sortListCostDec)
 document.getElementById('sortListCostAsc').addEventListener('click', sortListCostAsc)
 document.getElementById('rangeValue').addEventListener('click', sortListCostRange)
-document.getElementById('search').addEventListener('keyup',search)
+document.getElementById('search').addEventListener('keyup', search)
 
-//document.getElementById('range').addEventListener('input', moneyFilter)
 
