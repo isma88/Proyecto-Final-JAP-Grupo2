@@ -13,7 +13,7 @@ function compareSort(a, b) {
 function sortListCostAsc() {
   filteredlist.sort(compareSort)
   productList(filteredlist)
-
+  search()
 }
 
 function sortListCostDec() {
@@ -21,7 +21,7 @@ function sortListCostDec() {
   filteredlist.reverse()
 
   productList(filteredlist)
-
+  search()
 }
 
 
@@ -34,16 +34,18 @@ function sortListCostRange() {
 
   filteredlist = list.filter(a => a.cost >= min && a.cost <= max)
   productList(filteredlist)
-
+  search()
 }
 
 function search() {
+  
+
   let search = document.getElementById('search').value
 
   cards = document.getElementsByName('card')
 
   for (i = 0; i < cards.length; i++) {
-    if (cards[i].getElementsByTagName('h5')[0].innerHTML.toLowerCase().indexOf(search) > -1) {
+    if (cards[i].getElementsByTagName('h5')[0].innerHTML.toLowerCase().indexOf(search) > -1 || cards[i].getElementsByTagName('p')[0].innerHTML.toLowerCase().indexOf(search) > -1) {
 
       cards[i].style.display = ''
 
@@ -84,7 +86,7 @@ function productList(list) {
             <img src="${image}" class="card-img-top" alt="...">
             <div class="card-body d-flex flex-column h-100">
               <h5 class="card-title">${name}</h5>
-              <p  class="card-text" >${description}</p>
+              <p  name = 'description'class="card-text" >${description}</p>
                 <p class="mt-auto card-text text-end"><small class="text-muted ">vendidos ${soldCount}</small></p>
             </div>
             <div class='card-footer font-monospace text-center fs-4 fw-bold rounded shadow-sm'>
@@ -113,5 +115,7 @@ document.getElementById('sortListCostDec').addEventListener('click', sortListCos
 document.getElementById('sortListCostAsc').addEventListener('click', sortListCostAsc)
 document.getElementById('rangeValue').addEventListener('click', sortListCostRange)
 document.getElementById('search').addEventListener('keyup', search)
-
+document.getElementById('searchBtn').addEventListener('click', search)
+document.getElementById('searchForm').addEventListener('keydown',(e) => {if(e.key === 'Enter'){e.preventDefault(); e.stopPropagation()}})
+  
 
