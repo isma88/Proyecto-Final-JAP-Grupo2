@@ -1,30 +1,47 @@
-
 const current_catID = localStorage.getItem('catID')
 let current_products = PRODUCTS_URL + current_catID + EXT_TYPE
 console.log(current_products)
 let list = []
 let filteredlist = []
 
-function compareSort(a, b) {
+//metodo de filtrado por costo 
+function costSort(a, b) {
+  console.log(a)
   return a.cost - b.cost
 
 }
+//metodo de filtrado por cantidad de ventas
+function soldCountSort(a, b) {
+  console.log(a)
+  return a.soldCount - b.soldCount
 
+}
+
+//filtro costo menor-mayor
 function sortListCostAsc() {
-  filteredlist.sort(compareSort)
+  filteredlist.sort(costSort)
   productList(filteredlist)
   search()
 }
 
+//filtro costo amyor=menor
 function sortListCostDec() {
-  filteredlist.sort(compareSort)
+  console.log(filteredlist)
+  filteredlist.sort(costSort)
   filteredlist.reverse()
 
   productList(filteredlist)
   search()
 }
 
+//filtro relevancia
+function sortListRel() {
+  filteredlist.sort(soldCountSort)
+  productList(filteredlist)
+  search()
+}
 
+//filtro por rango 
 function sortListCostRange() {
   let min = document.getElementById('min').value
   if (min == "") min = 0
@@ -37,28 +54,28 @@ function sortListCostRange() {
   search()
 }
 
+// busqueda por nombre o descripcion
 function search() {
-  
 
   let search = document.getElementById('search').value
 
   cards = document.getElementsByName('card')
 
   for (i = 0; i < cards.length; i++) {
+     
     if (cards[i].getElementsByTagName('h5')[0].innerHTML.toLowerCase().indexOf(search) > -1 || cards[i].getElementsByTagName('p')[0].innerHTML.toLowerCase().indexOf(search) > -1) {
 
-      cards[i].style.display = ''
+        cards[i].style.display = ''
 
-    } else {
-      cards[i].style.display = 'none'
-    }
+      } else {
+        cards[i].style.display = 'none'
+      }
 
   }
 
 }
 
-
-
+//tomar id de producto seleccionado
 function setItemId(id) {
   localStorage.setItem('ItemId', id)
   window.location = "product-info.html"
@@ -66,7 +83,7 @@ function setItemId(id) {
 }
 
 
-
+//listar productos
 function productList(list) {
 
 
@@ -99,7 +116,7 @@ function productList(list) {
   document.getElementById('items').innerHTML = content
 
 }
-
+//bajar json
 document.addEventListener("DOMContentLoaded", function (e) {
   getJSONData(current_products).then(function (result) {
     if (result.status === "ok") {
@@ -111,11 +128,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
   });
 })
 
+//botones
 document.getElementById('sortListCostDec').addEventListener('click', sortListCostDec)
 document.getElementById('sortListCostAsc').addEventListener('click', sortListCostAsc)
+document.getElementById('sortListRel').addEventListener('click', sortListRel)
 document.getElementById('rangeValue').addEventListener('click', sortListCostRange)
 document.getElementById('search').addEventListener('keyup', search)
 document.getElementById('searchBtn').addEventListener('click', search)
 document.getElementById('searchForm').addEventListener('keydown',(e) => {if(e.key === 'Enter'){e.preventDefault(); e.stopPropagation()}})
-  
-

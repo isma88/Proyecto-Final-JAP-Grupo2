@@ -15,8 +15,8 @@
     background-color: var(--color-contraste);
     color: var(--color-fondo);
     & .card-footer {
-        background-color: var(--color-fondo);
-         color: var(--color-contraste);
+        background-color:  light-dark(var(--light-btn),var(--dark-btn));
+         color:  light-dark(var(--light-color),var(--dark-color));
          transition: filter 0.1s ease; 
     }
 
