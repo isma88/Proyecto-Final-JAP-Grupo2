@@ -6,3 +6,24 @@
     --dark-color: #CC5B72;
     
 }
+
+:root:has(#themeSwitch) {
+     color-scheme: dark;   
+     & .form-check-input:checked {
+    background-color: var(--light-btn);
+    border-color: var(--light-btn);
+    
+     
+    } 
+    & .bi-moon-fill{
+        content: "\f5a1";
+    }
+}
+
+:root:has(#themeSwitch:checked) {
+     color-scheme: light;    
+     & .form-check-input:checked {
+    background-color: var(--light-btn);
+    border-color: var(--light-btn);
+    } 
+}
