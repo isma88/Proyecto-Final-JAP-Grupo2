@@ -387,15 +387,9 @@ a:hover {
 }
 
 
-.navbar {
-height: 7%;
-
-
-}
-
 .nav-item .nav-link {
     color: rgb(192, 27, 170); 
-    height: 1cm;
+   
    
 }
 
@@ -429,7 +423,6 @@ height: 7%;
 
 .dropdown-toggle {
     font-weight: bold;
-    line-height: 1%;
     text-align: center;
     
 }

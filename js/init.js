@@ -52,7 +52,7 @@ if (!logged) {
   document.getElementById(
     "nickname"
     // muestra el nombre si está logueado
-  ).innerHTML = `<a class="nav-link" href="">${logged}</a>`;
+  ).innerHTML = `${logged}`;
 }
 //cierra la sesion
 document.getElementById('cerrar').addEventListener('click', function (){
