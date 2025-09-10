@@ -84,7 +84,7 @@ function setItemId(id) {
 
 
 //listar productos
-function productList(list) {
+ function productList(list) {
 
 
   let content = '';

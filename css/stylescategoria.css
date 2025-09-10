@@ -23,23 +23,7 @@ body {
     } 
     
     
-body {
-    background-image: url(/img/1Background.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    z-index: 1;
-}    
 
-@media (prefers-color-scheme: dark) {
-        body {
-            background-image: url(/img/1Background.jpg); /* Applied when dark mode is preferred */
-           backdrop-filter:  grayscale(1) brightness(0.1);
-           /* filter: invert(); */
-        }
-    }
-    
 .btn-link, a {
     color: var(--dark-details);
 }
@@ -47,3 +31,9 @@ body {
      color: light-dar(var(--dark-text), var(--light-text));
 }
 
+
+h2 { 
+    
+    color:light-dark(var(--dark-text),var(--dark-details));
+    text-shadow: 2px 2px 2px black;
+}
