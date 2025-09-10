@@ -136,3 +136,6 @@ document.getElementById('rangeValue').addEventListener('click', sortListCostRang
 document.getElementById('search').addEventListener('keyup', search)
 document.getElementById('searchBtn').addEventListener('click', search)
 document.getElementById('searchForm').addEventListener('keydown',(e) => {if(e.key === 'Enter'){e.preventDefault(); e.stopPropagation()}})
+
+
+  //filtros no tienen limpiar ni cambian con enter

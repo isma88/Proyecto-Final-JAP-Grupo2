@@ -39,6 +39,13 @@ body {
     background-attachment: fixed;
     z-index: 1;
 }
+    @media (prefers-color-scheme: dark) {
+        body {
+            background-image: url(/img/1Background.jpg); /* Applied when dark mode is preferred */
+           backdrop-filter:  grayscale(1) brightness(0.2);
+           /* filter: invert(); */
+        }
+    }
 
 header {
     

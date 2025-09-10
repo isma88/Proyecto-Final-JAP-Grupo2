@@ -5,6 +5,15 @@
     --dark-btn: #121212;
     --dark-color: #CC5B72;
     
+    --light-text:black;
+
+
+    --dark-bg: #121212;
+    --dark-card: #282828;
+    --dark-text: white;
+    --dark-details: #cc5c72;
+    --dark-hover: #1a1a1a;
+   
 }
 
 :root:has(#themeSwitch) {

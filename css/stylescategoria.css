@@ -1,0 +1,49 @@
+@import url(colors.css);
+
+body {
+    background-color: light-dark(var(--light-bg),var(--dark-bg));
+    color: light-dark(var(--dark-btn),var(--dark-color));
+}
+
+
+
+.list-group {
+    background-color: light-dark(var(--light-btn),var(--dark-details));
+ }
+
+
+.list-group-item {
+    background-color: light-dark(var(--light-color),var(--dark-card));
+    color: light-dark(var(--light-btn),var(--dark-text));
+ }
+
+ .list-group-item:hover { 
+            background-color:light-dark(var(--light-btn), var(--dark-hover));
+            color: light-dark(var(--dark-btn), var(--dark-details));
+    } 
+    
+    
+body {
+    background-image: url(/img/1Background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: 1;
+}    
+
+@media (prefers-color-scheme: dark) {
+        body {
+            background-image: url(/img/1Background.jpg); /* Applied when dark mode is preferred */
+           backdrop-filter:  grayscale(1) brightness(0.1);
+           /* filter: invert(); */
+        }
+    }
+    
+.btn-link, a {
+    color: var(--dark-details);
+}
+.btn-link:hover, a:hover {
+     color: light-dar(var(--dark-text), var(--light-text));
+}
+
