@@ -3,7 +3,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+  <meta name="color-scheme">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
 
@@ -16,6 +16,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/stylesautos.css" rel="stylesheet">
+  <link href="css/stylesmenu.css" rel="stylesheet">
 </head>
 
 <body>
@@ -24,16 +25,16 @@
 
     <div class="logo"><img src=\img\79b3f9d10a053a652bdca58e7847d88ddbde4397.png alt=""></div>
 
-      <div class="barra">
-         <form action="/buscar" method="GET">
+      <div class="barra" id="searchForm">
+         <form action="" autocomplete="on">
            <input type="text"  placeholder="Buscar..." id="search" >
-           <button  type="button" class="Boton" ><i class="bi bi-search"></i class="Icono"></button>
+           <button  id="searchBtn" type="button" class="Boton" ><i class="bi bi-search"></i class="Icono"></button>
         </form>
       </div>
 
       
     
-          <nav class="navbar navbar-expand-lg navbar-light; p-1 d-flex flex-row shadow-sm rounded-4 fixed-top">
+          <nav class="navbar navbar-expand-lg p-1 d-flex flex-row shadow-sm rounded-4 fixed-top">
       <div class="container">
         <button
           class="navbar-toggler shadow-none bg-light"
@@ -52,19 +53,23 @@
               <a class="nav-link fw-bold" href="index.html">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active fw-bold" href="categories.html">Categorías</a>
+              <a class="nav-link fw-bold" href="categories.html">Categorías</a>
             </li>
             <li class="nav-item">
               <a class="nav-link fw-bold" href="sell.html">Vender</a>
             </li>
-             <li class="nav-item">
-              <a class="nav-link fw-bold" href="login.html">Usuario</a>
-            </li>
+             
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="login.html" id="nickname" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-              </a>
                 <ul class="dropdown-menu" aria-labelledby="nickname">
                   <li><a class="dropdown-item" href="index.html" id="cerrar">Cerrar Sesion</a></li>
+                   <li>
+                  <select class="form-select form-select-sm" id="themeSwitch" aria-label=".form-select-sm example">
+                    <option value="auto">auto</option>
+                    <option value="light">lightmode</option>
+                    <option value="dark">darkmode</option>
+                  </select>
+                   </li>
                 </ul>
             </li>
           </ul> 
@@ -75,14 +80,26 @@
     </header>
 
   <section class="container overflow-hidden">
-      <button id="sortListCostDec">precio descendiente</button>
-      <button id="sortListCostAsc">precio ascendiente</button>
-    
-    <input type="number" placeholder="min" id="min" style="width: 200px;" > 
-    <label for="">-</label> 
-    <input type="number" placeholder="max" id="max" style="width: 200px;">
-    <input type="button" value="enviar" id="rangeValue">
-
+      
+            <div class="row">
+              <div class="col text-end">
+                <button id="sortListCostDec"><i class="bi bi-sort-numeric-down-alt"></i></button>
+                <button id="sortListCostAsc"><i class="bi bi-sort-numeric-down"></i></button>
+                <button id="sortListRel"><i class="bi bi-sort-down-alt"></i></button>
+              </div>
+              <div class="row mb-3 justify-content-end">
+                <div class="col-sm">
+                  <input type="number" placeholder="min" id="min" style="">
+                </div>
+                <div class="col-sm">
+                  <input type="number" placeholder="max" id="max" style="">
+                </div>
+                <div class="col-sm">
+                  <input type="button" value="enviar" id="rangeValue">
+                </div>
+              
+              </div>
+            </div>
         <div id="items" class="row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-4 g-3 g-sm-4 g-lg-3 g-xl-4">
       
         </div>
@@ -107,11 +124,6 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>
-
-  
-
- 
-
 
 </body>
 

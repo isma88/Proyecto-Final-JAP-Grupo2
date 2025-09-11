@@ -1,0 +1,66 @@
+:root { 
+    color-scheme: light dark;
+    --light-bg: #E699AC;
+    --light-card: #F7D9E3;
+    --light-text: #1a1a1a;
+    --light-details: #CC5B72;
+    --light-hover: #1a1a1a;
+    --light-btn: #b5a8e6;
+
+
+    --dark-bg: #121212;
+    --dark-card: #3f3f3f;
+    --dark-text: white;
+    --dark-details: #cc5c72;
+    --dark-hover: #1a1a1a;
+    --dark-btn: #9B2242;
+}
+
+        /* Todo esto es darkmode */
+
+:root:has(option[value='dark']:checked) {
+     color-scheme: dark;   
+     & .form-check-input:checked {
+    background-color: var(--light-btn);
+    border-color: var(--light-btn);
+    
+     
+    } 
+
+    & body {
+            background-image: url(/img/1Background.jpg); /* Applied when dark mode is preferred */
+            backdrop-filter:  grayscale(1) brightness(0.2);
+           /* filter: invert(); */
+        }
+}
+
+:root:has(option[value='light']:checked){
+     color-scheme: light;    
+     & .form-check-input:checked {
+    background-color: var(--light-btn);
+    border-color: var(--light-btn);
+    } 
+
+    & body {
+        backdrop-filter:  none;
+    
+        }
+}
+
+body {
+
+    background-image: url(/img/1Background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: 1;
+}    
+
+@media (prefers-color-scheme: dark) {
+        body {
+            background-image: url(/img/1Background.jpg); /* Applied when dark mode is preferred */
+            backdrop-filter:  grayscale(1) brightness(0.2);
+           /* filter: invert(); */
+        }
+    } 
