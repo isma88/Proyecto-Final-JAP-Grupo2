@@ -18,7 +18,6 @@ const listElements = () => {
   let productDescription = list.product.desription;
   let productCost = list.product.cost;
   let productCurrency = list.product.currency;
-
   console.log(name);
   console.log(productCost);
 };
