@@ -16,8 +16,8 @@
 .rounded,
 .h-100 {
 
-    background-color: var(--color-contraste);
-    color: var(--color-fondo);
+    background-color:light-dark(var(--light-card),var(--dark-card));
+    color: light-dark(var(--light-text),var(--dark-text));
 
     & .card-footer {
         background-color: light-dark(var(--light-btn), var(--dark-btn));
@@ -31,8 +31,8 @@
     }
 
     & .card-title {
-        text-shadow: 1px 1px 2px black;
-        color: var(--color-boton);
+        text-shadow: 1px 1px 2px light-dark(var(--dark-text),var(--light-text));
+        color: light-dark(var(--light-text),var(--dark-text));
     }
 }
 

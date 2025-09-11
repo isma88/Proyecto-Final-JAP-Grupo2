@@ -1,19 +1,19 @@
 :root { 
     color-scheme: light dark;
-    --light-btn: #CC5B72;
-    --light-color: #F7D9E3;
-    --dark-btn: #121212;
-    --dark-color: #CC5B72;
-    
-    --light-text:black;
+    --light-bg: #E699AC;
+    --light-card: #F7D9E3;
+    --light-text: #1a1a1a;
+    --light-details: #CC5B72;
+    --light-hover: #1a1a1a;
+    --light-btn: #b5a8e6;
 
 
     --dark-bg: #121212;
-    --dark-card: #282828;
+    --dark-card: #3f3f3f;
     --dark-text: white;
     --dark-details: #cc5c72;
     --dark-hover: #1a1a1a;
-   
+    --dark-btn: #9B2242;
 }
 
         /* Todo esto es darkmode */
