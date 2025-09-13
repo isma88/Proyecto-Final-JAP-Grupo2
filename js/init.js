@@ -52,26 +52,9 @@ if (!logged) {
   document.getElementById(
     "nickname"
     // muestra el nombre si está logueado
-  ).innerHTML = `${logged}`;
+  ).innerHTML = `<a class="nav-link" href="">${logged}</a>`;
 }
 //cierra la sesion
 document.getElementById('cerrar').addEventListener('click', function (){
   localStorage.clear()
-})
-
-document.getElementById('themeSwitch').addEventListener('change', e => {
-  value = document.getElementById('themeSwitch').value
-
-console.log(value)
-  switch(value ){
-    case 1:
-
-      break;
-    case 2:
-      break;
-    case 3:
-      break;
-
-  }
-
 })
