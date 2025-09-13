@@ -1,5 +1,7 @@
+@import url(colors.css);
+
  .card-custom {
-       background-color: rgb(247 222 235 / 71%);
+    background-color: rgb(247 222 235 / 71%);
     display: flex;
     border-radius: 10px;
     box-shadow: 0 6px 6px 0 rgba(172, 57, 115, 0.567);
