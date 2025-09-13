@@ -411,6 +411,31 @@ a:hover {
     color: rgb(118, 36, 118) !important;
 }
 
+.btn-xs {
+    width: 150px;
+    padding: 10px;
+    padding-right: 10px;
+    border: 0;
+    outline: none;
+    font-size: 1rem;
+    background-color: #E8E8E8;
+    border-radius: 5px;
+    margin-bottom: 5px;
+
+}
+.btn-fil{
+    width: 150px;
+    padding: 10px;
+    padding-right: 10px;
+    border: 0;
+    outline: none;
+    font-size: 1rem;
+    background-color: light-dark(var(--light-btn), var(--dark-btn));
+    color: light-dark(var(--light-color), var(--dark-color));
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
 
 
 
