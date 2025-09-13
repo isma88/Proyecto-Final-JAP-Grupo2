@@ -1,77 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <title>eMercado - Todo lo que busques está aquí</title>
 
-    <link
-      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
-      rel="stylesheet"
-    />
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/styleslogin.css" rel="stylesheet" />
-  </head>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: hsl(350, 100%, 88%); /* Fondo rosa */
+      
+    }
 
-  <body class="position-relative vh-100">
-    <div id="imagenes">
-      <img
-        id="logojap"
-        src="img/login_JaP1.png"
-        alt="Logo"
-        class="position-absolute top-0 start-0 m-1"
-        width="450"
-      />
-      <img
-        id="eMercado"
-        src="img/login-e-mercado.png"
-        alt="Logo"
-        class="position-absolute top-0 end-0 m-3"
-        width="350"
-      />
-      <img
-        id="jap-emercado"
-        src="img\79b3f9d10a053a652bdca58e7847d88ddbde4397.png"
-        alt="logo"
-        class="position-absolute top-0 start-50 translate-middle-x"
-        width="350"
-      />
-    </div>
-    <div class="position-absolute top-50 start-50 translate-middle card shadow p-4 login-card" >
+    
+  </style>
+</head>
+  
+<body class="d-flex justify-content-center align-items-center vh-100">
+  <img src="img/login_JaP.png" alt="Logo" class="position-absolute top-0 start-0 m-1" width="450">
+  <img src="img/login-e-mercado.png" alt="Logo" class="position-absolute top-0 end-0 m-3" width="350">
+  <div class="card shadow p-4 login-card" style="width: 22rem;">
       <h3 class="text-center mb-4">Iniciar Sesión</h3>
+    
+    <form id="loginForm">
+      <div class="mb-3">
+        <label for="usuario" class="form-label">Usuario</label>
+        <input type="text" class="form-control" id="usuario" placeholder="Ingresa tu usuario" required>
+      </div>
 
-      <form id="loginForm">
-        <div class="mb-3">
-          <label for="usuario" class="form-label">Usuario</label>
-          <input
-            type="text"
-            class="form-control"
-            id="usuario"
-            placeholder="Ingresa tu usuario"
-            required
-          />
-        </div>
+      <div class="mb-3">
+        <label for="contraseña" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" id="contraseña" placeholder="Ingresa tu contraseña" required>
+      </div>
 
-        <div class="mb-3">
-          <label for="contraseña" class="form-label">Contraseña</label>
-          <input
-            type="password"
-            class="form-control"
-            id="contraseña"
-            placeholder="Ingresa tu contraseña"
-            required
-          />
-        </div>
-
-        <button type="submit" class="btn btn-rosa w-100" id="boton">
-          Ingresar
-        </button>
-      </form>
+      <button type="submit" class="btn btn-rosa w-100" id="boton">Insertar</button>
+    </form>
+  
+      
     </div>
+    
+  <script src="js/login.js"></script>
+</body>
 
-    <script src="js/login.js"></script>
-  </body>
 </html>
