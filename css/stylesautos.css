@@ -91,7 +91,88 @@ input {
 }
 
 
+.navbar-toggler-sm {
+    background-color: rgb(167 129 201);
+}
 
+
+.nav-item .nav-link {
+    color: rgb(167 129 201) !important;
+}
+
+.nav-item:hover {
+    background-color: rgb(255, 255, 255); 
+    display: block;
+    
+}
+
+
+.dropdown-item {
+    background-color: transparent;
+    color: rgb(167 129 201);
+    border: none;
+    font-weight: bold;
+    text-align: center;
+}
+
+.dropdown-item:hover {
+    color: rgb(173, 26, 189);
+    background-color: azure;
+   
+}
+
+
+.dropdown-toggle {
+    text-align: center;
+}
+
+
+@media (max-width: 575px) {
+
+.navbar-toggler-sm {
+    margin-right: 2.5%;
+    width: 3rem;
+    height: 2.5rem;
+}
+
+
+.dropdown-item {
+    height: 1.8rem;
+    text-align: center;
+
+}
+
+}
+
+@media (min-width: 576px) {
+
+
+
+.navbar-toggler-sm {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+ .nav-item .nav-link {
+    position: relative;
+    margin-right: 7.4rem;
+    margin-bottom: -1rem;
+
+}
+}
+
+@media (min-width: 576px) and (max-width: 990px) { 
+
+
+    .nav-item .nav-link {
+    position: relative;
+    margin-right: 2rem;
+    margin-bottom: -1rem;
+}
+   
+ 
+}
 
 
 @media (max-width: 600px) {
@@ -309,92 +390,7 @@ a:hover {
 }
 
 
-.navbar {
-height: 7%;
 
-
-}
-
-.nav-item .nav-link {
-    color: rgb(192, 27, 170); 
-    height: 1cm;
-   
-}
-
-.nav-link.active {
-    color: rgb(118, 36, 118) !important;
-}
-
-
-.nav-item:hover {
-    padding-right: 5px; 
-    background-color: rgb(255, 255, 255); 
-    transition: 0.3s;
-}
-
-
-.dropdown-item {
-    background-color: transparent;
-    color: rgb(118, 36, 118);
-    border: none;
-    padding: 10px 0;
-    font-weight: bold;
-    text-align: center;
-    
-    
-}
-
-.dropdown-item:hover {
-    color: #f004b5;
-}
-
-
-.dropdown-toggle {
-    font-weight: bold;
-    line-height: 1%;
-    text-align: center;
-    
-}
-
-
-
-.dropdown-toggle::after {
-    text-align: center;  
-}
-
-
-@media (max-width: 990px) {
-
-
-.navbar-toggler  {
- position: absolute;
- top: 0.2rem;
- right: 0.2rem;
- 
-}
-
-.navbar-collapse {
-    position: absolute;
-    top: 2.8rem;
-     right: -2rem;
-     direction: rtl;
-}
-
-.nav-link {
-   font-size: 15px;
-   
-}
-
-.dropdown-item {
-    font-size: 15px;
-    background-color: rgb(255, 255, 255);
-    z-index: 4;
-    
-}
-
-
-
-}
 
 
 
