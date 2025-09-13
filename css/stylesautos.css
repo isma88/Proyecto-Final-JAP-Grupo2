@@ -91,6 +91,8 @@ input {
 }
 
 
+
+
 .navbar-toggler-sm {
     background-color: rgb(167 129 201);
 }
@@ -129,6 +131,10 @@ input {
 
 
 @media (max-width: 575px) {
+
+.navbar {
+    background-color: rgb(255, 182, 200) !important;
+}    
 
 .navbar-toggler-sm {
     margin-right: 2.5%;
