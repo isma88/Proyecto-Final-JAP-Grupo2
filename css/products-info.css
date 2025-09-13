@@ -1,7 +1,90 @@
-.logo1 {
- margin-right: 30%;
+.navbar-toggler-sm {
+    background-color: rgb(167 129 201);
 }
 
-.logo2 {
-  
+
+.nav-item .nav-link {
+    color: rgb(167 129 201) !important;
+}
+
+
+
+.dropdown-toggle {
+    margin-top: -0.5rem;
+    
+}
+
+
+.dropdown-item {
+    background-color: transparent;
+    color: rgb(167 129 201);
+    border: none;
+    font-weight: bold;
+    text-align: center;
+}
+
+.dropdown-item:hover {
+    color: rgb(173, 26, 189);
+    background-color: rgb(255, 255, 255);
+   
+}
+
+.dropdown-toggle {
+    text-align: center !important;
+
+}
+
+
+@media (max-width: 575px) {
+
+.navbar-toggler-sm {
+    margin-right: 2.5%;
+    width: 3rem;
+    height: 2.5rem;
+}
+
+
+.dropdown-item {
+    height: 1.8rem;
+    text-align: center;
+
+}
+
+.nav-item:hover {
+    background-color: rgb(255, 255, 255); 
+}
+
+
+}
+
+@media (min-width: 576px) {
+
+
+
+.navbar-toggler-sm {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+ .nav-item .nav-link {
+    position: relative;
+    margin-right: 7.4rem;
+    margin-bottom: -1rem;
+
+}
+
+
+}
+
+@media (min-width: 576px) and (max-width: 990px) { 
+
+
+    .nav-item .nav-link {
+    position: relative;
+    margin-right: 2rem;
+    margin-bottom: -1rem;
+}
+   
+ 
 }

@@ -100,9 +100,10 @@ input {
     color: rgb(167 129 201) !important;
 }
 
-.nav-item:hover {
-    background-color: rgb(255, 255, 255); 
-    display: block;
+
+
+.dropdown-toggle {
+    margin-top: -0.5rem;
     
 }
 
@@ -117,13 +118,13 @@ input {
 
 .dropdown-item:hover {
     color: rgb(173, 26, 189);
-    background-color: azure;
+    background-color: rgb(255, 255, 255);
    
 }
 
-
 .dropdown-toggle {
-    text-align: center;
+    text-align: center !important;
+
 }
 
 
@@ -141,6 +142,11 @@ input {
     text-align: center;
 
 }
+
+.nav-item:hover {
+    background-color: rgb(255, 255, 255); 
+}
+
 
 }
 
@@ -160,6 +166,8 @@ input {
     margin-bottom: -1rem;
 
 }
+
+
 }
 
 @media (min-width: 576px) and (max-width: 990px) { 
