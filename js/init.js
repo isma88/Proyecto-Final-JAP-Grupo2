@@ -42,11 +42,36 @@ let getJSONData = function (url) {
     });
 };
 
+
+// mira si el usuario está logueado
 const logged = localStorage.getItem("usuario");
 if (!logged) {
+  // lo envia a login si no
   window.location.href = "login.html";
 } else {
   document.getElementById(
     "nickname"
-  ).innerHTML = `<a class="nav-link" href="">${logged}</a>`;
+    // muestra el nombre si está logueado
+  ).innerHTML = `${logged}`;
 }
+//cierra la sesion
+document.getElementById('cerrar').addEventListener('click', function (){
+  localStorage.clear()
+})
+
+document.getElementById('themeSwitch').addEventListener('change', e => {
+  value = document.getElementById('themeSwitch').value
+
+console.log(value)
+  switch(value ){
+    case 1:
+
+      break;
+    case 2:
+      break;
+    case 3:
+      break;
+
+  }
+
+})
