@@ -1,0 +1,21 @@
+ .card-custom {
+       background-color: rgb(247 222 235 / 71%);
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0 6px 6px 0 rgba(172, 57, 115, 0.567);
+    }
+
+ .mb-5 {
+     font-family: "Playfair Display", serif;
+     font-optical-sizing: auto;
+     font-weight: 300;
+     font-style: normal;
+ }
+
+ .mt-3, .ms-3 {
+     font-family: "Roboto", sans-serif;
+     font-optical-sizing: auto;
+     font-weight: 100;
+
+
+ }
