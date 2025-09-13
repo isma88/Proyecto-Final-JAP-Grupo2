@@ -34,6 +34,14 @@ function sortListCostDec() {
   search()
 }
 
+//filtro limpiar
+document.getElementById('clearFilters').addEventListener('click', () => {
+  document.getElementById('min').value = '';
+  document.getElementById('max').value = '';
+  sortListCostRange() 
+
+});
+
 //filtro relevancia
 function sortListRel() {
   filteredlist.sort(soldCountSort)
