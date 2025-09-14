@@ -31,7 +31,13 @@
 
  }
 
- .precio .ms-3 .fw-normal  {
-    margin-top: 1rem !important;
+ .cat {
+    margin-top: -8.5rem !important;
+    text-align: right;
+ }
+
+ .cat2 {
+    margin-bottom: -1rem !important;
+    text-align:right
  }
 
