@@ -31,7 +31,7 @@
     }
 
     & .card-title {
-        text-shadow: 1px 1px 2px light-dark(var(--dark-text),var(--light-text));
+        text-shadow: 1px 1px 2px light-dark(var(--light-text),var(--dark-text));
         color: light-dark(var(--light-text),var(--dark-text));
     }
 }
@@ -418,7 +418,7 @@ a:hover {
     border: 0;
     outline: none;
     font-size: 1rem;
-    background-color: #E8E8E8;
+    background-color: light-dark(var(--light-card), var(--dark-card));
     border-radius: 5px;
     margin-bottom: 5px;
 
@@ -436,7 +436,11 @@ a:hover {
     margin-bottom: 5px;
 }
 
-
+@media only screen and (max-width: 600px) {
+    .btn-xs, .btn-fil{
+       width: 100px;
+    }
+    }
 
 
 
