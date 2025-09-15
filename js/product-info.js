@@ -23,19 +23,8 @@ const listElements = () => {
   let productImages = list.images;
   let productsoldCount = list.soldCount;
   let productid = list.id;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
   let content = `<div class="col-md-6 row">
-=======
-  let content = `<div class="col-md-6">
->>>>>>> Stashed changes
-=======
-  let content = `<div class="col-md-6">
->>>>>>> Stashed changes
-=======
-  let content = `<div class="col-md-6">
->>>>>>> Stashed changes
           <h1 class="mb-4 text-center mb-5">${name}</h1><p class="ms-3 fw-normal precio-valor"strong>Precio:</strong> ${productCurrency} ${productCost}</p>
         <p class="ms-3 mt-5 fw-normal cat"strong>Categoría:</strong> ${productCategory}</p>
         <p class="ms-3 fw-normal cat"strong>Vendidos:</strong> ${productsoldCount}</p>
