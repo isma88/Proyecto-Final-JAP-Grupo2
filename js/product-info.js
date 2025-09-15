@@ -14,17 +14,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 const listElements = () => {
-  let name = list.catName;
+  let name = list.name;
   let productCategory = list.category;
   let productName = list.name;
   let productDescription = list.description;
   let productCost = list.cost;
   let productCurrency = list.currency;
-  let productImg = list.img;
+  let productImages = list.images;
   let productsoldCount = list.soldCount;
   let productid = list.id;
-  let content = `<div class="col-md-6">
-          <h1 class="mb-4 text-center mb-5"${productName}></h1><p class="ms-3 fw-normal precio-valor"strong>Precio:</strong> ${productCurrency} ${productCost}</p>
+  let content = `<div class="col-md-4">
+          <h1 class="mb-4 text-center mb-5">${name}</h1><p class="ms-3 fw-normal precio-valor"strong>Precio:</strong> ${productCurrency} ${productCost}</p>
         <p class="ms-3 mt-5 fw-normal cat"strong>Categoría:</strong> ${productCategory}</p>
         <p class="ms-3 fw-normal cat"strong>Vendidos:</strong> ${productsoldCount}</p>
       </div>
@@ -45,11 +45,12 @@ const listElements = () => {
   productImages.forEach((images, index) => {
     carouselInner.innerHTML += `
       <div class="carousel-item ${index === 0 ? "active" : ""}">
-        <img src="${imgaes}" class="d-block w-100" alt="Imagen ${index + 1}">
+        <img src="${images}" class="d-block w-100" alt="Imagen ${index + 1}">
       </div>
     `;
   });
 };
+
 //document.addEventListener("DOMContentLoaded", () => {
 //  const URL = "https://japceibal.github.io/emercado-api/products/50922.json";
 
