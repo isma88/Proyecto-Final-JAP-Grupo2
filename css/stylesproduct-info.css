@@ -14,7 +14,7 @@
         left: 0.5rem;
     }
 
- .mb-5 {
+ .deco {
 
      font-family: "Playfair Display", serif;
      font-optical-sizing: auto;
@@ -23,13 +23,14 @@
      position: relative;
      left: 2rem;
      margin-top: -2rem;
+     color:light-dark(var(--light-text),var(--dark-text));
  }
 
  .mt-3, .ms-3 {
      font-family: "Roboto",;
      font-optical-sizing: auto;
      font-weight: 100;
-
+     color:light-dark(var(--light-text),var(--dark-text));
 
  }
 
@@ -50,8 +51,9 @@
  }
 
  .precio-valor {
-   font-size: 20px;
+   font-size: 30px;
    font-family:  "Playfair Display", serif;
+   
 
  }
 

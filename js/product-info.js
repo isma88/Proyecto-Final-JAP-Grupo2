@@ -25,18 +25,18 @@ const listElements = () => {
   let productid = list.id;
 
   let content = `<div class="col-ml-6 ">
-          <h2 class="mb-5 mt-3 ms-3 fw-bolder">${name}</h1><p class="ms-3 fw-normal precio-valor"strong></strong> ${productCurrency} ${productCost}</p>
+          <h2 class="deco mt-3 ms-3 fw-bolder">${name}</h1><p class="ms-5 fw-normal precio-valor"strong></strong> ${productCurrency} ${productCost}</p>
         <p class="ms-3  fw-normal cat"strong>Categoría:</strong> ${productCategory}</p>
         <p class="ms-3 fw-normal vendidos"strong>Vendidos:</strong> ${productsoldCount}</p>
-
-     <div class="mt-5">
-        <p strong> Descripcion: </strong>${productDescription}</p>
-      </div>
       </div>`;
 
   console.log(list);
   console.log(name);
   console.log(productCost);
+document.getElementById('desc').innerHTML =  `<div class="mt-2 deco">
+        <p strong> Descripcion: </strong>${productDescription}</p>
+      </div>`
+
   document.getElementById("product-container").innerHTML = content;
   let carouselInner = document.querySelector("#carCarousel .carousel-inner");
   carouselInner.innerHTML = "";
