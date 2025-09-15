@@ -1,32 +1,60 @@
 @import url(colors.css);
 
- .card-custom {
+.card-custom {
     background-color:light-dark(var(--light-card),var(--dark-card));
     display: flex;
     border-radius: 10px;
     box-shadow: 0 6px 6px 0 rgba(172, 57, 115, 0.567);
     }
 
- .mb-5,.des {
+    .carousel-inner {
+        border-radius: 1rem;
+        box-shadow: 0 4px 4px 0 rgba(161, 88, 125, 0.567);
+        top: 1rem;
+        left: 0.5rem;
+    }
+
+ .mb-5 {
+
      font-family: "Playfair Display", serif;
      font-optical-sizing: auto;
      font-weight: 300;
      font-style: normal;
-     color: light-dark(var(--light-text), var(--dark-text));
-    
+     position: relative;
+     left: 2rem;
+     margin-top: -2rem;
  }
 
- .cat { 
-     font-family: "Roboto", ;
+ .mt-3, .ms-3 {
+     font-family: "Roboto", sans-serif;
      font-optical-sizing: auto;
      font-weight: 100;
-     color: light-dark(var(--light-text), var(--dark-text));
-     text-align: right;
-     
+
 
  }
-.precio-valor{
-    font-size: 2rem;
-    font-family:'Times New Roman', Times, serif;
-    color: light-dark(var(--light-text), var(--dark-text));
+
+ .mt-3 {
+   position: relative;
+   margin-bottom: 1.9rem !important;
+
+ }
+
+ .cat {
+    margin-top: -7.5rem;
+    text-align: right;
+ }
+
+ .vendidos {
+   position: relative;
+   text-align: right;
+ }
+
+ .precio-valor {
+   font-size: 18px;
+   position: relative;
+   top: 3rem;
+ }
+
+.carousel-indicators {
+  bottom: -4rem;
 }

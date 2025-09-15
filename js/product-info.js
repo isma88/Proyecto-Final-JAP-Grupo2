@@ -25,11 +25,11 @@ const listElements = () => {
   let productid = list.id;
 
   let content = `<div class="col-md-6 row">
-          <h1 class="mb-4 text-center mb-5">${name}</h1><p class="ms-3 fw-normal precio-valor"strong>Precio:</strong> ${productCurrency} ${productCost}</p>
-        <p class="ms-3 mt-5 fw-normal cat"strong>Categoría:</strong> ${productCategory}</p>
-        <p class="ms-3 fw-normal cat"strong>Vendidos:</strong> ${productsoldCount}</p>
+          <h2 class="mb-5 mt-3 ms-3 fw-bolder">${name}</h1><p class="ms-3 fw-normal precio-valor"strong>Precio:</strong> ${productCurrency} ${productCost}</p>
+        <p class="ms-3  fw-normal cat"strong>Categoría:</strong> ${productCategory}</p>
+        <p class="ms-3 fw-normal "strong>Vendidos:</strong> ${productsoldCount}</p>
       </div>
-      <div class="col-12 mt-3 fw-normal des">
+      <div class="col-12 mt-3 fw-normal">
         <p strong> Descripcion: </strong>${productDescription}</p>
       </div>
       </div>
