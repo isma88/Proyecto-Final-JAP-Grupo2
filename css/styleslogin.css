@@ -12,6 +12,9 @@ body {
   background-position: center;
   background-attachment: fixed;
   z-index: 1;
+ 
+  height: 100vh;
+
 }
 .login-card {
   background-color: var(--color-contraste);

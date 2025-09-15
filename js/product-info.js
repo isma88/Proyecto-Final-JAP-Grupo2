@@ -25,10 +25,19 @@ const listElements = () => {
   let productid = list.id;
 
   let content = `<div class="col-ml-6 ">
-          <h2 class="deco mt-3 ms-3 fw-bolder">${name}</h1><p class="ms-5 fw-normal precio-valor"strong></strong> ${productCurrency} ${productCost}</p>
-        <p class="ms-3 text-end fw-normal cat"strong>Categoría:</strong> ${productCategory}</p>
-        <p class="ms-3 text-end fw-normal vendidos"strong>Vendidos:</strong> ${productsoldCount}</p>
-      </div>`;
+                 <p class=" mt-3 ms-3 text-end fw-normal cat"strong>Categoría:</strong> ${productCategory}</p>
+                  <div class="row shadow card m-2"> 
+                      <h2 class="deco text-center  fw-bolder">${name}</h1>
+                       
+                  </div>
+                  <p class="ms-5 fw-normal precio-valor"strong>${productCurrency} </strong> ${productCost}</p>
+          
+            
+            </div>
+            <div class="row me-3 align-items-end" style="height: 15vh;">
+              <p class="ms-3 text-end fw-normal vendidos"strong>Vendidos:</strong> ${productsoldCount}</p>
+            </div>
+            `;
 
   console.log(list);
   console.log(name);

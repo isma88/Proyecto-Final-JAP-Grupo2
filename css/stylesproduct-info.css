@@ -1,5 +1,15 @@
 @import url(colors.css);
 
+body { 
+  height: 100vh;
+}
+@media (max-width: 767px) {
+  body { 
+  height: 100%; 
+  }
+}
+
+
 .card-custom {
     background-color:light-dark(var(--light-card),var(--dark-card));
     display: flex;
@@ -21,13 +31,13 @@
      font-weight: 300;
      font-style: normal;
      position: relative;
-     left: 2rem;
-     margin-top: -2rem;
+   
+   
      color:light-dark(var(--light-text),var(--dark-text));
  }
 
  .mt-3, .ms-3 {
-     font-family: "Roboto",;
+     font-family: Roboto;
      font-optical-sizing: auto;
      font-weight: 100;
      color:light-dark(var(--light-text),var(--dark-text));
@@ -59,4 +69,19 @@
 }
 .des{
     font-size:18px;
+}
+
+
+.card  {
+  background-color: light-dark(var(--light-card),var(--dark-innercard));
+  color: light-dark(var(--light-text),var(--dark-text));
+  height: 14vh;
+  
+    display: flex;
+    justify-content: center;
+
+}
+
+footer { 
+  height: 0vh !important;
 }
