@@ -25,7 +25,11 @@ const listElements = () => {
   let productid = list.id;
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   let content = `<div class="col-md-6 row">
+=======
+  let content = `<div class="col-md-6">
+>>>>>>> Stashed changes
 =======
   let content = `<div class="col-md-6">
 >>>>>>> Stashed changes
