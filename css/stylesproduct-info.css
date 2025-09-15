@@ -1,21 +1,32 @@
+@import url(colors.css);
+
  .card-custom {
-       background-color: rgb(247 222 235 / 71%);
+    background-color:light-dark(var(--light-card),var(--dark-card));
     display: flex;
     border-radius: 10px;
     box-shadow: 0 6px 6px 0 rgba(172, 57, 115, 0.567);
     }
 
- .mb-5 {
+ .mb-5,.des {
      font-family: "Playfair Display", serif;
      font-optical-sizing: auto;
      font-weight: 300;
      font-style: normal;
+     color: light-dark(var(--light-text), var(--dark-text));
+    
  }
 
- .mt-3, .ms-3 {
-     font-family: "Roboto", sans-serif;
+ .cat { 
+     font-family: "Roboto", ;
      font-optical-sizing: auto;
      font-weight: 100;
-
+     color: light-dark(var(--light-text), var(--dark-text));
+     text-align: right;
+     
 
  }
+.precio-valor{
+    font-size: 2rem;
+    font-family:'Times New Roman', Times, serif;
+    color: light-dark(var(--light-text), var(--dark-text));
+}

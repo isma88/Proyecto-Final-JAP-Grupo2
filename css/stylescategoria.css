@@ -28,7 +28,7 @@ body {
     color: var(--dark-details);
 }
 .btn-link:hover, a:hover {
-     color: light-dar(var(--dark-text), var(--light-text));
+     color: light-dark(var(--dark-text), var(--light-text));
 }
 
 

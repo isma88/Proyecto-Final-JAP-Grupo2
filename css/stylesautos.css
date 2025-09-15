@@ -31,7 +31,7 @@
     }
 
     & .card-title {
-        text-shadow: 1px 1px 2px light-dark(var(--dark-text),var(--light-text));
+        text-shadow: 1px 1px 2px light-dark(var(--light-text),var(--dark-text));
         color: light-dark(var(--light-text),var(--dark-text));
     }
 }
@@ -411,7 +411,36 @@ a:hover {
     color: rgb(118, 36, 118) !important;
 }
 
+.btn-xs {
+    width: 150px;
+    padding: 10px;
+    padding-right: 10px;
+    border: 0;
+    outline: none;
+    font-size: 1rem;
+    background-color: light-dark(var(--light-card), var(--dark-card));
+    border-radius: 5px;
+    margin-bottom: 5px;
 
+}
+.btn-fil{
+    width: 150px;
+    padding: 10px;
+    padding-right: 10px;
+    border: 0;
+    outline: none;
+    font-size: 1rem;
+    background-color: light-dark(var(--light-btn), var(--dark-btn));
+    color: light-dark(var(--light-color), var(--dark-color));
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+    .btn-xs, .btn-fil{
+       width: 100px;
+    }
+    }
 
 
 
