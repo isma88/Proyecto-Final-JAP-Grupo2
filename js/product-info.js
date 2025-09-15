@@ -26,14 +26,14 @@ const listElements = () => {
 
   let content = `<div class="col-ml-6 ">
           <h2 class="deco mt-3 ms-3 fw-bolder">${name}</h1><p class="ms-5 fw-normal precio-valor"strong></strong> ${productCurrency} ${productCost}</p>
-        <p class="ms-3  fw-normal cat"strong>Categoría:</strong> ${productCategory}</p>
-        <p class="ms-3 fw-normal vendidos"strong>Vendidos:</strong> ${productsoldCount}</p>
+        <p class="ms-3 text-end fw-normal cat"strong>Categoría:</strong> ${productCategory}</p>
+        <p class="ms-3 text-end fw-normal vendidos"strong>Vendidos:</strong> ${productsoldCount}</p>
       </div>`;
 
   console.log(list);
   console.log(name);
   console.log(productCost);
-document.getElementById('desc').innerHTML =  `<div class="mt-2 deco">
+document.getElementById('desc').innerHTML =  `<div class="mt-2 des">
         <p strong> Descripcion: </strong>${productDescription}</p>
       </div>`
 

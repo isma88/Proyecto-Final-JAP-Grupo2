@@ -14,7 +14,7 @@
         left: 0.5rem;
     }
 
- .deco {
+ .deco, .des{
 
      font-family: "Playfair Display", serif;
      font-optical-sizing: auto;
@@ -41,22 +41,22 @@
  }
 
  .cat {
-   
-    text-align: right;
+
  }
 
  .vendidos {
 
-   text-align: right;
  }
 
  .precio-valor {
    font-size: 30px;
    font-family:  "Playfair Display", serif;
-   
-
+   color:light-dark(var(--light-text),var(--dark-text));
  }
 
 .carousel-indicators {
   bottom: -4rem;
+}
+.des{
+    font-size:18px;
 }
