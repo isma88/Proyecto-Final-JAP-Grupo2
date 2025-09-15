@@ -24,17 +24,15 @@ const listElements = () => {
   let productsoldCount = list.soldCount;
   let productid = list.id;
 
-  let content = `<div class="col-md-6 row">
-          <h2 class="mb-5 mt-3 ms-3 fw-bolder">${name}</h1><p class="ms-3 fw-normal precio-valor"strong>Precio:</strong> ${productCurrency} ${productCost}</p>
+  let content = `<div class="col-ml-6 ">
+          <h2 class="mb-5 mt-3 ms-3 fw-bolder">${name}</h1><p class="ms-3 fw-normal precio-valor"strong></strong> ${productCurrency} ${productCost}</p>
         <p class="ms-3  fw-normal cat"strong>Categoría:</strong> ${productCategory}</p>
-        <p class="ms-3 fw-normal "strong>Vendidos:</strong> ${productsoldCount}</p>
-      </div>
-      <div class="col-12 mt-3 fw-normal">
+        <p class="ms-3 fw-normal vendidos"strong>Vendidos:</strong> ${productsoldCount}</p>
+
+     <div class="mt-5">
         <p strong> Descripcion: </strong>${productDescription}</p>
       </div>
-      </div>
-    </div>
-  </div>`;
+      </div>`;
 
   console.log(list);
   console.log(name);
@@ -46,7 +44,7 @@ const listElements = () => {
   productImages.forEach((images, index) => {
     carouselInner.innerHTML += `
       <div class="carousel-item ${index === 0 ? "active" : ""}">
-        <img src="${images}" class="d-block w-100" alt="Imagen ${index + 1}">
+        <img src="${images}" class="d-inline w-100" alt="Imagen ${index + 1}">
       </div>
     `;
   });
