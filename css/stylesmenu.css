@@ -64,3 +64,10 @@
     transition: 0.3s;
     border-radius: 5px;
 }
+
+.navbar { 
+    background-color: var(--card) ;
+}
+.nav-link, .navbar-nav .dropdown-toggle, .show{ 
+    color: var(--light-details) !important;
+}
