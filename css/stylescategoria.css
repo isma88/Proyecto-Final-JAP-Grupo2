@@ -20,17 +20,24 @@ body {
  }
 
  .list-group-item:hover { 
-            background-color:var(--hover);
-            color: var(--text);
+            background-color:var(--hover) !important;
+            color: var(--text) !important;
     } 
     
-    
+.btn {
+    background-color: var(--card) !important;
+    color: var(--text) !important;
+}   
+
+.btn:hover { 
+    color: var(--details) !important;
+}
 
 .btn-link, a {
     color: var(--dark-details);
 }
 .btn-link:hover, a:hover {
-     color: light-dark(var(--dark-text), var(--light-text));
+     color: var(--hover);
 }
 
 
@@ -44,4 +51,8 @@ h2 {
   max-width: 100px;
   width: 100%;
   height: auto;
+}
+
+.form-control{
+    background-color: var(--card);
 }

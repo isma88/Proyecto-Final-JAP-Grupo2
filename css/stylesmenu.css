@@ -5,7 +5,7 @@
 .navbar-toggler  {
  position: absolute;
  top: 0.2rem;
- right: 0.2rem;
+ right: 4vw;
  
 }
 
@@ -71,4 +71,13 @@
 }
 .nav-link, .navbar-nav .dropdown-toggle, .show{ 
     color: var(--light-details) !important;
+}
+
+.dropdown-menu, .form-select, .form-select-sm  {
+    background-color: var(--card) !important;
+    color: var(--text);
+}
+
+#cerrar { 
+    color: var(--details);
 }
