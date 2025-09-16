@@ -63,15 +63,24 @@ document.getElementById('themeSwitch').addEventListener('change', e => {
   value = document.getElementById('themeSwitch').value
 
 console.log(value)
-  switch(value ){
-    case 1:
-
+  switch(value){
+    case "auto":
+       localStorage.setItem('theme',value)
       break;
-    case 2:
+    case "light":
+        localStorage.setItem('theme',value)
       break;
-    case 3:
+    case "dark":
+       localStorage.setItem('theme',value)
+       
       break;
 
   }
 
+})
+
+
+document.addEventListener('DOMContentLoaded',()=> {
+  console.log(document.getElementById('themeSwitch'))
+  document.getElementById('themeSwitch').value = localStorage.getItem('theme')
 })

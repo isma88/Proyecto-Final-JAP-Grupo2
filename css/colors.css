@@ -4,18 +4,23 @@
     --light-card: #F7D9E3;
     --light-text: #1a1a1a;
     --light-details: #CC5B72;
-    --light-hover: #1a1a1a;
+    --light-hover: #f485dc;
     --light-btn: #b5a8e6;
 
-
+    --dark-hover2: #1a1a1a;
     --dark-bg: #121212;
     --dark-card: #3f3f3f;
     --dark-text: white;
     --dark-details: #cc5c72;
-    --dark-hover: #1a1a1a;
+    --dark-hover: hsl(294, 93%, 21%);
     --dark-btn: #9B2242;
     --dark-innercard:#575757;
-}
+
+    --background: light-dark(var(--light-bg), var(--dark-bg));
+    --card: light-dark(var(--light-card), var(--dark-card));
+    --text: light-dark(var(--light-text), var(--dark-text));
+    --hover: light-dark(var(--light-hover), var(--dark-hover));
+}   
 
         /* Todo esto es darkmode */
 
@@ -33,6 +38,12 @@
             backdrop-filter:  grayscale(1) brightness(0.2);
            /* filter: invert(); */
         }
+
+         & header img {
+        
+        filter: brightness(0) invert(1) grayscale(1) contrast(100) drop-shadow(2px 2px 2px);
+
+    }
 }
 
 :root:has(option[value='light']:checked){
@@ -46,6 +57,8 @@
         backdrop-filter:  none;
     
         }
+
+   
 }
 
 body {
@@ -64,4 +77,11 @@ body {
             backdrop-filter:  grayscale(1) brightness(0.2);
            /* filter: invert(); */
         }
+       
+       & header img {
+        
+        filter: brightness(0) invert(1) grayscale(1) contrast(100) drop-shadow(2px 2px 2px) !important;
+
+    }
+
     } 
