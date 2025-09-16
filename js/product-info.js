@@ -34,7 +34,7 @@ const listElements = () => {
           
             
             </div>
-            <div class="row me-3 align-items-end" style="height: 15vh;">
+            <div class="row me-3 align-items-end" style="height: 20vh;">
               <p class="ms-3 text-end fw-normal vendidos"strong>Vendidos:</strong> ${productsoldCount}</p>
             </div>
             `;

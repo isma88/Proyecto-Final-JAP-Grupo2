@@ -51,17 +51,22 @@ body {
  }
 
  .cat {
+    font-family:'Times New Roman', Times, serif;
+    font-size:18px;
+
 
  }
 
  .vendidos {
+    font-family:'Times New Roman', Times, serif;
+    font-size:22px;
 
  }
 
  .precio-valor {
    font-size: 30px;
-   font-family:  "Playfair Display", serif;
-   color:light-dark(var(--light-text),var(--dark-text));
+   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   color: light-dark(var(--light-text),var(--dark-text));
  }
 
 .carousel-indicators {
@@ -75,7 +80,7 @@ body {
 .card  {
   background-color: light-dark(var(--light-card),var(--dark-innercard));
   color: light-dark(var(--light-text),var(--dark-text));
-  height: 14vh;
+  height: 10vh;
   
     display: flex;
     justify-content: center;
