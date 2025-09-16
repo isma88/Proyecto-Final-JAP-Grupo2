@@ -11,35 +11,57 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/stylesmenu.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/stylescategoria.css">
+ 
 
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-         <li class="nav-item" id="nickname"></li>
-        </ul>
+  <nav class="navbar navbar-expand-lg p-1 d-flex flex-row shadow-sm rounded-4 fixed-top">
+      <div class="container">
+        <button
+          class="navbar-toggler shadow-none bg-light"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon shadow-none bg-light"></span>
+        </button>
+        <div class="collapse navbar-collapse col-1" id="navbarNav">
+          <ul class="navbar-nav w-100 justify-content-between">
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="categories.html">Categorías</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="sell.html">Vender</a>
+            </li>
+             
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="login.html" id="nickname" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                <ul class="dropdown-menu" aria-labelledby="nickname">
+                  <li><a class="dropdown-item" href="index.html" id="cerrar">Cerrar Sesion</a></li>
+                   <li>
+                  <select class="form-select form-select-sm" id="themeSwitch" aria-label=".form-select-sm example">
+                    <option value="auto">auto</option>
+                    <option value="light">lightmode</option>
+                    <option value="dark">darkmode</option>
+                  </select>
+                   </li>
+                </ul>
+            </li>
+          </ul> 
+        </div>
       </div>
-    </div>
   </nav>
   <main class="pb-5">
     <div class="text-center p-4">
-      <h2 class="fw-bold">Categorías</h2>
+      <h2 class="fw-bold mt-4">Categorías</h2>
       <p class="lead">Verás aquí todas las categorías del sitio.</p>
     </div>
     <div class="container">
@@ -67,8 +89,10 @@
             <div class="col">
               <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
             </div>
-            <div class="col-3 p-0">
-              <div class="btn-group" role="group">
+            </div>
+            <div class="row justify-content-end">
+            <div class="col-6 p-0">
+              <div class="btn-group " role="group">
                 <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
                 <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
               </div>
