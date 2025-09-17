@@ -32,8 +32,6 @@ nav a {
   height: 50vh;
   padding: 5em inherit;
   margin-bottom: 0;
-  background-color: #53c0fb;
-  background: url("../img/cover_back.1.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -92,7 +90,12 @@ footer p {
 }
 
 .img-fit {
-  max-height: 100%;
+ 
+width: 550px; 
+height: 550px; 
+object-fit: cover;
+object-position: 75% 75%; 
+
 }
 
 .alert {
@@ -195,4 +198,15 @@ body {
     background-position: center;
     background-attachment: fixed;
     z-index: 1;
+}
+
+.carousel-caption {
+  font-size: larger;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  
+}
+
+a {
+  color: var(--details);
 }

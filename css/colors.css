@@ -4,17 +4,24 @@
     --light-card: #F7D9E3;
     --light-text: #1a1a1a;
     --light-details: #CC5B72;
-    --light-hover: #1a1a1a;
+    --light-hover: #f485dc;
     --light-btn: #b5a8e6;
 
-
+    --dark-hover2: #1a1a1a;
     --dark-bg: #121212;
     --dark-card: #3f3f3f;
     --dark-text: white;
     --dark-details: #cc5c72;
-    --dark-hover: #1a1a1a;
+    --dark-hover: hsl(294, 93%, 21%);
     --dark-btn: #9B2242;
-}
+    --dark-innercard:#575757;
+
+    --background: light-dark(var(--light-bg), var(--dark-bg));
+    --card: light-dark(var(--light-card), var(--dark-card));
+    --text: light-dark(var(--light-text), var(--dark-text));
+    --hover: light-dark(var(--light-hover), var(--dark-hover));
+    --details: light-dark(var(--light-details), var(--dark-details));
+}   
 
         /* Todo esto es darkmode */
 
@@ -27,11 +34,25 @@
      
     } 
 
-    & body {
-            background-image: url(/img/1Background.jpg); /* Applied when dark mode is preferred */
-            backdrop-filter:  grayscale(1) brightness(0.2);
-           /* filter: invert(); */
-        }
+    & body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: url(/img/1Background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: grayscale(1) brightness(0.2);
+    pointer-events: none;
+}
+
+         & header img {
+        
+        filter: brightness(0) invert(1) grayscale(1) contrast(100) drop-shadow(2px 2px 2px);
+
+    }
 }
 
 :root:has(option[value='light']:checked){
@@ -41,26 +62,56 @@
     border-color: var(--light-btn);
     } 
 
-    & body {
-        backdrop-filter:  none;
-    
-        }
-}
-
-body {
-
+    & body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
     background-image: url(/img/1Background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    z-index: 1;
-}    
+    filter: none;
+    pointer-events: none;
+    
+    }
+     & header img {
+        
+        filter: none !important;
+
+    }
+
+   
+}
+
+body {
+    position: relative;
+    z-index: 0;
+    /* Remove background-image from here if you want only the pseudo-element to show it */
+}
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: url(/img/1Background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    pointer-events: none;
+}  
 
 @media (prefers-color-scheme: dark) {
-        body {
-            background-image: url(/img/1Background.jpg); /* Applied when dark mode is preferred */
-            backdrop-filter:  grayscale(1) brightness(0.2);
-           /* filter: invert(); */
-        }
+        body::before {
+        filter: grayscale(1) brightness(0.2);
+    }
+       
+       & header img {
+        
+        filter: brightness(0) invert(1) grayscale(1) contrast(100) drop-shadow(2px 2px 2px) !important;
+
+    }
+
     } 
