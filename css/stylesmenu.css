@@ -1,10 +1,11 @@
+@import url(/css/colors.css);
 @media (max-width: 990px) {
 
 
 .navbar-toggler  {
  position: absolute;
  top: 0.2rem;
- right: 0.2rem;
+ right: 4vw;
  
 }
 
@@ -63,4 +64,20 @@
     background-color: rgb(249, 235, 243); 
     transition: 0.3s;
     border-radius: 5px;
+}
+
+.navbar { 
+    background-color: var(--card) ;
+}
+.nav-link, .navbar-nav .dropdown-toggle, .show{ 
+    color: var(--light-details) !important;
+}
+
+.dropdown-menu, .form-select, .form-select-sm  {
+    background-color: var(--card) !important;
+    color: var(--text);
+}
+
+#cerrar { 
+    color: var(--details);
 }

@@ -37,7 +37,7 @@
           <nav class="navbar navbar-expand-lg p-1 d-flex flex-row shadow-sm rounded-4 fixed-top">
       <div class="container">
         <button
-          class="navbar-toggler shadow-none bg-light"
+          class="navbar-toggler shadow-none bg-light col align-self-end"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -87,15 +87,15 @@
                 <button id="sortListCostAsc"><i class="bi bi-sort-numeric-down"></i></button>
                 <button id="sortListRel"><i class="bi bi-sort-down-alt"></i></button>
               </div>
-              <div class=" d-flex justify-content-end gap-2">
-                <div class="justify-content-end">
+              <div class=" d-flex flex-wrap justify-content-end gap-2">
+                <div class="justify-content-end justify-content-sm-center">
                   <input type="number"  placeholder="Precio min." id="min" class="btn-xs" style="">
                 </div>
                 <div class="justify-content-end">
                   <input type="number" placeholder="Precio max." id="max" class="btn-xs" style="">
                 </div>
                 <div class="justify-content-end">
-                  <input type="button" value="enviar" id="rangeValue" class="btn-fil">
+                  <input type="button" value="filtrar" id="rangeValue" class="btn-fil">
                   <input type="button" value="limpiar" id="clearFilters" class="btn-fil">
                 </div>
               </div>
@@ -103,11 +103,6 @@
         <div id="items" class="row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-4 g-3 g-sm-4 g-lg-3 g-xl-4">
       
         </div>
-  
-  </section>
-
-
-
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -117,6 +112,11 @@
           Programar</a></p>
     </div>
   </footer>
+  </section>
+
+
+
+  
   <div id="spinner-wrapper">
     <div class="lds-ring">
     </div>
