@@ -31,12 +31,17 @@ const listElements = () => {
                        
                   </div>
                   <p class="ms-5 fw-normal precio-valor"strong>${productCurrency} </strong> ${productCost}</p>
+        
           
             
             </div>
-            <div class="row me-3 align-items-end" style="height: 15vh;">
-              <p class="ms-3 text-end fw-normal vendidos"strong>Vendidos:</strong> ${productsoldCount}</p>
+            <div class="row align-items-end" style="height: 20vh;">
+              <p class="me-3 text-end fw-normal vendidos"strong>Vendidos:</strong> ${productsoldCount}</p>
+              <button class="inset-shadow btn btn-primary btn-lg ">Comprar</button>
             </div>
+                       
+      
+    </div>
             `;
 
   console.log(list);
