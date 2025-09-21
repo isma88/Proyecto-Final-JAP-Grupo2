@@ -62,4 +62,26 @@ document.getElementById('desc').innerHTML =  `<div class="mt-2 des">
       </div>
     `;
   });
+
+ let relatedHTML = "";
+  list.relatedProducts.forEach(rel => {
+    console.log(list);
+    relatedHTML += `
+         <div class="col-md-3 col-6 col-sm-6">
+      <div onclick="setProductID(${rel.id})" class="card h-100 shadow-lg">
+        <img src="${rel.image}" class="card-img-top" alt="${rel.name}">
+        <div class="card-body card">
+          <h5 class="card-text fs-6 fs-md-5 fs-lg-4">${rel.name}</h5>
+          <p class="card-text fs-6 fs-md-5 fs-lg-4">${rel.description}</p>
+        </div>
+      </div>
+    </div>
+    `;
+  });
+  document.getElementById("related-products").innerHTML = relatedHTML;
 };
+function setProductID(id) {
+  localStorage.setItem("ItemId", id);
+  window.location = "product-info.html";
+}
+
