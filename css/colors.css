@@ -20,6 +20,7 @@
     --card: light-dark(var(--light-card), var(--dark-card));
     --text: light-dark(var(--light-text), var(--dark-text));
     --hover: light-dark(var(--light-hover), var(--dark-hover));
+    --details: light-dark(var(--light-details), var(--dark-details));
 }   
 
         /* Todo esto es darkmode */
@@ -33,11 +34,19 @@
      
     } 
 
-    & body {
-            background-image: url(/img/1Background.jpg); /* Applied when dark mode is preferred */
-            backdrop-filter:  grayscale(1) brightness(0.2);
-           /* filter: invert(); */
-        }
+    & body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: url(/img/1Background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: grayscale(1) brightness(0.2);
+    pointer-events: none;
+}
 
          & header img {
         
@@ -53,30 +62,51 @@
     border-color: var(--light-btn);
     } 
 
-    & body {
-        backdrop-filter:  none;
-    
-        }
-
-   
-}
-
-body {
-
+    & body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
     background-image: url(/img/1Background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    z-index: 1;
-}    
+    filter: none;
+    pointer-events: none;
+    
+    }
+     & header img {
+        
+        filter: none !important;
+
+    }
+
+   
+}
+
+body {
+    position: relative;
+    z-index: 0;
+    /* Remove background-image from here if you want only the pseudo-element to show it */
+}
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: url(/img/1Background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    pointer-events: none;
+}  
 
 @media (prefers-color-scheme: dark) {
-        body {
-            background-image: url(/img/1Background.jpg); /* Applied when dark mode is preferred */
-            backdrop-filter:  grayscale(1) brightness(0.2);
-           /* filter: invert(); */
-        }
+        body::before {
+        filter: grayscale(1) brightness(0.2);
+    }
        
        & header img {
         
