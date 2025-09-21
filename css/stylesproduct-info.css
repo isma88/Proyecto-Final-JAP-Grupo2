@@ -92,3 +92,6 @@ footer {
   height: 0vh !important;
 }
 
+.text{
+  display: inline-block;
+}
