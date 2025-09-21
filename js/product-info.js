@@ -65,9 +65,11 @@ document.getElementById('desc').innerHTML =  `<div class="mt-2 des">
 };
 
 
-function addComment(mensaje, user, score, dateTime) {
-  
- 
+
+
+function addComment(mensaje, user, dateTime, score ) {
+
+
   document.getElementById('mensajes').innerHTML += 
  `<div class="card mb-4 mt-1 h-100 shadow-sm">
   <div class="row g-4 ">
@@ -80,7 +82,7 @@ function addComment(mensaje, user, score, dateTime) {
       <div class="card-body ">
         <h5 class="card-title"> ${user}</h5>
         <p id="msg" class="card-text">${mensaje}</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <p class="card-text"><small class="text-muted">${dateTime}</small></p>
       </div>
     </div>
     <div class="col-md-4">
@@ -109,15 +111,33 @@ function addComment(mensaje, user, score, dateTime) {
 }
 
 
+
 document.getElementById('sendCom').addEventListener('click', () => {
     let mensaje = document.getElementById('textarea').value
-    console.log(mensaje)
+    console.log(mensaje) 
     
     let user = localStorage.getItem('usuario');
     console.log(user)
-    addComment(mensaje, user)
+
+  
+    let date = new Date();
+
+    let fullyear = date.getFullYear(); 
+    let month = date.getMonth() + 1;
+    let day = date.getDate(); 
+    let hour = date.getHours() ; 
+    let min = date.getMinutes();
+    let seconds = date.getSeconds(); 
+
+
+   var fulldate = fullyear + '-' + month + '-' + day +  ' ' + hour + ':' + min + ':' + seconds;
+
+   let  dateTime = date
+   
+   
+    console.log(fulldate); 
+   
+    
+    addComment(mensaje, user, fulldate) 
 
 })
-
-
-
