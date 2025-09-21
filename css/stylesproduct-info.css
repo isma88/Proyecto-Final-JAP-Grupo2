@@ -80,8 +80,9 @@ body {
 .card  {
   background-color: light-dark(var(--light-card),var(--dark-innercard));
   color: light-dark(var(--light-text),var(--dark-text));
-  height: 10vh;
-  
+  height: 15vh;
+  border-radius: 10px;
+    box-shadow: 0 6px 6px 0 rgba(172, 57, 115, 0.567);
     display: flex;
     justify-content: center;
 
