@@ -1,13 +1,13 @@
 const current_ItemId = localStorage.getItem("ItemId");
 let current_products_info = PRODUCT_INFO_URL + current_ItemId + EXT_TYPE;
-console.log(current_products_info);
+//console.log(current_products_info);
 let list = [];
 
 document.addEventListener("DOMContentLoaded", function () {
   getJSONData(current_products_info).then(function (result) {
     if (result.status === "ok") {
       list = result.data;
-      console.log(list);
+    //  console.log(list);
       listElements();
     }
   });
@@ -44,9 +44,9 @@ const listElements = () => {
     </div>
             `;
 
-  console.log(list);
-  console.log(name);
-  console.log(productCost);
+ // console.log(list);
+  //console.log(name);
+ // console.log(productCost);
 document.getElementById('desc').innerHTML =  `<div class="mt-2 des">
         <p strong> Descripcion: </strong>${productDescription}</p>
       </div>`
@@ -87,22 +87,8 @@ function addComment(mensaje, user, dateTime, score ) {
     </div>
     <div class="col-md-4">
       <div class="card-body text-end"> 
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-</svg>  
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-</svg> 
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-</svg> 
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-</svg>
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-</svg>  
-    </div>
+          ${starCalculator(score)}
+      </div>
   </div>
     </div>
     </div>`
@@ -111,13 +97,37 @@ function addComment(mensaje, user, dateTime, score ) {
 }
 
 
+function starCalculator(score){
+  let stars_list = [`
+             
+                <label for="star-1" class="bi bi-star-fill"></label>`,
+             
+                `<label for="star-2" class="bi bi-star-fill"></label>`,
+          
+               `<label for="star-3" class="bi bi-star-fill"></label>`,
+             
+                `<label for="star-4" class="bi bi-star-fill"></label>`,
+            
+                `<label for="star-5" class="bi bi-star-fill"></label>
+               `] ;
+
+      for (let i = 0; i <= score -1 ; i++){ 
+        stars_list[i] =   `<label for="star-1" class="bi bi-star-fill checked"></label>`
+      }
+
+      return stars_list.join("")
+
+
+}
+
+
 
 document.getElementById('sendCom').addEventListener('click', () => {
     let mensaje = document.getElementById('textarea').value
-    console.log(mensaje) 
+    //console.log(mensaje) 
     
     let user = localStorage.getItem('usuario');
-    console.log(user)
+    //console.log(user)
 
   
     let date = new Date();
@@ -132,12 +142,68 @@ document.getElementById('sendCom').addEventListener('click', () => {
 
    var fulldate = fullyear + '-' + month + '-' + day +  ' ' + hour + ':' + min + ':' + seconds;
 
-   let  dateTime = date
+  
    
    
-    console.log(fulldate); 
+   // console.log(fulldate); 
    
     
-    addComment(mensaje, user, fulldate) 
+    addComment(mensaje, user, fulldate, paintStar())
+   
 
 })
+  
+
+ stars =  document.querySelectorAll('.bi')
+for(star of stars) { 
+    star.addEventListener("mouseover", addStars)
+     star.addEventListener("mouseout", removeaddStars)
+    
+  }
+
+function addStars(e){
+  let labelStar = e.currentTarget.getAttribute('for')
+  let currentStar = document.getElementById(labelStar).value
+
+  for (let i = 1; i <= currentStar; i++){
+      document.querySelector(`label[for="star-${i}"]`).style.color= "blue"
+
+  }
+  
+  paintStar()
+}
+
+function removeaddStars() { 
+
+  for (star of stars) { 
+   
+    star.style.color = "black";
+  }
+    paintStar()
+}
+
+ function paintStar(){ 
+let stars = document.querySelectorAll('[name="star"]')
+let value
+  for(star of stars){
+  
+    if(star.checked) {
+      for(let i=1; i<=star.value ; i++){
+        
+      labelfor = `label[for="star-${i}"]`
+      
+      document.querySelector(labelfor).style.color='blue'
+      
+      }
+      value = star.value 
+    
+
+    }
+
+}
+return value
+}
+
+
+
+

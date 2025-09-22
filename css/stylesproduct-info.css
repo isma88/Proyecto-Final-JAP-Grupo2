@@ -156,3 +156,22 @@ footer {
 .text{
   display: inline-block;
 }
+
+.star { 
+  -webkit-appearance: none; 
+  -moz-appearance: none;    
+        appearance: none;      
+        display: none;
+        height: 0;
+        width: 0;
+  cursor: none;
+
+}
+
+.bi { 
+  cursor: pointer;
+}
+
+.checked { 
+  color: var(--details);
+}
