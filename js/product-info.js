@@ -72,7 +72,6 @@ document.getElementById('desc').innerHTML =  `<div class="mt-2 des">
         <img src="${rel.image}" class="card-img-top" alt="${rel.name}">
         <div class="card-body card">
           <h5 class="card-text fs-6 fs-md-5 fs-lg-4">${rel.name}</h5>
-          <p class="card-text fs-6 fs-md-5 fs-lg-4">${rel.description}</p>
         </div>
       </div>
     </div>
