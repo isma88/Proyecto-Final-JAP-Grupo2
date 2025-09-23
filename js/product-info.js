@@ -175,7 +175,7 @@ document.getElementById('sendCom').addEventListener('click', () => {
 })
   
 
- stars =  document.querySelectorAll('.bi')
+stars =  document.querySelectorAll('.bi')
 for(star of stars) { 
     star.addEventListener("mouseover", addStars)
      star.addEventListener("mouseout", removeaddStars)
@@ -187,7 +187,7 @@ function addStars(e){
   let currentStar = document.getElementById(labelStar).value
 
   for (let i = 1; i <= currentStar; i++){
-      document.querySelector(`label[for="star-${i}"]`).style.color= "blue"
+      document.querySelector(`label[for="star-${i}"]`).classList.add('hover-star')
 
   }
   
@@ -198,7 +198,7 @@ function removeaddStars() {
 
   for (star of stars) { 
    
-    star.style.color = "black";
+    star.classList.remove('hover-star');
   }
     paintStar()
 }
@@ -213,8 +213,7 @@ let value
         
       labelfor = `label[for="star-${i}"]`
       
-      document.querySelector(labelfor).style.color='blue'
-      
+      document.querySelector(labelfor).classList.add('hover-star')
       }
       value = star.value 
     
