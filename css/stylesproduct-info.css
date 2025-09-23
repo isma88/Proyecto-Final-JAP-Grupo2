@@ -174,3 +174,7 @@ footer {
 .checked { 
   color: var(--details);
 }
+.card-coment{
+    background-color:light-dark(var(--light-card),var(--dark-card));
+    box-shadow: 0 6px 6px 0 rgba(172, 57, 115, 0.567);
+    }
