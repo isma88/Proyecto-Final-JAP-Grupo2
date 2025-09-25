@@ -84,11 +84,7 @@ function search() {
 }
 
 //tomar id de producto seleccionado
-function setItemId(id) {
-  localStorage.setItem('ItemId', id)
-  window.location = "product-info.html"
 
-}
 
 
 //listar productos
@@ -148,10 +144,7 @@ document.getElementById('min').addEventListener('keydown',(e) => {if(e.key === '
 document.getElementById('max').addEventListener('keydown',(e) => {if(e.key === 'Enter'){e.preventDefault(); e.stopPropagation(); sortListCostRange()}})
   //filtros no tienen limpiar ni cambian con enter
 
-document.getElementById("items").addEventListener('click', (e) => {
-  
-   id = e.target.closest('.col').id
-   setItemId(id);
-   
-})
+itemSet('items', '.col')
+
+
 

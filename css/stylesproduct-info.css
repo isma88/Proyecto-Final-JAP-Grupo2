@@ -183,3 +183,12 @@ footer {
     .hover-star { 
       color: var(--details);
     }
+
+  .grow { 
+      transition: transform 0.1s ease-in-out;
+    }
+
+ .grow:hover { 
+  transform: scale(1.050);
+
+ }
