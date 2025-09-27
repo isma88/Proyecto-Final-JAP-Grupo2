@@ -221,6 +221,23 @@ let value
 return value
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    let commentsUrl = PRODUCT_INFO_COMMENTS_URL + current_ItemId + EXT_TYPE;
+
+    getJSONData(commentsUrl).then(function (result) {
+        if (result.status === "ok") {
+            let comments = result.data;
+            comments.forEach(comment => {
+                addComment(
+                    comment.description,   // texto del comentario
+                    comment.user,          // usuario
+                    comment.dateTime,      // fecha
+                    comment.score          // calificación (1-5)
+                );
+            });
+        }
+    });
+});
 
 
 
