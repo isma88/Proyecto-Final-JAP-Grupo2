@@ -8,6 +8,64 @@ body {
   height: 100%; 
   }
 }
+:root { 
+    color-scheme: light dark;
+    --light-bg: #E699AC;
+    --light-card: #F7D9E3;
+    --light-text: #1a1a1a;
+    --light-details: #CC5B72;
+    --light-hover: #f485dc;
+    --light-btn: #b5a8e6;
+
+    --dark-hover2: #1a1a1a;
+    --dark-bg: #121212;
+    --dark-card: #3f3f3f;
+    --dark-text: white;
+    --dark-details: rgb(172, 57, 115);
+    --dark-hover: hsl(294, 93%, 21%);
+    --dark-btn: #9B2242;
+    --dark-innercard:#575757;
+
+    --background: light-dark(var(--light-bg), var(--dark-bg));
+    --card: light-dark(var(--light-card), var(--dark-card));
+    --text: light-dark(var(--light-text), var(--dark-text));
+    --hover: light-dark(var(--light-hover), var(--dark-hover));
+    --details: light-dark(var(--light-details), var(--dark-details));
+    --btn: light-dark(var(--light-btn), var(--dark-btn));
+}
+
+   
+.inset-shadow { 
+   position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 0.375rem;
+  background-color: var(--btn);
+  padding: 6px 12px;
+  color: #f5f5f5;
+  border: 1px solid var(--details);
+  box-shadow:
+    inset 0 1px var(--hover),
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.inset-shadow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.inset-shadow:hover {
+  background-color: var(--hover);
+}
+.inset-shadow:active {
+  background-color: #0a0a0a;
+  box-shadow:
+    inset 0 1px #262626,
+    0 0 #0000;
+}
 
 
 .card-custom {
@@ -51,17 +109,24 @@ body {
  }
 
  .cat {
+    font-family:'Times New Roman', Times, serif;
+    font-size:18px;
+
 
  }
 
  .vendidos {
+    font-family:'Times New Roman', Times, serif;
+    font-size:22px;
+    margin-right: auto;
+    color:light-dark(var(--light-text),var(--dark-text));
 
  }
 
  .precio-valor {
    font-size: 30px;
-   font-family:  "Playfair Display", serif;
-   color:light-dark(var(--light-text),var(--dark-text));
+   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   color: light-dark(var(--light-text),var(--dark-text));
  }
 
 .carousel-indicators {
@@ -75,8 +140,9 @@ body {
 .card  {
   background-color: light-dark(var(--light-card),var(--dark-innercard));
   color: light-dark(var(--light-text),var(--dark-text));
-  height: 14vh;
-  
+  height: 15vh;
+  border-radius: 10px;
+    box-shadow: 0 6px 6px 0 rgba(172, 57, 115, 0.567);
     display: flex;
     justify-content: center;
 
@@ -86,3 +152,43 @@ footer {
   height: 0vh !important;
 }
 
+.text{
+  display: inline-block;
+}
+
+.star { 
+  -webkit-appearance: none; 
+  -moz-appearance: none;    
+        appearance: none;      
+        display: none;
+        height: 0;
+        width: 0;
+  cursor: none;
+
+}
+
+.bi { 
+  cursor: pointer;
+}
+
+.checked { 
+  color: var(--details);
+}
+.card-coment{
+    background-color:light-dark(var(--light-card),var(--dark-card));
+    box-shadow: 0 6px 6px 0 rgba(172, 57, 115, 0.567);
+    }
+
+
+    .hover-star { 
+      color: var(--details);
+    }
+
+  .grow { 
+      transition: transform 0.1s ease-in-out;
+    }
+
+ .grow:hover { 
+  transform: scale(1.050);
+
+ }

@@ -84,3 +84,23 @@ document.addEventListener('DOMContentLoaded',()=> {
   console.log(document.getElementById('themeSwitch'))
   document.getElementById('themeSwitch').value = localStorage.getItem('theme')
 })
+
+function setItemId(id) {
+  localStorage.setItem('ItemId', id)
+  window.location.assign("product-info.html") 
+
+}
+
+function itemSet(grid, item) {
+
+  document.getElementById(grid).addEventListener('click', (e) => {
+
+   id = e.target.closest(item).id
+   setItemId(id);
+   
+  })
+
+}
+
+
+console.log(window.location.port)

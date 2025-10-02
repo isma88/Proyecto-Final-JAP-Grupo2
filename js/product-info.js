@@ -1,13 +1,13 @@
 const current_ItemId = localStorage.getItem("ItemId");
 let current_products_info = PRODUCT_INFO_URL + current_ItemId + EXT_TYPE;
-console.log(current_products_info);
+//console.log(current_products_info);
 let list = [];
 
 document.addEventListener("DOMContentLoaded", function () {
   getJSONData(current_products_info).then(function (result) {
     if (result.status === "ok") {
       list = result.data;
-      console.log(list);
+    //  console.log(list);
       listElements();
     }
   });
@@ -31,17 +31,22 @@ const listElements = () => {
                        
                   </div>
                   <p class="ms-5 fw-normal precio-valor"strong>${productCurrency} </strong> ${productCost}</p>
+        
           
             
             </div>
-            <div class="row me-3 align-items-end" style="height: 15vh;">
-              <p class="ms-3 text-end fw-normal vendidos"strong>Vendidos:</strong> ${productsoldCount}</p>
+            <div class="row align-items-end" style="height: 20vh;">
+              <p class="me-3 text-end fw-normal vendidos"strong>Vendidos:</strong> ${productsoldCount}</p>
+              <button class="inset-shadow btn btn-primary btn-lg ">Comprar</button>
             </div>
+                       
+      
+    </div>
             `;
 
-  console.log(list);
-  console.log(name);
-  console.log(productCost);
+ // console.log(list);
+  //console.log(name);
+ // console.log(productCost);
 document.getElementById('desc').innerHTML =  `<div class="mt-2 des">
         <p strong> Descripcion: </strong>${productDescription}</p>
       </div>`
@@ -57,4 +62,165 @@ document.getElementById('desc').innerHTML =  `<div class="mt-2 des">
       </div>
     `;
   });
+
+ let relatedHTML = "";
+  list.relatedProducts.forEach(rel => {
+    console.log(list);
+    relatedHTML += `
+         <div id="${rel.id}" role="button" class="col grow col-md-3 col-6 col-sm-6">
+      <div class="card h-100 shadow-lg">
+        <img src="${rel.image}" class="card-img-top" alt="${rel.name}">
+        <div class="card-body card">
+          <h5 class="card-text fs-6 fs-md-5 fs-lg-4">${rel.name}</h5>
+        </div>
+      </div>
+    </div>
+    `;
+  });
+  document.getElementById("items").innerHTML = relatedHTML;
 };
+
+  itemSet('items', '.col')
+
+
+
+
+function addComment(mensaje, user, dateTime, score ) {
+
+
+  document.getElementById('mensajes').innerHTML += 
+ `<div class="card mb-4 mt-1 h-100 shadow-sm">
+  <div class="row g-4 ">
+    <div class="col-md-2">
+      <div class="card-body ">
+      <img src="img/img_perfil.png" class="img-fluid start" alt="comentarios" style="max-width: 80px;">
+      </div>
+    </div>
+    <div class="col-md-6 ">
+      <div class="card-body ">
+        <h5 class="card-title"> ${user}</h5>
+        <p id="msg" class="card-text">${mensaje}</p>
+        <p class="card-text"><small class="text-muted">${dateTime}</small></p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card-body text-end"> 
+          ${starCalculator(score)}
+      </div>
+  </div>
+    </div>
+    </div>`
+
+
+}
+
+
+function starCalculator(score){
+  let stars_list = [`
+             
+                <label for="star-1" class="bi bi-star-fill"></label>`,
+             
+                `<label for="star-2" class="bi bi-star-fill"></label>`,
+          
+               `<label for="star-3" class="bi bi-star-fill"></label>`,
+             
+                `<label for="star-4" class="bi bi-star-fill"></label>`,
+            
+                `<label for="star-5" class="bi bi-star-fill"></label>
+               `] ;
+
+      for (let i = 0; i <= score -1 ; i++){ 
+        stars_list[i] =   `<label for="star-1" class="bi bi-star-fill checked"></label>`
+      }
+
+      return stars_list.join("")
+
+
+}
+
+
+
+document.getElementById('sendCom').addEventListener('click', () => {
+    let mensaje = document.getElementById('textarea').value
+    //console.log(mensaje) 
+    
+    let user = localStorage.getItem('usuario');
+    //console.log(user)
+
+  
+    let date = new Date();
+
+    let fullyear = date.getFullYear(); 
+    let month = date.getMonth() + 1;
+    let day = date.getDate(); 
+    let hour = date.getHours() ; 
+    let min = date.getMinutes();
+    let seconds = date.getSeconds(); 
+
+
+   var fulldate = fullyear + '-' + month + '-' + day +  ' ' + hour + ':' + min + ':' + seconds;
+
+  
+   
+   
+   // console.log(fulldate); 
+   
+    
+    addComment(mensaje, user, fulldate, paintStar())
+   
+
+})
+  
+
+stars =  document.querySelectorAll('.bi')
+for(star of stars) { 
+    star.addEventListener("mouseover", addStars)
+     star.addEventListener("mouseout", removeaddStars)
+    
+  }
+
+function addStars(e){
+  let labelStar = e.currentTarget.getAttribute('for')
+  let currentStar = document.getElementById(labelStar).value
+
+  for (let i = 1; i <= currentStar; i++){
+      document.querySelector(`label[for="star-${i}"]`).classList.add('hover-star')
+
+  }
+  
+  paintStar()
+}
+
+function removeaddStars() { 
+
+  for (star of stars) { 
+   
+    star.classList.remove('hover-star');
+  }
+    paintStar()
+}
+
+ function paintStar(){ 
+let stars = document.querySelectorAll('[name="star"]')
+let value
+  for(star of stars){
+  
+    if(star.checked) {
+      for(let i=1; i<=star.value ; i++){
+        
+      labelfor = `label[for="star-${i}"]`
+      
+      document.querySelector(labelfor).classList.add('hover-star')
+      }
+      value = star.value 
+    
+
+    }
+
+}
+return value
+}
+
+
+
+
