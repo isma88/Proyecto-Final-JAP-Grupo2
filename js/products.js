@@ -84,11 +84,7 @@ function search() {
 }
 
 //tomar id de producto seleccionado
-function setItemId(id) {
-  localStorage.setItem('ItemId', id)
-  window.location = "product-info.html"
 
-}
 
 
 //listar productos
@@ -106,7 +102,7 @@ function setItemId(id) {
     let description = product.description
     let id = product.id
     content +=
-      `<div class="col" onclick='setItemId(${id})' name='card'>
+      `<div class="col" id="${id}" name='card'>
           <div class="card shadow rounded-3 h-100 p-1">
             <img src="${image}" class="card-img-top" alt="...">
             <div class="card-body d-flex flex-column h-100">
@@ -147,3 +143,8 @@ document.getElementById('searchForm').addEventListener('keydown',(e) => {if(e.ke
 document.getElementById('min').addEventListener('keydown',(e) => {if(e.key === 'Enter'){e.preventDefault(); e.stopPropagation(); sortListCostRange(); console.log(e)}});
 document.getElementById('max').addEventListener('keydown',(e) => {if(e.key === 'Enter'){e.preventDefault(); e.stopPropagation(); sortListCostRange()}})
   //filtros no tienen limpiar ni cambian con enter
+
+itemSet('items', '.col')
+
+
+

@@ -50,7 +50,7 @@ function showCategoriesList(){
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))){
 
             htmlContentToAppend += `
-            <div onclick="setCatID(${category.id})" class="list-group-item list-group-item-action cursor-active">
+            <div id="${category.id}" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-lg-3 col-md col-sm-12">
                         <img src="${category.imgSrc}" alt="${category.description}" class="img-thumbnail">
@@ -141,3 +141,11 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 });
+
+
+document.getElementById("cat-list-container").addEventListener('click', (e) => {
+  
+   id = e.target.closest('.list-group-item').id
+   setCatID(id);
+   
+})
