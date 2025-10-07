@@ -81,8 +81,9 @@ console.log(value)
 
 
 document.addEventListener('DOMContentLoaded',()=> {
-  console.log(document.getElementById('themeSwitch'))
-  document.getElementById('themeSwitch').value = localStorage.getItem('theme')
+ // console.log(document.getElementById('themeSwitch'))
+
+  document.getElementById('themeSwitch').value = localStorage.getItem('theme') || 'auto'
 })
 
 function setItemId(id) {

@@ -95,7 +95,7 @@ body::before {
     position: fixed;
     inset: 0;
     z-index: -1;
-    background-image: url(/img/1Background.jpg);
+    background-image: linear-gradient(45deg, rgba(252, 142, 197,0.5) 0%, rgba(255, 141, 211, 0.5) 25%, rgba(255, 161, 216,0.5) 50%, rgba(255, 193, 210,0.5) 75%, rgba(255, 224, 195,0.5) 100%), url(/img/1Background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
