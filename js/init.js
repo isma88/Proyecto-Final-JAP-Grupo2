@@ -49,14 +49,16 @@ if (!logged) {
   // lo envia a login si no
   window.location.href = "login.html";
 } else {
+  let user = JSON.parse(logged)
+  console.log(user)
   document.getElementById(
     "nickname"
     // muestra el nombre si está logueado
-  ).innerHTML = `${logged}`;
+  ).innerHTML = `${user.mail}`;
 }
 //cierra la sesion
 document.getElementById('cerrar').addEventListener('click', function (){
-  localStorage.clear()
+  localStorage.removeItem('usuario')
 })
 
 document.getElementById('themeSwitch').addEventListener('change', e => {
