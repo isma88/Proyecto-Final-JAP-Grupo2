@@ -49,14 +49,26 @@ if (!logged) {
   // lo envia a login si no
   window.location.href = "login.html";
 } else {
+  
   document.getElementById(
     "nickname"
     // muestra el nombre si está logueado
-  ).innerHTML = `${logged}`;
+  ).innerHTML = `${logedName()}`;
+  
+}
+
+function logedName() {
+  let user = JSON.parse(logged)
+  if(!user.nombre == '') {
+   return user.nombre
+  }else{ 
+    return user.email
+  }
+
 }
 //cierra la sesion
 document.getElementById('cerrar').addEventListener('click', function (){
-  localStorage.clear()
+  localStorage.removeItem('usuario')
 })
 
 document.getElementById('themeSwitch').addEventListener('change', e => {
@@ -81,8 +93,9 @@ console.log(value)
 
 
 document.addEventListener('DOMContentLoaded',()=> {
-  console.log(document.getElementById('themeSwitch'))
-  document.getElementById('themeSwitch').value = localStorage.getItem('theme')
+ // console.log(document.getElementById('themeSwitch'))
+
+  document.getElementById('themeSwitch').value = localStorage.getItem('theme') || 'auto'
 })
 
 function setItemId(id) {
