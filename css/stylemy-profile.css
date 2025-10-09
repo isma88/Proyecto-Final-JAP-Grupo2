@@ -1,0 +1,38 @@
+@import url(colors.css);
+
+.form-group{
+
+    margin-bottom: 20px;
+}
+
+.form-group label{
+    margin-bottom: 5px;
+    color: var(--text);
+}
+
+.card-content {
+    padding: 20px;
+
+}
+
+.image {
+    text-align: center;
+    margin-bottom: 25px;
+
+}
+
+
+.image img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border: var(--card) solid 1px;
+    background-color: var(--background);
+}
+
+
+.tarjeta{
+    padding-top: 10px;
+    width: 50vw;
+    background-color: var(--card);
+}
