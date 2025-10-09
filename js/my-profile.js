@@ -1,6 +1,6 @@
     const nombre =  document.getElementById('nombre')
     const apellido =  document.getElementById('apellido')
-    const mail =  document.getElementById('mail')
+    const email =  document.getElementById('mail')
     const telefono =  document.getElementById('telefono')
     const user =   JSON.parse(localStorage.getItem('usuario'))
 
@@ -14,7 +14,7 @@ function showInfo() {
    
         nombre.value = user.nombre     
         apellido.value = user.apellido
-        mail.value = user.mail
+        email.value = user.email
         telefono.value = user.telefono
 }
 

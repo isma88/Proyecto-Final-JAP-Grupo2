@@ -49,12 +49,22 @@ if (!logged) {
   // lo envia a login si no
   window.location.href = "login.html";
 } else {
-  let user = JSON.parse(logged)
-  console.log(user)
+  
   document.getElementById(
     "nickname"
     // muestra el nombre si está logueado
-  ).innerHTML = `${user.mail}`;
+  ).innerHTML = `${logedName()}`;
+  
+}
+
+function logedName() {
+  let user = JSON.parse(logged)
+  if(!user.nombre == '') {
+   return user.nombre
+  }else{ 
+    return user.email
+  }
+
 }
 //cierra la sesion
 document.getElementById('cerrar').addEventListener('click', function (){
