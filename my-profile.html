@@ -15,8 +15,8 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
- 
   <link href="css/stylesmenu.css" rel="stylesheet">
+    <link href="css/stylemy-profile.css" rel="stylesheet">
 </head>
 
 <body style="margin-top: 20vh;">
@@ -66,17 +66,41 @@
       </div>
   </nav>
   <main>
-    <div class="container pb-5">
-   
-        <input type="text" placeholder="nombre"   id="nombre"   class="form-control" >
-        <input type="text" placeholder="apellido" id="apellido" class="form-control" >
-        <input type="email" placeholder="mail"     id="mail"     class="form-control" disabled>
-        <input type="number" placeholder="telefono" id="telefono" class="form-control" >
-        <input type="button" value="update" id="update">
+      <div class="container pb-5  tarjeta">
+
+          <form>
+              <div class="image">
+                  <img src="img/img_perfil.png" alt="Profile Picture">
+              </div>
+
+
+              <div class="form-group">
+                  <label for="nombre">Nombre:</label>
+                  <input type="text" class="form-control"   placeholder="Enter nombre" id="nombre">
+              </div>
+
+              <div class="form-group">
+                  <label for="apellido">Apellido:</label>
+                  <input type="text" class="form-control"   placeholder="Enter apellido" id="apellido">
+              </div>
+
+              <div class="form-group">
+                  <label for="mail">Email:</label>
+                  <input type="email" class="form-control" id="mail" aria-describedby="emailHelp" placeholder="Enter email" DISABLED>
+              </div>
+
+              <div class="form-group">
+                  <label for="telefono">Telefono de contacto</label>
+                  <input type="number" class="form-control" id="telefono" placeholder="Enter telefono">
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="update">Submit</button>
+
+          </form>
 
 
       </div>
-    </div>
+      </div>
   </main>
   <footer class="text-muted">
     <div class="container">
