@@ -1,13 +1,14 @@
 document
-  .getElementById("loginForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
+    .getElementById("loginForm")
+    .addEventListener("submit", function (event) {
+        event.preventDefault();
 
-    let usuario = document.getElementById("usuario").value.trim();
-    let contrasena = document.getElementById("contraseña").value.trim();
+        let email = document.getElementById("usuario").value.trim();
+        let contrasena = document.getElementById("contraseña").value.trim();
 
-    if (usuario !== "" || contrasena !== "") {
-      localStorage.setItem("usuario", usuario);
-      window.location.href = "index.html";
-    }
-  });
+        if (email !== "" || contrasena !== "") {
+            usuario = {nombre: "", apellido: "", email: email, telefono: "", pfp: ""}
+            localStorage.setItem("usuario", JSON.stringify(usuario));
+            window.location.href = "index.html";
+        }
+    });
