@@ -88,29 +88,28 @@ document.getElementById('desc').innerHTML =  `<div class="mt-2 des">
 function addComment(mensaje, user, dateTime, score ) {
 
 
-  document.getElementById('mensajes').innerHTML += 
- `<div class="card mb-4 mt-1 h-100 shadow-sm">
-  <div class="row g-4 ">
-    <div class="col-md-2">
-      <div class="card-body ">
-      <img src="img/img_perfil.png" class="img-fluid start" alt="comentarios" style="max-width: 80px;">
-      </div>
-    </div>
-    <div class="col-md-6 ">
-      <div class="card-body ">
-        <h5 class="card-title"> ${user}</h5>
-        <p id="msg" class="card-text">${mensaje}</p>
-        <p class="card-text"><small class="text-muted">${dateTime}</small></p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card-body text-end"> 
-          ${starCalculator(score)}
-      </div>
-  </div>
-    </div>
-    </div>`
-
+  document.getElementById('mensajes').innerHTML +=
+      `<div class="card mb-4 mt-1 h-100 shadow-md card-coment">
+          <div class="row g-4">
+              <div class="col-md-2">
+                  <div class="card-body">
+                      <img src="img/img_perfil.png" class="img-fluid start" alt="comentarios" style="max-width: 80px;">
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="card-body">
+                      <h5 class="card-title">${user}</h5>
+                      <p class="card-text">${mensaje}</p>
+                      <p class="card-text"><small class="text-muted">${dateTime}</small></p>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="card-body text-end">
+                      ${starCalculator(score)}
+                  </div>
+              </div>
+          </div>
+      </div>`
 
 }
 
@@ -221,6 +220,23 @@ let value
 return value
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    let commentsUrl = PRODUCT_INFO_COMMENTS_URL + current_ItemId + EXT_TYPE;
+
+    getJSONData(commentsUrl).then(function (result) {
+        if (result.status === "ok") {
+            let comments = result.data;
+            comments.forEach(comment => {
+                addComment(
+                    comment.description,   // texto del comentario
+                    comment.user,          // usuario
+                    comment.dateTime,      // fecha
+                    comment.score          // calificación (1-5)
+                );
+            });
+        }
+    });
+});
 
 
 
