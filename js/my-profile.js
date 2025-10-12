@@ -4,7 +4,6 @@
     const telefono =  document.getElementById('telefono')
     const user =   JSON.parse(localStorage.getItem('usuario'))
 
-
 document.addEventListener('DOMContentLoaded',  () => {
     showInfo();
 
@@ -26,3 +25,22 @@ function updateInfo() {
 }
 
 document.getElementById('update').addEventListener('click', updateInfo)
+    
+const profileImage = document.getElementById("profile-image");
+const fileInput = document.getElementById("file-input");
+
+profileImage.addEventListener("click", () => fileInput.click());
+
+fileInput.addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    profileImage.src = reader.result;
+    localStorage.setItem("profileImage", reader.result);
+  };
+  reader.readAsDataURL(file);
+});
+
+profileImage.src = localStorage.getItem("profileImage") || profileImage.src;
