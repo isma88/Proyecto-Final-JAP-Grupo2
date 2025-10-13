@@ -8,31 +8,7 @@ body {
   height: 100%; 
   }
 }
-:root { 
-    color-scheme: light dark;
-    --light-bg: #E699AC;
-    --light-card: #F7D9E3;
-    --light-text: #1a1a1a;
-    --light-details: #CC5B72;
-    --light-hover: #f485dc;
-    --light-btn: #b5a8e6;
 
-    --dark-hover2: #1a1a1a;
-    --dark-bg: #121212;
-    --dark-card: #3f3f3f;
-    --dark-text: white;
-    --dark-details: rgb(172, 57, 115);
-    --dark-hover: hsl(294, 93%, 21%);
-    --dark-btn: #9B2242;
-    --dark-innercard:#575757;
-
-    --background: light-dark(var(--light-bg), var(--dark-bg));
-    --card: light-dark(var(--light-card), var(--dark-card));
-    --text: light-dark(var(--light-text), var(--dark-text));
-    --hover: light-dark(var(--light-hover), var(--dark-hover));
-    --details: light-dark(var(--light-details), var(--dark-details));
-    --btn: light-dark(var(--light-btn), var(--dark-btn));
-}
 
    
 .inset-shadow { 
