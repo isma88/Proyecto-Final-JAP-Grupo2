@@ -88,6 +88,8 @@ body {
   
 }
 
+/* inicio cambios logos */
+
 @media (max-width: 500px) {
 
 
@@ -98,6 +100,12 @@ body {
    right: 2rem;
    
   }
+
+   .login_img {
+      left: 7rem !important;
+      right: 1.3rem !important;
+    }
+
 
 
  .login-card{
@@ -118,9 +126,10 @@ body {
       margin-left: -7rem !important;
     }
 
+
   }
 
-
+/* Fin cambios logos */
 
 
 img {
@@ -135,3 +144,7 @@ label {
   color: var(--text);
 }
 
+.login-card{
+ 
+  align-items: center; /*agregue*/
+ }
