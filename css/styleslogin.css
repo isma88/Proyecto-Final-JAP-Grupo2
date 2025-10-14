@@ -17,18 +17,21 @@ body {
 
 }
 .login-card {
-  background-color: var(--color-contraste);
+  /*background-color:var(--color-contraste);*/
+   background-color:light-dark(var(--light-card),var(--dark-card));
   border-radius: 15px;
 }
 
 .btn-rosa {
-  background-color: #e75480;
+  /*background-color: #e75480;*/
+  background-color: var(--btn);
   color: var(--color-contraste);
   border: none;
 }
 
 .btn-rosa:hover {
-  background-color: hsl(339, 67%, 52%);
+  /*background-color: hsl(339, 67%, 52%);*/
+  background-color: var(--hover);
   color: var(--color-contraste);
 }
 
@@ -44,9 +47,11 @@ body {
   top: 2vh;
   right: 2vw;
   filter: drop-shadow(1px 1px 1px);
+  
 }
 #jap-emercado {
   display: none;
+  
 }
 
 .card {
@@ -71,9 +76,75 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    
   }
 
   .card {
     width: 72vw;
+   
+    
   }
+
+  
 }
+
+/* inicio cambios logos */
+
+@media (max-width: 500px) {
+
+
+  .emercado { 
+   
+   top: 8vh !important ;
+   left: 2rem;
+   right: 2rem;
+   
+  }
+
+   .login_img {
+      left: 7rem !important;
+      right: 1.3rem !important;
+    }
+
+
+
+ .login-card{
+ 
+  top: 5rem;
+  align-items: center;
+ }
+
+  }
+
+  @media (min-width: 499px) and (max-width: 650px) {
+
+    .emercado {
+        margin-right: -2.5rem !important;
+    }
+
+    .login_img {
+      margin-left: -7rem !important;
+    }
+
+
+  }
+
+/* Fin cambios logos */
+
+
+img {
+  filter: brightness(0) invert(1) grayscale(1) contrast(100) drop-shadow(2px 2px 2px);
+}
+
+h3 {
+  color: var(--text);
+}
+
+label {
+  color: var(--text);
+}
+
+.login-card{
+ 
+  align-items: center; /*agregue*/
+ }

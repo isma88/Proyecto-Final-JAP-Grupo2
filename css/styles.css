@@ -1,3 +1,5 @@
+@import url(colors.css);
+
 .jumbotron,
 .card-body,
 .container,
@@ -161,6 +163,7 @@ object-position: 75% 75%;
 }
 
 .signin {
+  
   width: 100%;
   max-width: 330px;
   padding: 15px;
@@ -193,6 +196,7 @@ a.custom-card:hover {
 }
 body {
     background-image: url(/img/1Background.jpg);
+    background-color: var(--background);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -210,3 +214,7 @@ body {
 a {
   color: var(--details);
 }
+
+
+
+
