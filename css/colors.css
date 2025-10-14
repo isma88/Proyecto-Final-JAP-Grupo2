@@ -21,6 +21,7 @@
     --text: light-dark(var(--light-text), var(--dark-text));
     --hover: light-dark(var(--light-hover), var(--dark-hover));
     --details: light-dark(var(--light-details), var(--dark-details));
+    --btn: light-dark(var(--light-btn), var(--dark-btn));
 }   
 
         /* Todo esto es darkmode */

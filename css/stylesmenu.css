@@ -23,7 +23,7 @@
 
 .dropdown-item {
     font-size: 15px;
-    background-color: rgb(235, 123, 192);
+    background-color: var(--details);
     z-index: 4;
     
 }
@@ -32,13 +32,13 @@
 
 }
 .nav-item .nav-link {
-    color: rgb(192, 27, 170); 
+    color: var(--card); 
    
    
 }
 .dropdown-item {
     background-color: transparent;
-    color: rgb(118, 36, 118);
+    color: var(--text);
     border: none;
     padding: 10px 0;
     font-weight: bold;
@@ -48,7 +48,7 @@
 }
 
 .dropdown-item:hover {
-    color: #f004b5;
+    color: var(--details);
 }
 
 
@@ -61,7 +61,7 @@
 
 .nav-item:hover {
     padding-right: 5px; 
-    background-color: rgb(249, 235, 243); 
+    
     transition: 0.3s;
     border-radius: 5px;
 }
@@ -70,7 +70,7 @@
     background-color: var(--card) ;
 }
 .nav-link, .navbar-nav .dropdown-toggle, .show{ 
-    color: var(--light-details) !important;
+    color: var(--details) !important;
 }
 
 .dropdown-menu, .form-select, .form-select-sm  {
@@ -80,4 +80,9 @@
 
 #cerrar { 
     color: var(--details);
+}
+
+.bi  {
+      width: 1.2rem;
+      height: 1.2rem;
 }
