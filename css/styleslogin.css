@@ -84,7 +84,31 @@ body {
    
     
   }
+
+  
 }
+
+@media (max-width: 690px) {
+
+
+  .emercado { 
+   
+   top: 8vh !important ;
+   
+  }
+
+
+
+ .login-card{
+  
+  top: 5rem;
+  align-items: center;
+ }
+
+  }
+
+
+
 
 img {
   filter: brightness(0) invert(1) grayscale(1) contrast(100) drop-shadow(2px 2px 2px);
