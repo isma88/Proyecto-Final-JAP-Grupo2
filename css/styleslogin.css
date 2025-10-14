@@ -88,22 +88,35 @@ body {
   
 }
 
-@media (max-width: 690px) {
+@media (max-width: 500px) {
 
 
   .emercado { 
    
    top: 8vh !important ;
+   left: 2rem;
+   right: 2rem;
    
   }
 
 
-
  .login-card{
-  
+ 
   top: 5rem;
   align-items: center;
  }
+
+  }
+
+  @media (min-width: 499px) and (max-width: 650px) {
+
+    .emercado {
+        margin-right: -2.5rem !important;
+    }
+
+    .login_img {
+      margin-left: -7rem !important;
+    }
 
   }
 
