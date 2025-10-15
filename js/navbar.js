@@ -75,17 +75,3 @@
         </div>
       </div>`
     
-
-const user = JSON.parse(localStorage.getItem('usuario'));
-const savedImage = localStorage.getItem('profileImage') || "img/img_perfil.png";
-const nickname = document.getElementById('nickname');
-
-if (nickname && user) {
-  nickname.innerHTML = `
-    <img src="${savedImage}" alt="perfil" 
-         class="rounded-circle me-2" 
-         width="30" height="30" 
-         style="object-fit: cover;">
-    ${user.nombre || "Usuario"}
-  `;
-}
