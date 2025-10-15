@@ -24,13 +24,13 @@
             <li class="nav-item">
               <a class="nav-link fw-bold" href="sell.html">Vender</a>
             </li>
-             
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="login.html" id="nickname" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                 <ul class="dropdown-menu" aria-labelledby="nickname">
                    <li><a class="dropdown-item" href="my-profile.html">configurar</a></li>
                    <li>
                   <li><a class="dropdown-item" href="index.html" id="cerrar">Cerrar Sesion</a></li>
+                  <li> 
                    <li>
                     </ul>
             </li>
@@ -75,3 +75,17 @@
         </div>
       </div>`
     
+
+const user = JSON.parse(localStorage.getItem('usuario'));
+const savedImage = localStorage.getItem('profileImage') || "img/img_perfil.png";
+const nickname = document.getElementById('nickname');
+
+if (nickname && user) {
+  nickname.innerHTML = `
+    <img src="${savedImage}" alt="perfil" 
+         class="rounded-circle me-2" 
+         width="30" height="30" 
+         style="object-fit: cover;">
+    ${user.nombre || "Usuario"}
+  `;
+}
