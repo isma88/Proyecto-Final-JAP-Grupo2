@@ -1,9 +1,4 @@
-:root {
-  --color-primario: rgb(255, 185, 185) !important;
-  --color-fondo: rgb(255, 221, 210) !important;
-  --color-contraste: rgb(246, 246, 246) !important;
-  --color-boton: rgb(255, 141, 199) !important;
-}
+@import url(/css/colors.css);
 
 body {
   background-image: url(/img/1Background.jpg);
@@ -39,14 +34,14 @@ body {
   max-width: 50vw;
   top: 2vh;
   left: 2vw;
-  filter: drop-shadow(1px 1px 1px);
+  filter: var(--current-filter);
 }
 
 #eMercado {
   max-width: 40vw;
   top: 2vh;
   right: 2vw;
-  filter: drop-shadow(1px 1px 1px);
+  filter: var(--current-filter);
   
 }
 #jap-emercado {
@@ -66,8 +61,6 @@ body {
   #jap-emercado {
     visibility: visible;
     width: 90vw;
-    filter: brightness(0) invert(1) grayscale(1) contrast(100)
-      drop-shadow(2px 2px 2px);
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -133,7 +126,7 @@ body {
 
 
 img {
-  filter: brightness(0) invert(1) grayscale(1) contrast(100) drop-shadow(2px 2px 2px);
+ 
 }
 
 h3 {
