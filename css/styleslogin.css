@@ -20,7 +20,7 @@ body {
 .btn-rosa {
   /*background-color: #e75480;*/
   background-color: var(--btn);
-  color: var(--color-contraste);
+  color: var(--text);
   border: none;
 }
 
