@@ -4,6 +4,7 @@
     const telefono =  document.getElementById('telefono')
     const user =   JSON.parse(localStorage.getItem('usuario'))
     const profileImage = document.getElementById("profile-image");
+    const imageBack = document.querySelector('.image-back')
 
 document.addEventListener('DOMContentLoaded',  () => {
     showInfo();
@@ -30,7 +31,7 @@ document.getElementById('update').addEventListener('click', updateInfo)
 
 const fileInput = document.getElementById("file-input");
 
-profileImage.addEventListener("click", () => fileInput.click());
+imageBack.addEventListener("click", () => fileInput.click());
 
 fileInput.addEventListener("change", (e) => {
   const file = e.target.files[0];
