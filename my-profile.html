@@ -70,11 +70,17 @@
       <div class="container pb-5  tarjeta">
 
           <form>
-            <div class="image">
-            <img src="img/img_perfil.png" id="profile-image" alt="Profile Picture">
+           <div class="image">
+          <div class="image-inner">
+            <div class="image-front">
+              <img src="img/img_perfil.png" id="profile-image" alt="Profile Picture">
+            </div>
+            <div class="image-back">
+              +
+            <input type="file" id="file-input" accept="image/*" style="display:none">
+            </div>
           </div>
-          <input type="file" id="file-input" accept="image/*" style="display:none">
-             
+        </div>
               <div class="form-group">
                   <label for="nombre">Nombre:</label>
                   <input type="text" class="form-control"   placeholder="Enter nombre" id="nombre">

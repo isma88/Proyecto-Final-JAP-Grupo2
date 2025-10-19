@@ -20,17 +20,18 @@ body {
  }
 
  .list-group-item:hover { 
-            background-color:var(--hover) !important;
+            background-color:var(--hover) !important; /* var(--details) anteriormente*/ 
             color: var(--text) !important;
     } 
     
 .btn {
-    background-color: var(--card) !important;
+    background-color: var(--btn) !important;
     color: var(--text) !important;
+    
 }   
 
 .btn:hover { 
-    color: var(--details) !important;
+    color: var(--hover) !important;
 }
 
 .btn-link, a {
