@@ -143,7 +143,7 @@ document.getElementById('sendCom').addEventListener('click', () => {
     let mensaje = document.getElementById('textarea').value
     //console.log(mensaje) 
     
-    let user = localStorage.getItem('usuario');
+    
     //console.log(user)
 
   
@@ -165,7 +165,7 @@ document.getElementById('sendCom').addEventListener('click', () => {
    // console.log(fulldate); 
    
     
-    addComment(mensaje, user, fulldate, paintStar())
+    addComment(mensaje, logedName(), fulldate, paintStar())
    
 
 })

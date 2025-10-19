@@ -1,9 +1,4 @@
-:root {
-  --color-primario: rgb(255, 185, 185) !important;
-  --color-fondo: rgb(255, 221, 210) !important;
-  --color-contraste: rgb(246, 246, 246) !important;
-  --color-boton: rgb(255, 141, 199) !important;
-}
+@import url(/css/colors.css);
 
 body {
   background-image: url(/img/1Background.jpg);
@@ -17,18 +12,21 @@ body {
 
 }
 .login-card {
-  background-color: var(--color-contraste);
+  /*background-color:var(--color-contraste);*/
+   background-color:light-dark(var(--light-card),var(--dark-card));
   border-radius: 15px;
 }
 
 .btn-rosa {
-  background-color: #e75480;
-  color: var(--color-contraste);
+  /*background-color: #e75480;*/
+  background-color: var(--btn);
+  color: var(--text);
   border: none;
 }
 
 .btn-rosa:hover {
-  background-color: hsl(339, 67%, 52%);
+  /*background-color: hsl(339, 67%, 52%);*/
+  background-color: var(--hover);
   color: var(--color-contraste);
 }
 
@@ -36,17 +34,19 @@ body {
   max-width: 50vw;
   top: 2vh;
   left: 2vw;
-  filter: drop-shadow(1px 1px 1px);
+  filter: var(--current-filter);
 }
 
 #eMercado {
   max-width: 40vw;
   top: 2vh;
   right: 2vw;
-  filter: drop-shadow(1px 1px 1px);
+  filter: var(--current-filter);
+  
 }
 #jap-emercado {
   display: none;
+  
 }
 
 .card {
@@ -61,8 +61,6 @@ body {
   #jap-emercado {
     visibility: visible;
     width: 90vw;
-    filter: brightness(0) invert(1) grayscale(1) contrast(100)
-      drop-shadow(2px 2px 2px);
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -71,9 +69,75 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    
   }
 
   .card {
     width: 72vw;
+   
+    
   }
+
+  
 }
+
+/* inicio cambios logos */
+
+@media (max-width: 500px) {
+
+
+  .emercado { 
+   
+   top: 8vh !important ;
+   left: 2rem;
+   right: 2rem;
+   
+  }
+
+   .login_img {
+      left: 7rem !important;
+      right: 1.3rem !important;
+    }
+
+
+
+ .login-card{
+ 
+  top: 5rem;
+  align-items: center;
+ }
+
+  }
+
+  @media (min-width: 499px) and (max-width: 650px) {
+
+    .emercado {
+        margin-right: -2.5rem !important;
+    }
+
+    .login_img {
+      margin-left: -7rem !important;
+    }
+
+
+  }
+
+/* Fin cambios logos */
+
+
+img {
+ 
+}
+
+h3 {
+  color: var(--text);
+}
+
+label {
+  color: var(--text);
+}
+
+.login-card{
+ 
+  align-items: center; /*agregue*/
+ }

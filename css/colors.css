@@ -21,6 +21,14 @@
     --text: light-dark(var(--light-text), var(--dark-text));
     --hover: light-dark(var(--light-hover), var(--dark-hover));
     --details: light-dark(var(--light-details), var(--dark-details));
+    --btn: light-dark(var(--light-btn), var(--dark-btn));
+    
+    --light-filter: drop-shadow(1px 1px 1px);
+
+    --dark-filter: brightness(0) invert(1) grayscale(1) contrast(100) drop-shadow(2px 2px 2px);
+
+    --current-filter: light-dark(var(--light-filter), var(--dark-filter));
+
 }   
 
         /* Todo esto es darkmode */
@@ -50,8 +58,12 @@
 
          & header img {
         
-        filter: brightness(0) invert(1) grayscale(1) contrast(100) drop-shadow(2px 2px 2px);
+        filter: var(--dark-filter);
 
+    }
+
+    & #logojap, #eMercado {
+        filter: var(--dark-filter);
     }
 }
 
@@ -78,10 +90,12 @@
     }
      & header img {
         
-        filter: none !important;
+        filter: var(--light-filter) !important;
 
     }
-
+    & #logojap, #eMercado {
+        filter: var(--light-filter) !important;
+    }
    
 }
 
@@ -95,13 +109,19 @@ body::before {
     position: fixed;
     inset: 0;
     z-index: -1;
-    background-image: url(/img/1Background.jpg);
+    background-image: linear-gradient(45deg, rgba(252, 142, 197,0.5) 0%, rgba(255, 141, 211, 0.5) 25%, rgba(255, 161, 216,0.5) 50%, rgba(255, 193, 210,0.5) 75%, rgba(255, 224, 195,0.5) 100%), url(/img/1Background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     pointer-events: none;
 }  
+
+
+ #logojap, #eMercado, #jap-emercado {
+        filter: var(--light-filter) !important;
+    }
+
 
 @media (prefers-color-scheme: dark) {
         body::before {
@@ -110,8 +130,12 @@ body::before {
        
        & header img {
         
-        filter: brightness(0) invert(1) grayscale(1) contrast(100) drop-shadow(2px 2px 2px) !important;
+        filter: var( --dark-filter) !important;
 
+    }
+
+    #logojap, #eMercado, #jap-emercado {
+        filter: var(--dark-filter) !important;
     }
 
     } 
