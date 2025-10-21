@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
 const listElements = () => {
   let name = list.name;
   let productCategory = list.category;
-  let productName = list.name;
   let productDescription = list.description;
   let productCost = list.cost;
   let productCurrency = list.currency;
@@ -37,7 +36,10 @@ const listElements = () => {
             </div>
             <div class="row align-items-end" style="height: 20vh;">
               <p class="me-3 text-end fw-normal vendidos"strong>Vendidos:</strong> ${productsoldCount}</p>
-              <button class="inset-shadow btn btn-primary btn-lg ">Comprar</button>
+           <div class="row " >
+              <button id="buy" class="inset-shadow mx-auto btn btn-primary btn-lg ">Comprar</button>
+              <button  id="save" class="inset-shadow btn btn-primary btn-lg "><i class="bi bi-bookmarks-fill"></i></button>
+              </div>
             </div>
                        
       
@@ -47,9 +49,7 @@ const listElements = () => {
  // console.log(list);
   //console.log(name);
  // console.log(productCost);
-document.getElementById('desc').innerHTML =  `<div class="mt-2 des">
-        <p strong> Descripcion: </strong>${productDescription}</p>
-      </div>`
+document.getElementById('desc').innerHTML =  `<p strong class='mt-2 des border-top'> </strong>${productDescription}</p>`
 
   document.getElementById("product-container").innerHTML = content;
   let carouselInner = document.querySelector("#carCarousel .carousel-inner");

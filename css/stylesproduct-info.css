@@ -8,8 +8,17 @@ body {
   height: 100%; 
   }
 }
+#buy { 
+  max-width: 70%;
+}
 
+#save {
+  max-width: 20%;
+}
 
+.border-top { 
+  border-color: var(--details) !important;
+}
    
 .inset-shadow { 
    position: relative;
@@ -81,7 +90,7 @@ body {
      position: relative;
    
    
-     color:light-dark(var(--light-text),var(--dark-text));
+     color:var(--text);
  }
 
  .mt-3, .ms-3 {
@@ -124,6 +133,7 @@ body {
 }
 .des{
     font-size:18px;
+    
 }
 
 
