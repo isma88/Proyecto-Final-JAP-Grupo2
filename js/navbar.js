@@ -25,10 +25,12 @@
               <a class="nav-link fw-bold" href="sell.html">Vender</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="login.html" id="nickname" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+              <a class="nav-link dropdown-toggle d-flex align-items-center" href="login.html" id="nickname" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+              <img id="nav-profile-pic" src="img/img_perfil.png" alt="Foto de perfil" class="rounded-circle me-2" width="30" height="30" />
+              <span id="nav-username"></span>
+              </a>
                 <ul class="dropdown-menu" aria-labelledby="nickname">
                    <li><a class="dropdown-item" href="my-profile.html">configurar</a></li>
-                   <li>
                   <li><a class="dropdown-item" href="index.html" id="cerrar">Cerrar Sesion</a></li>
                   <li> 
                    <li>
@@ -74,4 +76,35 @@
           </ul> 
         </div>
       </div>`
-    
+      
+document.addEventListener("DOMContentLoaded", () => {
+  // Obtener datos guardados del usuario y su foto
+  const user = JSON.parse(localStorage.getItem("usuario"));
+  const profileImage = localStorage.getItem("profileImage");
+
+  // Buscar los elementos dentro de la navbar
+  const nameEl = document.getElementById("nav-username");
+  const imgEl = document.getElementById("nav-profile-pic");
+
+  // Mostrar el nombre completo (si existe)
+  if (user && nameEl) {
+    nameEl.textContent = `${user.nombre || ""} ${user.apellido || ""}`.trim() || "Usuario";
+  } else if (nameEl) {
+    nameEl.textContent = "Invitado";
+  }
+
+  // Mostrar la foto del perfil guardada
+  if (profileImage && imgEl) {
+    imgEl.src = profileImage;
+  }
+
+  // Funcionalidad de "Cerrar Sesión"
+  const cerrar = document.getElementById("cerrar");
+  if (cerrar) {
+    cerrar.addEventListener("click", () => {
+      localStorage.removeItem("usuario");
+      localStorage.removeItem("profileImage");
+      window.location.href = "login.html";
+    });
+  }
+});
