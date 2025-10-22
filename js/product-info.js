@@ -263,4 +263,3 @@ function choseImg(e) {
   }
 
 }
-//flor boluda
