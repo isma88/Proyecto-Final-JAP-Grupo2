@@ -26,6 +26,7 @@
             </li>
              
             <li class="nav-item dropdown">
+            
               <a class="nav-link dropdown-toggle" href="login.html" id="nickname" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                 <ul class="dropdown-menu" aria-labelledby="nickname">
                    <li><a class="dropdown-item" href="my-profile.html">configurar</a></li>

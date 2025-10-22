@@ -23,7 +23,20 @@ const listElements = () => {
   let productsoldCount = list.soldCount;
   let productid = list.id;
 
-  let content = `<div class="col-ml-6 ">
+   cost = new Intl.NumberFormat('en-US',
+    { 
+        style: 'currency', 
+        currency: productCurrency  
+    }).format(productCost)
+  
+  document.getElementById('title').innerHTML = name
+  document.getElementById('desc').innerHTML = productDescription
+  document.getElementById('cat').innerHTML = productCategory
+  document.getElementById('price').innerHTML = cost
+
+
+
+ /* let content = `<div class="col-ml-6 ">
                  <p class=" mt-3 ms-3 text-end fw-normal cat"strong>Categoría:</strong> ${productCategory}</p>
                   <div class="row shadow card m-2"> 
                       <h2 class="deco text-center  fw-bolder">${name}</h1>
@@ -44,12 +57,12 @@ const listElements = () => {
                        
       
     </div>
-            `;
+            `; */
 
  // console.log(list);
   //console.log(name);
  // console.log(productCost);
-document.getElementById('desc').innerHTML =  `<p strong class='mt-2 des border-top'> </strong>${productDescription}</p>`
+ /* document.getElementById('desc').innerHTML =  `<p strong class='mt-2 des border-top'> </strong>${productDescription}</p>`
 
   document.getElementById("product-container").innerHTML = content;
   let carouselInner = document.querySelector("#carCarousel .carousel-inner");
@@ -61,7 +74,9 @@ document.getElementById('desc').innerHTML =  `<p strong class='mt-2 des border-t
         <img src="${images}" class="d-inline w-100" alt="Imagen ${index + 1}">
       </div>
     `;
-  });
+  }); */
+
+
 
  let relatedHTML = "";
   list.relatedProducts.forEach(rel => {
