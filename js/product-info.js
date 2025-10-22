@@ -238,5 +238,29 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+function checkImg(){
+  let first = "true"
+  let imgSelectors = document.querySelectorAll('[name="imgSelectors"]')
+  imgSelectors.forEach((imgSelectors) => {
+    if(first) {
+      imgSelectors.classList.add("check")
+    }
+    first = false
+    imgSelectors.addEventListener('click', choseImg)
+  })
 
+}
 
+function choseImg(e) {
+
+  for (imgs of imgSelectors) {
+    if(imgs === e.currentTarget) {
+      imgs.classList.add("check")
+    }else{
+      imgs.classList.remove("check")
+    }
+
+  }
+
+}
+//flor boluda
