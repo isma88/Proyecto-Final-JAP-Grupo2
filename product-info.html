@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>eMercado - Todo lo que busques está aquí</title>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>eMercado - Todo lo que busques está aquí</title>
 
     <link
       href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
@@ -27,7 +29,6 @@
   <link href="css/stylesmenu.css" rel="stylesheet">
   
 </head>
-
 <body>
   <nav class="navbar navbar-expand-lg p-1 d-flex flex-row shadow-sm rounded-4 fixed-top">
     </nav>
@@ -47,124 +48,85 @@
              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#imgcar" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#imgcar" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-        </div>
-        <div class="row pt-2" id="prevImg">
-          <div class="d-sm-flex d-row d-none gap-2" id="imgSelectorsPlacer" style="width: 130px;">
+        <div class="carousel-inner"></div>
+        
 
-
-
-          </div>
-        </div>
-
-      </div>
-      <div class="col-lg-4 pt-4">
-        <div class="mx-auto container">
-          <h2 class="title fw-bold" id="title">
-            titulo del auto que esta en disponibilidad
-        </div>
-        <div class="overflow-auto desc" id="desc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, officiis! Et, velit accusantium facilis
-          officia corporis eos sit sint libero vitae ab, porro deleniti, dolores minus voluptate nesciunt? Tempora,
-          nostrum.
-        </div>
-        <p class="text-muted">
-          Categorias: <label for="" id="cat"></label>
-        </p>
-        <p class="text-muted">
-          Vendidos: <label for="" id="sold"></label>
-        </p>
-        <div class="precio-valor" id="price">
-          $71263871236</div>
-        <div class="d-flex">
-          <button id="buy" class="inset-shadow btn btn-primary btn-lg me-2">Comprar</button>
-          <div class="btn-group" id="save">
-            <button id="" class="inset-shadow btn btn-primary btn-lg "><i class="bi bi-bag-plus-fill"></i></button>
-            <input type="number" class="form-control" id="amountInput" min="0" step="1">
-          </div>
-        </div>
-
+        <button class="carousel-control-prev" type="button" data-bs-target="#carCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
       </div>
     </div>
+    <div class="col-md-6 items">
+      <div id="product-container" class="w-70"></div>
+    </div>
+   
+    <div class="row" id="desc"></div>
   </div>
-
-  </div>
-
-
-
-  <div class="container">
-    <h3 class=" text-center mt-5 deco">Productos relacionados</h3>
-  </div>
+</div>
+  <h3 class=" text-center mt-5 deco">Productos relacionados</h3>
   <div class="row d-flex justify-content-center align-items-center" id="items">
-  </div>
+ </div>
 
-  <div class="container">
-    <h3 class=" text-center mt-5 deco">Comentarios</h3>
-    <div class="card mb-4 mt-5 h-100 shadow-sm ">
-      <div class="row g-4 align-items-center card-custom ">
+ <div class="container">
+ <h3 class=" text-center mt-5 deco">Comentarios</h3> 
+  <div class="card mb-4 mt-5 h-100 shadow-sm ">
+    <div class="row g-4 align-items-center card-custom ">
+      
+      <div class="col-md-2 text-center">
+        <img src="img/img_perfil.png" class="img-fluid rounded-circle" alt="comentarios" style="max-width: 80px;">
+      </div>
+    
+      <div class="col-md-10">
+        <div class="card-body">
+          <h5 class="card-title">Comentario</h5>
+          
+    
+          <textarea class="form-control mb-2" id="textarea" name="comment" rows="2" placeholder="Escribir comentario..."></textarea>
 
-        <div class="col-md-2 text-center">
-          <img src="img/img_perfil.png" class="img-fluid rounded-circle" alt="comentarios" style="max-width: 80px;">
-        </div>
-
-        <div class="col-md-10">
-          <div class="card-body">
-            <h5 class="card-title">Comentario</h5>
-
-
-            <textarea class="form-control mb-2" id="textarea" name="comment" rows="2"
-              placeholder="Escribir comentario..."></textarea>
-
-
-            <div class="coso" id="coso">
-
+          
+          <div class="coso" id="coso"> 
+             
               <input class="star" type="radio" name="star" id="star-1" value="1">
-              <label for="star-1" class="bi bi-star-fill"></label>
+                <label for="star-1" class="bi bi-star-fill"></label>
               <input class="star" type="radio" name="star" id="star-2" value="2">
-              <label for="star-2" class="bi bi-star-fill"></label>
+                <label for="star-2" class="bi bi-star-fill"></label>
               <input class="star" type="radio" name="star" id="star-3" value="3">
-              <label for="star-3" class="bi bi-star-fill"></label>
+                <label for="star-3" class="bi bi-star-fill"></label>
               <input class="star" type="radio" name="star" id="star-4" value="4">
-              <label for="star-4" class="bi bi-star-fill"></label>
+                <label for="star-4" class="bi bi-star-fill"></label>
               <input class="star" type="radio" name="star" id="star-5" value="5">
-              <label for="star-5" class="bi bi-star-fill"></label>
+                <label for="star-5" class="bi bi-star-fill"></label>
+               
+            
+          </div>
 
-
-            </div>
-
-            <div class="d-flex justify-content-end">
-              <button class="btn btn-primary inset-shadow" id="sendCom">Enviar</button>
-            </div>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-primary inset-shadow" id="sendCom">Enviar</button>
           </div>
         </div>
-
       </div>
+
     </div>
   </div>
+</div>
 
   <div class="container" id="mensajes">
 
 
 
-  </div>
+</div>
 
 
-
+  
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
-      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
   <div id="spinner-wrapper">

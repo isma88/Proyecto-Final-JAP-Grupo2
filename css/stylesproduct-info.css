@@ -10,33 +10,6 @@ body {
 }
 
 
-#save {
- max-width: 8rem;
-}
-
-#amountInput { 
-  max-width: 4rem;
-}
-
-.border-top { 
-  border-color: var(--details) !important;
-}
-
-.title {
-  color: var(--text);
-   text-shadow: 2px 2px 2px var(--hover);
-}
-
-.desc{
-  color: var(--text);
-}
-
-.text-muted {
-  color: var(--text) !important;
-  filter: opacity(50%) !important;
-
-}
-
    
 .inset-shadow { 
    position: relative;
@@ -86,7 +59,6 @@ body {
 
 
 .card-custom {
-    
     background-color:light-dark(var(--light-card),var(--dark-card));
     display: flex;
     border-radius: 10px;
@@ -96,18 +68,20 @@ body {
     .carousel-inner {
         border-radius: 1rem;
         box-shadow: 0 4px 4px 0 rgba(161, 88, 125, 0.567);
+        top: 1rem;
+        left: 0.5rem;
     }
 
  .deco, .des{
 
-    
-     
+     font-family: "Playfair Display", serif;
+     font-optical-sizing: auto;
      font-weight: 300;
      font-style: normal;
      position: relative;
-     text-shadow: 2px 2px 2px black;
    
-     color:light-dark(var(--dark-text),var(--dark-details));
+   
+     color:light-dark(var(--light-text),var(--dark-text));
  }
 
  .mt-3, .ms-3 {
@@ -142,8 +116,7 @@ body {
  .precio-valor {
    font-size: 30px;
    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-   color: var(--details);
-  text-shadow: 2px 2px 2px var(--background);
+   color: light-dark(var(--light-text),var(--dark-text));
  }
 
 .carousel-indicators {
@@ -151,14 +124,13 @@ body {
 }
 .des{
     font-size:18px;
-    
 }
 
 
 .card  {
   background-color: light-dark(var(--light-card),var(--dark-innercard));
-  color: var(--text); 
-  
+  color: light-dark(var(--light-text),var(--dark-text));
+  height: 15vh;
   border-radius: 10px;
     box-shadow: 0 6px 6px 0 rgba(172, 57, 115, 0.567);
     display: flex;
@@ -209,10 +181,4 @@ footer {
  .grow:hover { 
   transform: scale(1.050);
 
- }
-
-
- .check {
-  border: 0.2rem solid var(--hover);
-  border-radius: 2px;
  }

@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
       list = result.data;
     //  console.log(list);
       listElements();
-      checkImg();
     }
   });
 });
@@ -17,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 const listElements = () => {
   let name = list.name;
   let productCategory = list.category;
+  let productName = list.name;
   let productDescription = list.description;
   let productCost = list.cost;
   let productCurrency = list.currency;
@@ -24,43 +24,7 @@ const listElements = () => {
   let productsoldCount = list.soldCount;
   let productid = list.id;
 
-   cost = new Intl.NumberFormat('en-US',
-    { 
-        style: 'currency', 
-        currency: productCurrency  
-    }).format(productCost)
-  
-  document.getElementById('title').innerHTML = name
-  document.getElementById('desc').innerHTML = productDescription
-  document.getElementById('cat').innerHTML = productCategory
-  document.getElementById('price').innerHTML = cost
-  document.getElementById('sold').innerHTML = productsoldCount
-
-  console.log(productImages)
-    let counter = -1 ;
-
-  for (img of productImages) {
-    counter++ 
-    
-    
-     document.getElementById("carousel-inner").innerHTML +=
-      ` <div class="carousel-item" id="carousel${counter}">
-            <img src="${img}" class="d-block w-100" alt="...">
-        </div>`
-
-    document.getElementById("imgSelectorsPlacer").innerHTML +=
-      `<img src="${img}" type="radio" name="imgSelectors" id="img${counter}" role="button" style="width: 15rem;" data-bs-target="#imgcar" data-bs-slide-to="${counter}" 
-                  aria-current="true" aria-label="Slide ${counter}" class="img-thumbnail" alt="..."  >`
-
-   
-
-  }
-  document.getElementById("carousel0").classList.add("active")
-
-
-
-
- /* let content = `<div class="col-ml-6 ">
+  let content = `<div class="col-ml-6 ">
                  <p class=" mt-3 ms-3 text-end fw-normal cat"strong>Categoría:</strong> ${productCategory}</p>
                   <div class="row shadow card m-2"> 
                       <h2 class="deco text-center  fw-bolder">${name}</h1>
@@ -73,20 +37,19 @@ const listElements = () => {
             </div>
             <div class="row align-items-end" style="height: 20vh;">
               <p class="me-3 text-end fw-normal vendidos"strong>Vendidos:</strong> ${productsoldCount}</p>
-           <div class="row " >
-              <button id="buy" class="inset-shadow mx-auto btn btn-primary btn-lg ">Comprar</button>
-              <button  id="save" class="inset-shadow btn btn-primary btn-lg "><i class="bi bi-bookmarks-fill"></i></button>
-              </div>
+              <button class="inset-shadow btn btn-primary btn-lg ">Comprar</button>
             </div>
                        
       
     </div>
-            `; */
+            `;
 
  // console.log(list);
   //console.log(name);
  // console.log(productCost);
- /* document.getElementById('desc').innerHTML =  `<p strong class='mt-2 des border-top'> </strong>${productDescription}</p>`
+document.getElementById('desc').innerHTML =  `<div class="mt-2 des">
+        <p strong> Descripcion: </strong>${productDescription}</p>
+      </div>`
 
   document.getElementById("product-container").innerHTML = content;
   let carouselInner = document.querySelector("#carCarousel .carousel-inner");
@@ -98,9 +61,7 @@ const listElements = () => {
         <img src="${images}" class="d-inline w-100" alt="Imagen ${index + 1}">
       </div>
     `;
-  }); */
-
-
+  });
 
  let relatedHTML = "";
   list.relatedProducts.forEach(rel => {
@@ -277,28 +238,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-function checkImg(){
-  let first = "true"
-  let imgSelectors = document.querySelectorAll('[name="imgSelectors"]')
-  imgSelectors.forEach((imgSelectors) => {
-    if(first) {
-      imgSelectors.classList.add("check")
-    }
-    first = false
-    imgSelectors.addEventListener('click', choseImg)
-  })
 
-}
 
-function choseImg(e) {
-
-  for (imgs of imgSelectors) {
-    if(imgs === e.currentTarget) {
-      imgs.classList.add("check")
-    }else{
-      imgs.classList.remove("check")
-    }
-
-  }
-
-}
