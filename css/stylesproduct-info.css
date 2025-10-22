@@ -96,6 +96,8 @@ body {
     .carousel-inner {
         border-radius: 1rem;
         box-shadow: 0 4px 4px 0 rgba(161, 88, 125, 0.567);
+        top: 1rem;
+        left: 0.5rem;
     }
 
  .deco, .des{
@@ -209,10 +211,4 @@ footer {
  .grow:hover { 
   transform: scale(1.050);
 
- }
-
-
- .check {
-  border: 0.2rem solid var(--hover);
-  border-radius: 2px;
  }
