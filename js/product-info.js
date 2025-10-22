@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
       list = result.data;
     //  console.log(list);
       listElements();
+      checkImg();
     }
   });
 });
@@ -33,6 +34,29 @@ const listElements = () => {
   document.getElementById('desc').innerHTML = productDescription
   document.getElementById('cat').innerHTML = productCategory
   document.getElementById('price').innerHTML = cost
+  document.getElementById('sold').innerHTML = productsoldCount
+
+  console.log(productImages)
+    let counter = -1 ;
+
+  for (img of productImages) {
+    counter++ 
+    
+    
+     document.getElementById("carousel-inner").innerHTML +=
+      ` <div class="carousel-item" id="carousel${counter}">
+            <img src="${img}" class="d-block w-100" alt="...">
+        </div>`
+
+    document.getElementById("imgSelectorsPlacer").innerHTML +=
+      `<img src="${img}" type="radio" name="imgSelectors" id="img${counter}" role="button" style="width: 15rem;" data-bs-target="#imgcar" data-bs-slide-to="${counter}" 
+                  aria-current="true" aria-label="Slide ${counter}" class="img-thumbnail" alt="..."  >`
+
+   
+
+  }
+  document.getElementById("carousel0").classList.add("active")
+
 
 
 
@@ -278,4 +302,3 @@ function choseImg(e) {
   }
 
 }
-//flor boluda
