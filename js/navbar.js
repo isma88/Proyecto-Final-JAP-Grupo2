@@ -24,8 +24,8 @@
             <li class="nav-item">
               <a class="nav-link fw-bold" href="sell.html">Vender</a>
             </li>
-            <li class="nav-item dropdown">
-            <img id="nav-profile-pic" src="img/img_perfil.png" alt="Foto de perfil" class="rounded-circle me-2" width="30" height="30" />
+            <div class="d-flex align-items-center gap-3">
+            <li class="nav-item dropdown mb-0 d-flex d-row">
               <a class="nav-link dropdown-toggle d-flex align-items-center" href="login.html" id="nickname" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
               <img id="nav-profile-pic" src="img/img_perfil.png" alt="Foto de perfil" class="rounded-circle me-2" width="30" height="30" />
               <span id="nav-username"></span>
@@ -42,14 +42,14 @@
               <option value="light">lightmode</option>
               <option value="dark">darkmode</option>
             </select>
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="themeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <li class="nav-item dropdown mb-0"> <a class="nav-link" href="#" id="themeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <span id="themeIcon">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-highlights" viewBox="0 0 16 16">
                     <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-8 5v1H4.5a.5.5 0 0 0-.093.009A7 7 0 0 1 3.1 13zm0-1H2.255a7 7 0 0 1-.581-1H8zm-6.71-2a7 7 0 0 1-.22-1H8v1zM1 8q0-.51.07-1H8v1zm.29-2q.155-.519.384-1H8v1zm.965-2q.377-.54.846-1H8v1zm2.137-2A6.97 6.97 0 0 1 8 1v1z"/>
                   </svg>
                 </span>
               </a>
-              <ul class=" dropdown-menu dropdown-menu-end shadow-sm px-auto aria-labelledby="themeDropdown">
+              <ul class=" dropdown-menu dropdown-menu-end shadow-sm aria-labelledby="themeDropdown">
                 <li><button class="dropdown-item d-flex align-items-center justify-content-center" data-theme="auto">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" fill="currentColor" class="bi bi-highlights " viewBox="0 0 16 16">
                       <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-8 5v1H4.5a.5.5 0 0 0-.093.009A7 7 0 0 1 3.1 13zm0-1H2.255a7 7 0 0 1-.581-1H8zm-6.71-2a7 7 0 0 1-.22-1H8v1zM1 8q0-.51.07-1H8v1zm.29-2q.155-.519.384-1H8v1zm.965-2q.377-.54.846-1H8v1zm2.137-2A6.97 6.97 0 0 1 8 1v1z"/>
@@ -73,12 +73,54 @@
                     </button>
                   </li>
                 </ul>
-                     <li class="nav-item">
-              <a class="nav-link fw-bold" href="cart.html">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-heart" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1M8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132"/>
-</svg>
-              </li>
-          </ul> 
+                </div>
+                <li class="nav-item dropdown">
+  <a class="nav-link position-relative" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bag-heart" viewBox="0 0 16 16">
+      <path
+        fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1M8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132"/>
+    </svg>
+    <span
+      class="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-light text-dark"
+    >
+      9
+      <span class="visually-hidden">items in cart</span>
+    </span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-end p-3 shadow" aria-labelledby="cartDropdown" style="min-width: 300px;">
+    <li class="mb-2">
+      <div class="d-flex justify-content-between align-items-center">
+      <img id="nav-product" src="img/prod40281_1.jpg" alt="Foto de Producto" width="50" height="50">
+        <div>
+          <strong>Producto 1</strong><br />
+          <small>$250</small>
+        </div>
+        <button class="btn btn-primary inset-shadow">x</button>
+      </div>
+    </li>
+    <li class="mb-2">
+      <div class="d-flex justify-content-between align-items-center">
+      <img id="nav-product" src="img/prod40281_1.jpg" alt="Foto de Producto" width="50" height="50">
+        <div>
+          <strong>Producto 2</strong><br/>
+          <small>$180</small>
+        </div>
+        <button class="btn btn-sm btn-outline-danger">x</button>
+      </div>
+    </li>
+    <li>
+      <hr class="dropdown-divider"/>
+    </li>
+    <li class="text-center">
+      <button 
+      <a class=" btn">Comprar
+      </a>
+      </button>
+    </li>
+  </ul>
+</li>
+                </li> 
+              </ul>
         </div>
       </div>`
       
