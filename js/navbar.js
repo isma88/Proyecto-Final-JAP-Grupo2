@@ -1,6 +1,6 @@
 
 
-    document.querySelector('nav').innerHTML = `  <div class="container">
+    document.querySelector('nav').innerHTML = `    <div class="container">
         <button
           class="navbar-toggler shadow-none bg-light"
           type="button"
@@ -87,7 +87,7 @@
       <span class="visually-hidden">items in cart</span>
     </span>
   </a>
-  <ul class="dropdown-menu dropdown-menu-end p-3 shadow" aria-labelledby="cartDropdown" style="min-width: 300px;">
+  <ul class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="cartDropdown" style="min-width: 300px;">
     <li class="mb-2">
       <div class="d-flex justify-content-between align-items-center">
       <img id="nav-product" src="img/prod40281_1.jpg" alt="Foto de Producto" width="50" height="50">
@@ -97,6 +97,9 @@
         </div>
         <button class="btn btn-primary inset-shadow">x</button>
       </div>
+      <li>
+      <hr class="dropdown-divider"/>
+    </li>
     </li>
     <li class="mb-2">
       <div class="d-flex justify-content-between align-items-center">
@@ -111,6 +114,9 @@
     <li>
       <hr class="dropdown-divider"/>
     </li>
+    <li class="text">
+      <strong>Subtotal</strong>
+    </li>
     <li class="text-center">
       <button 
       <a class=" btn">Comprar
@@ -119,10 +125,10 @@
     </li>
   </ul>
 </li>
-                </li> 
-              </ul>
-        </div>
-      </div>`
+</li> 
+</ul>
+</div>
+</div>`
       
 document.addEventListener("DOMContentLoaded", () => {
   // Obtener datos guardados del usuario y su foto
