@@ -107,7 +107,7 @@ input {
 
 }
 
-button {
+.button {
     background-color: light-dark(var(--light-btn), var(--dark-btn));
     color: var(--text);
     border: none;
@@ -118,7 +118,7 @@ button {
 
 }
 
-button:hover {
+.button:hover {
     background-color: var(--hover);
     color: white;
 }
@@ -399,21 +399,6 @@ button:hover {
     padding: 0.3rem;
 
 
-}
-
-a {
-    color: rgb(118, 36, 118);
-
-}
-
-a:hover {
-    color: #f004b5;
-}
-
-
-
-.nav-link.active {
-    color: rgb(118, 36, 118) !important;
 }
 
 .btn-xs {
