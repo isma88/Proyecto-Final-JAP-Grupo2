@@ -75,54 +75,20 @@
                 </ul>
                 </div>
                 <li class="nav-item dropdown">
-  <a class="nav-link position-relative" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+  <a class="nav-link position-relative" href="#" id="cart-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bag-heart" viewBox="0 0 16 16">
       <path
         fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1M8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132"/>
     </svg>
     <span
-      class="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-light text-dark"
-    >
+       id="cart-count" class="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-light text-dark">
       9
       <span class="visually-hidden">items in cart</span>
     </span>
   </a>
-  <ul class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="cartDropdown" style="min-width: 300px;">
-    <li class="mb-2">
-      <div class="d-flex justify-content-between align-items-center">
-      <img id="nav-product" src="img/prod40281_1.jpg" alt="Foto de Producto" width="50" height="50">
-        <div>
-          <strong>Producto 1</strong><br />
-          <small>$250</small>
-        </div>
-        <button class="btn btn-primary inset-shadow">x</button>
-      </div>
-      <li>
-      <hr class="dropdown-divider"/>
-    </li>
-    </li>
-    <li class="mb-2">
-      <div class="d-flex justify-content-between align-items-center">
-      <img id="nav-product" src="img/prod40281_1.jpg" alt="Foto de Producto" width="50" height="50">
-        <div>
-          <strong>Producto 2</strong><br/>
-          <small>$180</small>
-        </div>
-        <button class="btn btn-sm btn-outline-danger">x</button>
-      </div>
-    </li>
-    <li>
-      <hr class="dropdown-divider"/>
-    </li>
-    <li class="text">
-      <strong>Subtotal</strong>
-    </li>
-    <li class="text-center">
-      <button 
-      <a class=" btn">Comprar
-      </a>
-      </button>
-    </li>
+  <ul class="dropdown-menu dropdown-menu-end p-3"  style="min-width: 300px;">
+  <div id="dropdown-menu"> </div>
+ 
   </ul>
 </li>
 </li> 
@@ -161,3 +127,75 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartDropdown();
+});
+
+
+function updateCartDropdown() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartCount = document.getElementById("cart-count");
+  const cartDropdown = document.getElementById("dropdown-menu");
+
+  // Mostrar número de productos totales
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  cartCount.textContent = totalItems;
+    
+  if (cart.length === 0) {
+    cartDropdown.innerHTML = '<li> <p><em>carrito vacio </em></p></li>';
+    return;
+  }
+
+
+  // Generar lista de productos
+  let subtotal = 0;
+  let itemscarrito = "";
+
+  cart.forEach(item => {
+    subtotal += item.subtotal;
+    itemscarrito += ` 
+    <li  class="mb-2">
+      <div class="d-flex justify-content-between align-items-center">
+      <img id="nav-product" class=img src="${item.image}" alt="${item.image}" width="50" height="50">
+        <div>
+          <strong>${item.name}</strong><br />
+          <small>${item.currency} ${item.cost} x ${item.quantity}</small>
+        </div>
+        <button class="btn"  onclick="removeProductdeCart('${item.id}')">x</button>
+      </div>
+      <li>
+      <hr class="dropdown-divider"/>
+    </li>
+    </li>
+    `;
+  });
+
+  // Mostrar subtotal y link al carrito completo
+  cartDropdown.innerHTML = `
+    ${itemscarrito}
+          <dl class="row">
+      <dt class="col-sm-3">Subtotal</dt>
+      <dd class="col-sm-8 text-end" id="cart-total">${cart[0].currency} ${subtotal}</dd>
+          <li class="text-center">
+      <button 
+      <a href="cart.html" class="inset-shadow ">ir al carrito
+      </a>
+      </button>
+    </li>
+  `;
+
+ 
+}
+ function removeProductdeCart(id) {
+  
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Filtrar el producto que no queremos más
+  cart = cart.filter(item => item.id != id);
+
+  // Guardar el nuevo carrito
+  localStorage.setItem('cart', JSON.stringify(cart));
+
+  updateCartDropdown();
+}

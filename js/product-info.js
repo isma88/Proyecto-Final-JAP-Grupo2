@@ -149,7 +149,6 @@ function addComment(mensaje, user, dateTime, score ) {
               </div>
           </div>
       </div>`
-
 }
 
 
@@ -300,5 +299,59 @@ function choseImg(e) {
     }
 
   }
+
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+ 
+  getJSONData(current_products_info).then(function (result) {
+    if (result.status === "ok") {
+      list = result.data;
+      listElements();
+      checkImg();
+      botonañadircar(); 
+    }
+  });
+});
+
+function botonañadircar() {
+  const addbtn = document.querySelector("#save button");
+  const amountInput = document.getElementById("amountInput");
+
+  addbtn.addEventListener("click", () => {
+    const quantity = parseInt(amountInput.value);
+    if (!quantity || quantity <= 0) {
+      return;
+    }
+
+    const product = {
+      id: list.id,
+      name: list.name,
+      cost: list.cost,
+      currency: list.currency,
+      image: list.images[0],
+      quantity: quantity,
+      subtotal: list.cost * quantity,
+    }
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Si el producto ya está en el carrito, solo aumenta la cantidad
+    const existe = cart.find(item => item.id === product.id);
+    if (existe) {
+      existe.quantity += quantity;
+      existe.subtotal = existe.quantity * existe.cost;
+    } else {
+      cart.push(product);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    if (typeof updateCartDropdown === "function") {
+      updateCartDropdown();
+    }
+
+    amountInput.value = ""; // limpia el campo
+  });
 
 }
