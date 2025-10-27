@@ -1,6 +1,6 @@
 
 
-    document.querySelector('nav').innerHTML = `  <div class="container">
+    document.querySelector('nav').innerHTML = `    <div class="container">
         <button
           class="navbar-toggler shadow-none bg-light"
           type="button"
@@ -24,14 +24,16 @@
             <li class="nav-item">
               <a class="nav-link fw-bold" href="sell.html">Vender</a>
             </li>
-             
-            <li class="nav-item dropdown">
-            
-              <a class="nav-link dropdown-toggle" href="login.html" id="nickname" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+            <div class="d-flex align-items-center gap-3">
+            <li class="nav-item dropdown mb-0 d-flex d-row">
+              <a class="nav-link dropdown-toggle d-flex align-items-center" href="login.html" id="nickname" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+              <img id="nav-profile-pic" src="img/img_perfil.png" alt="Foto de perfil" class="rounded-circle me-2" width="30" height="30" />
+              <span id="nav-username"></span>
+              </a>
                 <ul class="dropdown-menu" aria-labelledby="nickname">
                    <li><a class="dropdown-item" href="my-profile.html">configurar</a></li>
-                   <li>
                   <li><a class="dropdown-item" href="index.html" id="cerrar">Cerrar Sesion</a></li>
+                  <li> 
                    <li>
                     </ul>
             </li>
@@ -40,14 +42,14 @@
               <option value="light">lightmode</option>
               <option value="dark">darkmode</option>
             </select>
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="themeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <li class="nav-item dropdown mb-0"> <a class="nav-link" href="#" id="themeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <span id="themeIcon">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-highlights" viewBox="0 0 16 16">
                     <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-8 5v1H4.5a.5.5 0 0 0-.093.009A7 7 0 0 1 3.1 13zm0-1H2.255a7 7 0 0 1-.581-1H8zm-6.71-2a7 7 0 0 1-.22-1H8v1zM1 8q0-.51.07-1H8v1zm.29-2q.155-.519.384-1H8v1zm.965-2q.377-.54.846-1H8v1zm2.137-2A6.97 6.97 0 0 1 8 1v1z"/>
                   </svg>
                 </span>
               </a>
-              <ul class=" dropdown-menu dropdown-menu-end shadow-sm px-auto aria-labelledby="themeDropdown">
+              <ul class=" dropdown-menu dropdown-menu-end shadow-sm aria-labelledby="themeDropdown">
                 <li><button class="dropdown-item d-flex align-items-center justify-content-center" data-theme="auto">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" fill="currentColor" class="bi bi-highlights " viewBox="0 0 16 16">
                       <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-8 5v1H4.5a.5.5 0 0 0-.093.009A7 7 0 0 1 3.1 13zm0-1H2.255a7 7 0 0 1-.581-1H8zm-6.71-2a7 7 0 0 1-.22-1H8v1zM1 8q0-.51.07-1H8v1zm.29-2q.155-.519.384-1H8v1zm.965-2q.377-.54.846-1H8v1zm2.137-2A6.97 6.97 0 0 1 8 1v1z"/>
@@ -71,8 +73,129 @@
                     </button>
                   </li>
                 </ul>
-              </li>
-          </ul> 
-        </div>
-      </div>`
+                </div>
+                <li class="nav-item dropdown">
+  <a class="nav-link position-relative" href="#" id="cart-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bag-heart" viewBox="0 0 16 16">
+      <path
+        fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1M8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132"/>
+    </svg>
+    <span
+       id="cart-count" class="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-light text-dark">
+      9
+      <span class="visually-hidden">items in cart</span>
+    </span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-end p-3"  style="min-width: 300px;">
+  <div id="dropdown-menu"> </div>
+ 
+  </ul>
+</li>
+</li> 
+</ul>
+</div>
+</div>`
+      
+document.addEventListener("DOMContentLoaded", () => {
+  // Obtener datos guardados del usuario y su foto
+  const user = JSON.parse(localStorage.getItem("usuario"));
+  const profileImage = localStorage.getItem("profileImage");
+
+  // Buscar los elementos dentro de la navbar
+  const nameEl = document.getElementById("nav-username");
+  const imgEl = document.getElementById("nav-profile-pic");
+
+  // Mostrar el nombre completo (si existe)
+  if (user && nameEl) {
+    nameEl.textContent = `${user.nombre || ""} ${user.apellido || ""}`.trim() || "Usuario";
+  } else if (nameEl) {
+    nameEl.textContent = "Invitado";
+  }
+
+  // Mostrar la foto del perfil guardada
+  if (profileImage && imgEl) {
+    imgEl.src = profileImage;
+  }
+
+  // Funcionalidad de "Cerrar Sesión"
+  const cerrar = document.getElementById("cerrar");
+  if (cerrar) {
+    cerrar.addEventListener("click", () => {
+      localStorage.removeItem("usuario");
+      localStorage.removeItem("profileImage");
+      window.location.href = "login.html";
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartDropdown();
+});
+
+
+function updateCartDropdown() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartCount = document.getElementById("cart-count");
+  const cartDropdown = document.getElementById("dropdown-menu");
+
+  // Mostrar número de productos totales
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  cartCount.textContent = totalItems;
     
+  if (cart.length === 0) {
+    cartDropdown.innerHTML = '<li> <p><em>carrito vacio </em></p></li>';
+    return;
+  }
+
+
+  // Generar lista de productos
+  let subtotal = 0;
+  let itemscarrito = "";
+
+  cart.forEach(item => {
+    subtotal += item.subtotal;
+    itemscarrito += ` 
+    <li  class="mb-2">
+      <div class="d-flex justify-content-between align-items-center">
+      <img id="nav-product" class=img src="${item.image}" alt="${item.image}" width="50" height="50">
+        <div>
+          <strong>${item.name}</strong><br />
+          <small>${item.currency} ${item.cost} x ${item.quantity}</small>
+        </div>
+        <button class="btn"  onclick="removeProductdeCart('${item.id}')">x</button>
+      </div>
+      <li>
+      <hr class="dropdown-divider"/>
+    </li>
+    </li>
+    `;
+  });
+
+  // Mostrar subtotal y link al carrito completo
+  cartDropdown.innerHTML = `
+    ${itemscarrito}
+          <dl class="row">
+      <dt class="col-sm-3">Subtotal</dt>
+      <dd class="col-sm-8 text-end" id="cart-total">${cart[0].currency} ${subtotal}</dd>
+          <li class="text-center">
+      <button 
+      <a href="cart.html" class="inset-shadow ">ir al carrito
+      </a>
+      </button>
+    </li>
+  `;
+
+ 
+}
+ function removeProductdeCart(id) {
+  
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Filtrar el producto que no queremos más
+  cart = cart.filter(item => item.id != id);
+
+  // Guardar el nuevo carrito
+  localStorage.setItem('cart', JSON.stringify(cart));
+
+  updateCartDropdown();
+}
