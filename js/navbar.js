@@ -162,7 +162,7 @@ function updateCartDropdown() {
           <strong>${item.name}</strong><br />
           <small>${item.currency} ${item.cost} x ${item.quantity}</small>
         </div>
-        <button class="btn"  onclick="removeProductdeCart('${item.id}')">x</button>
+        <button class="btn" onclick="removeProductdeCart('${item.id}')">x</button>
       </div>
       <li>
       <hr class="dropdown-divider"/>
@@ -178,10 +178,9 @@ function updateCartDropdown() {
       <dt class="col-sm-3">Subtotal</dt>
       <dd class="col-sm-8 text-end" id="cart-total">${cart[0].currency} ${subtotal}</dd>
           <li class="text-center">
-      <button 
-      <a href="cart.html" class="inset-shadow ">ir al carrito
-      </a>
-      </button>
+      <li class="text-center">
+      <a  href="cart.html" class="inset-shadow">ir al carrito</a>
+      </li>
     </li>
   `;
 
