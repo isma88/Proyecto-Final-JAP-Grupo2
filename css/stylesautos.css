@@ -66,7 +66,7 @@ header .logo {
     margin-top: 2vh;
 }
 
-header img {
+#headerimg {
     height: 8rem;
     filter: drop-shadow(1px 1px 1px)
 }
@@ -177,7 +177,7 @@ input {
 
     }
 
-    header img {
+    #headerimg {
         height: 13rem;
         filter: brightness(0) invert(1) grayscale(1) contrast(100) drop-shadow(2px 2px 2px);
 
@@ -222,7 +222,7 @@ input {
 }
 
 @media only screen and (max-width: 360px) {
-    header img {
+    #headerimg {
         height: 50vw;
 
     }
