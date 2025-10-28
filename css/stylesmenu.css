@@ -33,6 +33,11 @@
 
 
 }
+
+.bg {
+    background-color: var(--background);
+    color: var(--text) !important;
+}
 .nav-item .nav-link {
     color: var(--card); 
    

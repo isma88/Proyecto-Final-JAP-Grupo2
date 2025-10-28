@@ -65,6 +65,9 @@
     & #logojap, #eMercado {
         filter: var(--dark-filter);
     }
+    & header #nav-profile-pic {
+        filter: none !important;
+    }
 }
 
 :root:has(option[value='light']:checked){
@@ -132,6 +135,10 @@ body::before {
         
         filter: var( --dark-filter) !important;
 
+    }
+
+     & header #nav-profile-pic {
+        filter: none !important;
     }
 
     #logojap, #eMercado, #jap-emercado {

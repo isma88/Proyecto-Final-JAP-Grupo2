@@ -18,9 +18,9 @@ document.querySelector('nav').innerHTML = `
           <li class="nav-item">
             <a class="nav-link fw-bold" href="sell.html">Vender</a>
           </li>
-          <div class="d-flex align-items-center gap-3">
+          <div class="d-flex align-items-center gap-3 rounded-pill bg px-1">
            <img id="nav-profile-pic" src="img/img_perfil.png" alt="Foto de perfil" class="rounded-circle"width="30" height="30" />
-            <li class="nav-item dropdown mb-0 d-flex d-row">
+            <li class="nav-item dropdown mb-0 d-flex d-row ">
             
               <a class="nav-link dropdown-toggle d-flex align-items-center" href="login.html" id="nickname"
                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
