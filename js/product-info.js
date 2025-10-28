@@ -23,7 +23,6 @@ const listElements = () => {
   let productImages = list.images;
   let productsoldCount = list.soldCount;
   let productid = list.id;
-
    cost = new Intl.NumberFormat('en-US',
     { 
         style: 'currency', 
@@ -36,7 +35,7 @@ const listElements = () => {
   document.getElementById('price').innerHTML = cost
   document.getElementById('sold').innerHTML = productsoldCount
 
-  console.log(productImages)
+ 
     let counter = -1 ;
 
   for (img of productImages) {
@@ -104,7 +103,7 @@ const listElements = () => {
 
  let relatedHTML = "";
   list.relatedProducts.forEach(rel => {
-    console.log(list);
+   // console.log(list);
     relatedHTML += `
          <div id="${rel.id}" role="button" class="col grow col-md-3 col-6 col-sm-6">
       <div class="card h-100 shadow-lg">
@@ -149,7 +148,6 @@ function addComment(mensaje, user, dateTime, score ) {
               </div>
           </div>
       </div>`
-
 }
 
 
@@ -300,5 +298,57 @@ function choseImg(e) {
     }
 
   }
+
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById('buy').addEventListener('click', () => window.location.href = 'cart.html')
+  getJSONData(current_products_info).then(function (result) {
+    if (result.status === "ok") {
+      list = result.data;
+      botonañadircar(); 
+    }
+  });
+});
+
+function botonañadircar() {
+  const addbtn = document.querySelector("#save button");
+  const amountInput = document.getElementById("amountInput");
+
+  addbtn.addEventListener("click", () => {
+    const quantity = parseInt(amountInput.value);
+    if (!quantity || quantity <= 0) {
+      return;
+    }
+
+    const product = {
+      id: list.id,
+      name: list.name,
+      cost: list.cost,
+      currency: list.currency,
+      image: list.images[0],
+      quantity: quantity,
+      subtotal: list.cost * quantity,
+    }
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Si el producto ya está en el carrito, solo aumenta la cantidad
+    const existe = cart.find(item => item.id === product.id);
+    if (existe) {
+      existe.quantity += quantity;
+      existe.subtotal = existe.quantity * existe.cost;
+    } else {
+      cart.push(product);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    if (typeof updateCartDropdown === "function") {
+      updateCartDropdown();
+    }
+
+    amountInput.value = 1; // limpia el campo
+  });
 
 }
