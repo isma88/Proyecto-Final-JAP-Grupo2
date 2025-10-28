@@ -26,7 +26,7 @@ document.querySelector('nav').innerHTML = `    <div class="container">
             </li> 
 
             <li class="nav-item dropdown d-flex d-row align-items-center">
-            <img id="nav-profile-pic" src="img/img_perfil.png" alt="Foto de perfil" class="rounded-circle ms-auto"  width="30" height="30" /> 
+            <img id="nav-profile-pic" src="img/img_perfil.png" alt="Foto de perfil" class="img-fluid rounded-circle ms-auto"  width="30" height="30" /> 
             <a class="nav-link dropdown-toggle d-flex align-items-center" href="login.html" id="nickname" role="button" data-bs-toggle="dropdown" aria-expanded="false">             
             <span id="nav-username"></span>
               </a>
