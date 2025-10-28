@@ -92,9 +92,6 @@ const icons = {
 };
 
 function applyTheme(mode) {
- 
-
-
   themeIcon.innerHTML = icons[mode];
 }
 

@@ -21,7 +21,7 @@
             <div class="col">
               <div class="row text-center align-items-center">
                 <div class="col-md my-2 fw-bold">${item.name}</div>
-                <div class="col-md my-2 fst-italic">Precio: ${item.currency} ${(item.subtotal).toLocaleString('de-DE')}</div>
+                <div class="col-md my-2 fst-italic">Precio: ${item.currency} ${(item.cost).toLocaleString('de-DE')}</div>
                 <div class="col-md my-2 justify-content-center d-flex d-inline">
 
                   <div class="btn-group" role="group" aria-label="Basic example">
@@ -31,7 +31,7 @@
                   </div>
                   
                 </div>
-                 <div class="col-md my-2 fst-italic">Subtotal: ${item.currency} ${(item.quantity * item.subtotal).toLocaleString('de-DE')}</div>
+                 <div class="col-md my-2 fst-italic">Subtotal: ${item.currency} ${(item.quantity * item.cost).toLocaleString('de-DE')}</div>
                 <div class="col"> <div class="btn ms-3"><i class="bi bi-trash-fill"></i></div></div>
               </div>
             </div>
@@ -49,7 +49,8 @@
   desplegarCarrito(JSON.parse(cartItems));
 }); 
 
-const cant = document.querySelectorAll('[name="cant"]')
+document.addEventListener('DOMContentLoaded', () =>{ 
+  const cant = document.querySelectorAll('[name="cant"]')
 cant.value = 1
 
 cant.forEach(element => {
@@ -66,3 +67,4 @@ cant.forEach(element => {
   })
   
 });
+})

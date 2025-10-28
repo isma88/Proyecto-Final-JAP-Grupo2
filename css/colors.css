@@ -56,7 +56,7 @@
     pointer-events: none;
 }
 
-         & header img {
+         & #headerimg, img[name="logo"] {
         
         filter: var(--dark-filter);
 
@@ -102,6 +102,8 @@
    
 }
 
+
+
 body {
     position: relative;
     z-index: 0;
@@ -121,17 +123,13 @@ body::before {
 }  
 
 
- #logojap, #eMercado, #jap-emercado {
-        filter: var(--light-filter) !important;
-    }
-
 
 @media (prefers-color-scheme: dark) {
         body::before {
         filter: grayscale(1) brightness(0.2);
     }
        
-       & header img {
+       & #headerimg, img[name="logo"] {
         
         filter: var( --dark-filter) !important;
 
@@ -146,3 +144,20 @@ body::before {
     }
 
     } 
+
+@media (prefers-color-scheme: light) {
+      & header img {
+        
+        filter: var(--light-filter) !important;
+
+    }
+     & #logojap, #eMercado {
+        filter: var(--light-filter) !important;
+    }
+   
+     #logojap, #eMercado, #jap-emercado {
+        filter: var(--light-filter) !important;
+     }
+    }
+
+    
