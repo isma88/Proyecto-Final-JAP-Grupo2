@@ -1,6 +1,6 @@
 
 
-    document.querySelector('nav').innerHTML = `    <div class="container">
+document.querySelector('nav').innerHTML = `    <div class="container">
         <button
           class="navbar-toggler shadow-none bg-light"
           type="button"
@@ -95,7 +95,7 @@
 </ul>
 </div>
 </div>`
-      
+
 document.addEventListener("DOMContentLoaded", () => {
   // Obtener datos guardados del usuario y su foto
   const user = JSON.parse(localStorage.getItem("usuario"));
@@ -141,7 +141,7 @@ function updateCartDropdown() {
   // Mostrar número de productos totales
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   cartCount.textContent = totalItems;
-    
+
   if (cart.length === 0) {
     cartDropdown.innerHTML = '<li> <p><em>carrito vacio </em></p></li>';
     return;
@@ -178,17 +178,16 @@ function updateCartDropdown() {
       <dt class="col-sm-3">Subtotal</dt>
       <dd class="col-sm-8 text-end" id="cart-total">${cart[0].currency} ${subtotal}</dd>
           <li class="text-center">
-      <button 
-      <a href="cart.html" class="inset-shadow ">ir al carrito
+      <a class="inset-shadow " href="cart.html"  >
+      ir al carrito
       </a>
-      </button>
     </li>
   `;
 
- 
+
 }
- function removeProductdeCart(id) {
-  
+function removeProductdeCart(id) {
+
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
   // Filtrar el producto que no queremos más
