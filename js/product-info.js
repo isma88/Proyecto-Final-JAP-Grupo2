@@ -307,8 +307,7 @@ document.addEventListener("DOMContentLoaded", function () {
   getJSONData(current_products_info).then(function (result) {
     if (result.status === "ok") {
       list = result.data;
-      listElements();
-      checkImg();
+      
       botonañadircar(); 
     }
   });
