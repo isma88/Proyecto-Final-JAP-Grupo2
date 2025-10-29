@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           <div class="btn-group" role="group" aria-label="Basic example">
             <button type="button" class="btn ">-</button>
-            <input type="number" name="cant" value="${item.quantity}" min="1" max="69" step="1">
+            <input class='form-control text-center w-50' type="number" name="cant" value="${item.quantity}" min="1" max="69" step="1">
             <button type="button" class="btn ">+</button>
           </div>
 
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
         element.value--
       }
     })
-
+    element.value
   });
   function eliminar() {
     document.querySelectorAll('.eliminar').forEach((e) => {
