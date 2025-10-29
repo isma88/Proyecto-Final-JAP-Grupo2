@@ -182,9 +182,7 @@ function updateCartDropdown() {
       <dt class="col-sm-3">Subtotal</dt>
       <dd class="col-sm-8 text-end" id="cart-total">${cart[0].currency} ${subtotal}</dd>
           <li class="text-center">
-      <li class="text-center">
-      <a  href="cart.html" class="inset-shadow">ir al carrito</a>
-      </li>
+      <a  href="cart.html" class="inset-shadow btn">ir al carrito</a>
     </li>
   `;
 
