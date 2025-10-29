@@ -8,29 +8,95 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/stylescart.css" rel="stylesheet">
   <link href="css/stylesmenu.css" rel="stylesheet">
 
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/stylesmenu.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/stylescategoria.css">
+  <link rel="stylesheet" href="/css/stylecart.css">
 </head>
+
 
 <body>
   <nav class="navbar navbar-expand-lg p-1 d-flex flex-row shadow-sm rounded-4 fixed-top">
-  </nav>
-  <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item">
+          </li>
+        </ul>
       </div>
     </div>
+  </nav>
+
+  <main class="pb-5">
+    <div class="text-center p-4">
+      <h2 class="fw-bold mt-4">Carrito</h2>
+    </div>
+
+    <div class="row justify-content-end my-2">
+      <div class="col-md-3 col-sm-12 text-center">
+        Moneda:
+        <div class="btn d-inline-flex" id="moneda">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" checked type="radio" name="inlineRadioOptions" id="inlineRadio1"
+              value="UYU">
+            <label class="form-check-label" for="inlineRadio1">UYU</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="USD">
+            <label class="form-check-label" for="inlineRadio2">USD</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="" id="container-carrito">
+     
+    </div>
+      
+      <div class="row justify-content-end my-2">
+      <div class="col-md-3 col-sm-12 text-center">
+        <div class="container">
+        <div class="card">
+          <div class="card-body">
+              <div>Subtotal: <span id="subtotal" class="fst-italic">123123</span></div> 
+          </div>
+          <div class="card-footer">
+            <div class="btn"> Comprar</div>
+          </div>
+        </div>
+        </div>
+
+      </div>
+      
+    </div>
+
   </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
   </footer>
   <div id="spinner-wrapper">
@@ -42,9 +108,9 @@
     </div>
   </div>
   <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/navbar.js"></script>
+  <script src="js/init.js"></script>
 </body>
 
 </html>
