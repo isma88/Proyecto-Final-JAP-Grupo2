@@ -1,0 +1,45 @@
+.prod-img { 
+    max-width: 11rem !important; 
+    min-width: auto;
+    
+}
+#moneda:hover {
+    color: var(--text)!important;
+    background-color: var(--hover);
+}
+
+.form-control {
+
+    background-color: light-dark(white, var(--dark-innercard));
+    color: var(--text) !important;
+} 
+
+.card {
+    background-color: var(--card);
+    color: var(--text);
+}
+
+
+.form-check-input:checked {
+        background-color: var(--hover) !important;
+        border-color: var(--hover) !important;
+    }
+
+
+
+
+/* For Chrome, Safari, Edge, and Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input[type=number]:active, input[type=number]:focus {
+ background-color: var(--dark-innercard);
+}
