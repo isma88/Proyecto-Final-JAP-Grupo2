@@ -104,14 +104,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
  function covnert(moneda, precio, monDeseada) { 
          monDeseada =  document.querySelector('input[name="moneyRadio"]:checked').value
-         console.log(monDeseada)
+         moneda =  document.querySelectorAll('input[name="moneyRadio"]')
+                 
+         /*const valor {
+          UYU: 1,
+          USD: 40
+         };*/
          
-          if(moneda == monDeseada) {
-
+          if (moneda != monDeseada || item.currency != monDeseada) { valor * item.cost
           }
-          
-       
-    }
+    } /**/ 
+
  covnert()
 
 
