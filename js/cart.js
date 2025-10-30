@@ -104,16 +104,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
  function covnert(moneda, precio, monDeseada) { 
          monDeseada =  document.querySelector('input[name="moneyRadio"]:checked').value
-         moneda =  document.querySelectorAll('input[name="moneyRadio"]')
-                 
-         /*const valor {
-          UYU: 1,
-          USD: 40
-         };*/
+         moneda/precio =  document.getElementById('Precio');
          
-          if (moneda != monDeseada || item.currency != monDeseada) { valor * item.cost
+        
+
+
+              
+         /*const valor = [ {
+          id: 1, currency: UYU, amount:1,
+          id: 1, currency: USD, amount: 40,
+         }];
+         
+         const moneydata = JSON.stringify(valor);
+         localStorage.setItem('money', moneydata);
+
+         let monedasvalor = JSON.parse(localStorage.getItem('money'));
+
+         const amount = monedasvalor.filter(amount => amount && currency == monDeseada);
+         */
+
+
+         
+          if (moneda != monDeseada || item.currency/precio != monDeseada) { valor/monedasvalor * item.cost/precio
           }
-    } /**/ 
+    } 
 
  covnert()
 
