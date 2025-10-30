@@ -18,14 +18,14 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="row align-items-center w-100 justify-content-center">
     <img src="${item.image}" alt="" class="prod-img">
     <div class="col">
-      <div class="row text-center align-items-center">
-        <div class="col-md my-2 fw-bold">${item.name}</div>
-        <div class="col-md my-2 fst-italic">Precio: ${item.currency} ${(item.cost).toLocaleString('de-DE')}</div>
+      <div class="row text-center align-items-center" id="dataCart">
+        <div class="col-md my-2 fw-bold" id='name' >${item.name}</div>
+        <div class="col-md my-2 fst-italic" id='precio' >Precio: ${item.currency} ${(item.cost).toLocaleString('de-DE')}</div>
         <div class="col-md my-2 justify-content-center d-flex d-inline">
 
           <div class="btn-group" role="group" aria-label="Basic example">
             <button type="button" class="btn ">-</button>
-            <input type="number" name="cant" value="${item.quantity}" min="1" max="69" step="1">
+            <input type="number" id='${item.id}' name="cant" value="${item.quantity}" min="1" max="69" step="1">
             <button type="button" class="btn ">+</button>
           </div>
 
@@ -53,22 +53,68 @@ document.addEventListener('DOMContentLoaded', function () {
   eliminar();
 
   const cant = document.querySelectorAll('[name="cant"]')
-  cant.value = 1
-
+    let subtototalitems = 0;
   cant.forEach(element => {
-    element.value = 1
+
     element.nextElementSibling.addEventListener('click', () => {
       if (element.value > 0 && element.value < 69) {
         element.value++
+         calcSubtotal(element.id)
+        console.log(subtototalitems)
+        console.log(element.closest('#dataCart').getElementsByTagName('span')[0].innerHTML = subtototalitems)
       }
     })
     element.previousElementSibling.addEventListener('click', () => {
       if (element.value > 1 && element.value < 69) {
         element.value--
+        calcSubtotal(element.id)
+        console.log(subtototalitems)
+        console.log(element.closest('#dataCart').getElementsByTagName('span')[0].innerHTML = subtototalitems)
       }
     })
 
+    
+    function calcSubtotal(idCarrito) {
+
+
+      let items = JSON.parse(localStorage.getItem('cart'));
+
+      items.forEach(cartItems => {
+        if (cartItems.id == idCarrito) {
+          subtototalitems = element.value * cartItems.cost }
+        
+        /*totalCarrito = .reduce((acumulador, subtotal) => {
+        return acumulador + subtotal;
+        }, 0);
+        console.log(totalCarrito)*/
+
+      });
+
+    }
+   
+
+   
+
   });
+
+
+   document.querySelectorAll('input[name="moneyRadio"]').forEach(element => {
+      element.addEventListener('click', covnert)
+    });
+
+ function covnert(moneda, precio, monDeseada) { 
+         monDeseada =  document.querySelector('input[name="moneyRadio"]:checked').value
+         console.log(monDeseada)
+         
+          if(moneda == monDeseada) {
+
+          }
+          
+       
+    }
+ covnert()
+
+
   function eliminar() {
     document.querySelectorAll('.eliminar').forEach((e) => {
       e.addEventListener('click', (e) => {
@@ -84,3 +130,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 })
+
+
+/*if (cartItems.length > 0) {
+   { for ( const items of cartItems) {
+ const subtototalitems = id.price * cant.value; }
+  
+  subtotalinput.innerHTML = subtototalitems.value
+
+   /*let total = 0;
+   
+  for (let i = 0; i < cartItems.length; i++) {
+  total += cartItems[i].subtototalitem;
+  } }
+
+ totalinput.innerHTML = (total).value */
+
+
+
+
