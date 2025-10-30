@@ -1,9 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
   const container = document.querySelector("#container-carrito");
-  let cartItems = localStorage.getItem('cart');
+  
 
   function desplegarCarrito() {
     items = JSON.parse(localStorage.getItem('cart'))
+    covnert(items)
+    
+    
     if (items.length === 0) {
       container.innerHTML = `<p class="text-center">Tu carrito está vacío.</p>`;
       return;
@@ -47,11 +50,14 @@ document.addEventListener('DOMContentLoaded', function () {
       
    </ul> `;
     eliminar();
+    amountControl()
   }
 
   desplegarCarrito();
   eliminar();
 
+
+ function amountControl() {  
   const cant = document.querySelectorAll('[name="cant"]')
     let subtototalitems = 0;
   cant.forEach(element => {
@@ -59,78 +65,83 @@ document.addEventListener('DOMContentLoaded', function () {
     element.nextElementSibling.addEventListener('click', () => {
       if (element.value > 0 && element.value < 69) {
         element.value++
-         calcSubtotal(element.id)
+         calcSubtotal(element.id, element.value)
+        
         console.log(subtototalitems)
         console.log(element.closest('#dataCart').getElementsByTagName('span')[0].innerHTML = subtototalitems)
+         desplegarCarrito()
       }
+    
     })
     element.previousElementSibling.addEventListener('click', () => {
       if (element.value > 1 && element.value < 69) {
         element.value--
-        calcSubtotal(element.id)
+        calcSubtotal(element.id, element.value)
+       
         console.log(subtototalitems)
         console.log(element.closest('#dataCart').getElementsByTagName('span')[0].innerHTML = subtototalitems)
+         desplegarCarrito()
       }
+
     })
 
     
-    function calcSubtotal(idCarrito) {
+    function calcSubtotal(idCarrito, quantity) {
 
 
       let items = JSON.parse(localStorage.getItem('cart'));
-
+        covnert(items)
+         let newCart = []
       items.forEach(cartItems => {
+         
+        var newItems = {     
+      id: cartItems.id,
+      name: cartItems.name,
+      cost: cartItems.cost,
+      currency: cartItems.currency,
+      image: cartItems.image,
+      quantity: cartItems.quantity,
+    }
         if (cartItems.id == idCarrito) {
-          subtototalitems = element.value * cartItems.cost }
-        
-        /*totalCarrito = .reduce((acumulador, subtotal) => {
-        return acumulador + subtotal;
-        }, 0);
-        console.log(totalCarrito)*/
-
+          subtototalitems = element.value * cartItems.cost
+          
+          console.log(cartItems.quantity, element.value)
+          newItems.quantity =  parseInt(element.value)
+        }
+       
+         newCart.push(newItems)
+        console.log(newCart)
+          localStorage.setItem('cart', JSON.stringify(newCart))
       });
 
     }
    
-
-   
-
   });
-
+}
 
    document.querySelectorAll('input[name="moneyRadio"]').forEach(element => {
-      element.addEventListener('click', covnert)
+      element.addEventListener('click', desplegarCarrito)
     });
 
- function covnert(moneda, precio, monDeseada) { 
+ function covnert() { 
          monDeseada =  document.querySelector('input[name="moneyRadio"]:checked').value
-         moneda/precio =  document.getElementById('Precio');
-         
-        
+          items.forEach(element => {
+              console.log(element.name, element.currency, element.cost, monDeseada == element.currency )
+            if(element.currency !==  monDeseada && monDeseada == "UYU") {
+              element.cost = element.cost * 40
+              console.log(element.cost)
+              element.currency = "UYU"
+            }else if(element.currency !==  monDeseada && monDeseada == "USD"){
+                 element.cost = element.cost / 40
+                  console.log(element.cost)
+                element.currency = "USD"
+            }
 
-
-              
-         /*const valor = [ {
-          id: 1, currency: UYU, amount:1,
-          id: 1, currency: USD, amount: 40,
-         }];
-         
-         const moneydata = JSON.stringify(valor);
-         localStorage.setItem('money', moneydata);
-
-         let monedasvalor = JSON.parse(localStorage.getItem('money'));
-
-         const amount = monedasvalor.filter(amount => amount && currency == monDeseada);
-         */
-
+          });
 
          
-          if (moneda != monDeseada || item.currency/precio != monDeseada) { valor/monedasvalor * item.cost/precio
-          }
+    
     } 
-
- covnert()
-
 
   function eliminar() {
     document.querySelectorAll('.eliminar').forEach((e) => {
@@ -147,21 +158,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 })
-
-
-/*if (cartItems.length > 0) {
-   { for ( const items of cartItems) {
- const subtototalitems = id.price * cant.value; }
-  
-  subtotalinput.innerHTML = subtototalitems.value
-
-   /*let total = 0;
-   
-  for (let i = 0; i < cartItems.length; i++) {
-  total += cartItems[i].subtototalitem;
-  } }
-
- totalinput.innerHTML = (total).value */
 
 
 
