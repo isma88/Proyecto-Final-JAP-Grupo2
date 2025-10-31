@@ -137,6 +137,41 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+document.addEventListener("DOMContentLoaded", () => {
+  // Obtener datos guardados del usuario y su foto
+  const user = JSON.parse(localStorage.getItem("usuario"));
+
+   const navPFP = document.getElementById("nav-profile-pic");
+  // Buscar los elementos dentro de la navbar
+  const nameEl = document.getElementById("nav-username");
+
+  // Mostrar el nombre completo (si existe)
+  if (user && nameEl) {
+    nameEl.textContent = `${user.nombre || ""} ${user.apellido || ""}`.trim() || "Usuario";
+  } else if (nameEl) {
+    nameEl.textContent = "Invitado";
+  }
+
+  // Mostrar la foto del perfil guardada
+
+    navPFP.src = user.pfp || "img/img_perfil.png";
+  
+
+  // Funcionalidad de "Cerrar Sesión"
+  const cerrar = document.getElementById("cerrar");
+  if (cerrar) {
+    cerrar.addEventListener("click", () => {
+      localStorage.removeItem("usuario");
+      window.location.href = "login.html";
+    });
+  }
+
+  updateCartDropdown();
+
+
+});
+
+
 function updateCartDropdown() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const cartCount = document.getElementById("cart-count");
@@ -153,11 +188,13 @@ function updateCartDropdown() {
 
 
   // Generar lista de productos
-  let subtotal = 0;
+  let subtotalGeneral = 0;
   let itemscarrito = "";
 
   cart.forEach(item => {
-    subtotal += item.subtotal;
+    const subtotalItem = item.cost * item.quantity; 
+    subtotalGeneral += subtotalItem;
+
     itemscarrito += ` 
     <li  class="mb-2">
       <div class="d-flex justify-content-between align-items-center">
@@ -180,11 +217,11 @@ function updateCartDropdown() {
     ${itemscarrito}
           <dl class="row">
       <dt class="col-sm-3">Subtotal</dt>
-      <dd class="col-sm-8 text-end" id="cart-total">${cart[0].currency} ${subtotal}</dd>
+      <dd class="col-sm-8 text-end" id="cart-total">${cart[0].currency} ${subtotalGeneral.toLocaleString("de-DE")}</dd>
           <li class="text-center">
-      <a class="inset-shadow " href="cart.html"  >
+      <botton class="inset-shadow " href="cart.html"  >
       ir al carrito
-      </a>
+      </botton>
     </li>
   `;
 document.querySelectorAll('.removeProduct').forEach(element => {
