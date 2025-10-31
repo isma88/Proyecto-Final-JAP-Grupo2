@@ -24,8 +24,7 @@
 
 .image img {
     border-radius: 50%;
-    width: 150px;
-    height: 150px;
+   
     border: var(--card) solid 1px;
     background-color: var(--background);
 }
@@ -34,14 +33,15 @@
 .tarjeta{
     border-radius: 15px;
     padding-top: 10px;
-    width: 50vw;
+    width: 50vmax;
     background-color: var(--card);
 }
 
 
 .image {
-  width: 150px;
-  height: 150px;
+  width: 14vmax; 
+  height: 14vmax;
+  max-width: 100%;
   margin: 1rem auto;
   perspective: 1000px;
   cursor: pointer;
