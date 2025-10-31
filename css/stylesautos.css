@@ -66,7 +66,7 @@ header .logo {
     margin-top: 2vh;
 }
 
-header img {
+#headerimg {
     height: 8rem;
     filter: drop-shadow(1px 1px 1px)
 }
@@ -107,7 +107,7 @@ input {
 
 }
 
-button {
+.button {
     background-color: light-dark(var(--light-btn), var(--dark-btn));
     color: var(--text);
     border: none;
@@ -118,7 +118,7 @@ button {
 
 }
 
-button:hover {
+.button:hover {
     background-color: var(--hover);
     color: white;
 }
@@ -177,7 +177,7 @@ button:hover {
 
     }
 
-    header img {
+    #headerimg {
         height: 13rem;
         filter: brightness(0) invert(1) grayscale(1) contrast(100) drop-shadow(2px 2px 2px);
 
@@ -222,7 +222,7 @@ button:hover {
 }
 
 @media only screen and (max-width: 360px) {
-    header img {
+    #headerimg {
         height: 50vw;
 
     }
@@ -399,21 +399,6 @@ button:hover {
     padding: 0.3rem;
 
 
-}
-
-a {
-    color: rgb(118, 36, 118);
-
-}
-
-a:hover {
-    color: #f004b5;
-}
-
-
-
-.nav-link.active {
-    color: rgb(118, 36, 118) !important;
 }
 
 .btn-xs {
