@@ -153,11 +153,13 @@ function updateCartDropdown() {
 
 
   // Generar lista de productos
-  let subtotal = 0;
+  let subtotalGeneral = 0;
   let itemscarrito = "";
 
   cart.forEach(item => {
-    subtotal += item.subtotal;
+    const subtotalItem = item.cost * item.quantity; 
+    subtotalGeneral += subtotalItem;
+
     itemscarrito += ` 
     <li  class="mb-2">
       <div class="d-flex justify-content-between align-items-center">
@@ -180,9 +182,11 @@ function updateCartDropdown() {
     ${itemscarrito}
           <dl class="row">
       <dt class="col-sm-3">Subtotal</dt>
-      <dd class="col-sm-8 text-end" id="cart-total">${cart[0].currency} ${subtotal}</dd>
+      <dd class="col-sm-8 text-end" id="cart-total">${cart[0].currency} ${subtotalGeneral.toLocaleString("de-DE")}</dd>
           <li class="text-center">
-      <a  href="cart.html" class="inset-shadow btn">ir al carrito</a>
+      <botton class="inset-shadow " href="cart.html"  >
+      ir al carrito
+      </botton>
     </li>
   `;
 document.querySelectorAll('.removeProduct').forEach(element => {
