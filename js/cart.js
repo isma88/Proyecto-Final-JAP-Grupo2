@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
    </ul> `;
     eliminar();
     amountControl()
+    updateCartDropdown()
   }
 
   desplegarCarrito();
