@@ -130,10 +130,10 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "login.html";
     });
   }
-});
 
-document.addEventListener("DOMContentLoaded", () => {
   updateCartDropdown();
+
+
 });
 
 
@@ -166,7 +166,7 @@ function updateCartDropdown() {
           <strong>${item.name}</strong><br />
           <small>${item.currency} ${item.cost} x ${item.quantity}</small>
         </div>
-        <button class="btn" onclick="removeProductdeCart('${item.id}')">x</button>
+        <button class="btn removeProduct" id='${item.id}'">x</button>
       </div>
       <li>
       <hr class="dropdown-divider"/>
@@ -185,7 +185,12 @@ function updateCartDropdown() {
       <a  href="cart.html" class="inset-shadow btn">ir al carrito</a>
     </li>
   `;
-
+document.querySelectorAll('.removeProduct').forEach(element => {
+  element.addEventListener('click', (e) =>{
+    e.stopPropagation();
+    removeProductdeCart(element.id)})
+  
+});
 
 }
 function removeProductdeCart(id) {

@@ -150,7 +150,7 @@ document.getElementById('sendCom').addEventListener('click', () => {
 })
 
 
-stars = document.querySelectorAll('.bi')
+stars = document.querySelectorAll('.bi-star-fill')
 for (star of stars) {
   star.addEventListener("mouseover", addStars)
   star.addEventListener("mouseout", removeaddStars)
