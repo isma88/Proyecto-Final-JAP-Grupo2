@@ -73,10 +73,48 @@
     </div>
     <div class="col-4">
       <div class="container">
-      <div class="card">
-        <div class="card-body">
-            <div>Subtotal: <span id="subtotal" class="fst-italic">123123</span></div> 
+      <div class="card p-3 rounded-3 shadow-sm">
+        <div class="mb-3">
+        <h6 class="fw-bold">Subtotal:</h6>
+        <span id="subtotal" class="fw-semibold">$USD123</span>
         </div>
+        
+      <div class="mb-3">
+        <h6 class="fw-bold">Enviar</h6>
+
+        <div class="form-check my-2 border border-light rounded-4">
+          <input class="form-check-input ms-1" type="radio" name="envio" id="retiro" value="0" checked>
+          <label class="form-check-label" for="retiro">Retirar en el local</label>
+        </div>
+        
+        <div class="form-check my-2 border border-light rounded-4">
+          <input class="form-check-input ms-1" type="radio" name="envio" id="montevideo" value="5">
+          <label class="form-check-label " for="montevideo">Montevideo (+5%)</label>
+        </div>
+
+        <div class="form-check my-2 border border-light rounded-4">
+          <input class="form-check-input ms-1" type="radio" name="envio" id="interior" value="7">
+          <label class="form-check-label" for="interior">Interior del país (+7%)</label>
+        </div>
+      </div>
+             <div class="mb-3">
+        <h6 class="fw-bold">Total:</h6>
+        <span id="subtotal" class="fw-semibold">$USD123</span>
+        </div>
+        
+      <div class="mb-3">
+        <h6 class="fw-bold">Pago</h6>
+
+        <div class="form-check my-4 border border-light rounded-4">
+          <input class="form-check-input ms-1" type="radio" name="precio" id="tarjetas" value="0" checked>
+          <label class="form-check-label" for="retiro">Paga con tarjeta de credito o debito</label>
+        </div>
+        
+        <div class="form-check my-4 border border-light rounded-4">
+          <input class="form-check-input ms-1" type="radio" name="precio" id="efectivo" value="5">
+          <label class="form-check-label " for="montevideo">Paga en efectivo</label>
+        </div>
+      </div>
         <div class="card-footer">
           <div class="btn"> Comprar</div>
         </div>
