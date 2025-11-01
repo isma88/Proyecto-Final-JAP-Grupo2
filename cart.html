@@ -9,7 +9,6 @@
     integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/stylescart.css" rel="stylesheet">
   <link href="css/stylesmenu.css" rel="stylesheet">
 
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -56,34 +55,36 @@
         Moneda:
         <div class="btn d-inline-flex" id="moneda">
           <div class="form-check form-check-inline">
-            <input class="form-check-input" checked type="radio" name="inlineRadioOptions" id="inlineRadio1"
-              value="UYU">
+            <input class="form-check-input" checked type="radio" name="moneyRadio" id="inlineRadio1" value="UYU">
             <label class="form-check-label" for="inlineRadio1">UYU</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="USD">
+            <input class="form-check-input" type="radio" name="moneyRadio" id="inlineRadio2" value="USD">
             <label class="form-check-label" for="inlineRadio2">USD</label>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="" id="container-carrito">
+    <div class="row">
+    <div class="col-lg-9 col-sm-12" id="container-carrito">
      
     </div>
+    <div class="col">
+      <div class="mt-2  container-fluid">
+      <div class="card">
+        <div class="card-body">
+            <div>Subtotal: <span id="subtotal" class="fst-italic">123123</span></div> 
+        </div>
+        <div class="card-footer">
+          <div class="btn"> Comprar</div>
+        </div>
+      </div>
+      </div>
       
+    </div>
+      </div>
       <div class="row justify-content-end my-2">
       <div class="col-md-3 col-sm-12 text-center">
-        <div class="container">
-        <div class="card">
-          <div class="card-body">
-              <div>Subtotal: <span id="subtotal" class="fst-italic">123123</span></div> 
-          </div>
-          <div class="card-footer">
-            <div class="btn"> Comprar</div>
-          </div>
-        </div>
-        </div>
 
       </div>
       
