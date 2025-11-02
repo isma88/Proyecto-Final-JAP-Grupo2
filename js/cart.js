@@ -65,6 +65,18 @@ document.addEventListener('DOMContentLoaded', function () {
     let subtototalitems = 0;
     cant.forEach(element => {
 
+        element.addEventListener('input',() => {
+        if (element.value > 0 && element.value < 100) {
+          
+          calcSubtotal(element.id, element.value)
+
+         // console.log(subtototalitems)
+          
+          desplegarCarrito()
+        }
+
+      }); 
+
       element.nextElementSibling.addEventListener('click', () => {
         if (element.value > 0 && element.value < 100) {
           element.value++
