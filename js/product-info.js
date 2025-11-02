@@ -256,8 +256,11 @@ document.addEventListener("DOMContentLoaded", function () {
 function botonañadircar() {
   const addbtn = document.querySelector("#save button");
   const amountInput = document.getElementById("amountInput");
-
-  addbtn.addEventListener("click", () => {
+  const buyBtn  = document.getElementById('buy')
+  addbtn.addEventListener("click", addCartItem );
+  buyBtn.addEventListener("click", addCartItem );  
+  
+    function addCartItem() {
     const quantity = parseInt(amountInput.value);
     if (!quantity || quantity <= 0) {
       return;
@@ -291,6 +294,6 @@ function botonañadircar() {
     }
 
     amountInput.value = 1; // limpia el campo
-  });
+  }
 
 }

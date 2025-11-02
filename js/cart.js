@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             <div class="btn-group" role="group" aria-label="Basic example">
               <button type="button" class="btn ">-</button>
-              <input class='form-control text-center w-50' id='${item.id}' type="number" name="cant"
+              <input class=' text-center w-50' id='${item.id}' type="number" name="cant"
                 value="${item.quantity}" min="1" max="69" step="1">
               <button type="button" class="btn ">+</button>
             </div>
