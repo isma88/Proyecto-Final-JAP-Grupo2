@@ -18,32 +18,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
       `
       <li class="list-group-item">
-    <div class="row align-items-center w-100 justify-content-center">
-      <img src="${item.image}" alt="" class="prod-img">
-      <div class="col">
-        <div class="row text-center align-items-center" id="dataCart">
-          <div class="col-md my-2 fw-bold" id='name'>${item.name}</div>
-          <div class="col-md my-2 fst-italic" id='precio'>Precio: ${item.currency}
-            ${(item.cost).toLocaleString('de-DE')}</div>
-          <div class="col-md my-2 justify-content-center d-flex d-inline">
+  <div class="row align-items-center w-100 justify-content-center">
+    <img src="${item.image}" alt="" class="prod-img">
+    <div class="col">
+      <div class="row text-center align-items-center" id="dataCart">
+        <div class="col-md my-2 fw-bold" id='name'>${item.name}</div>
+        <div class="col-md my-2 fst-italic" id='precio'>Precio: ${item.currency}
+          ${(item.cost).toLocaleString('de-DE')}</div>
+        <div class="col-md my-2 justify-content-center d-flex d-inline">
 
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn ">-</button>
-              <input class=' text-center w-50' id='${item.id}' type="number" name="cant"
-                value="${item.quantity}" min="1" max="69" step="1">
-              <button type="button" class="btn ">+</button>
-            </div>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn ">-</button>
+            <input class=' text-center w-50' id='${item.id}' type="number" name="cant" value="${item.quantity}" min="1"
+              max="69" step="1">
+            <button type="button" class="btn ">+</button>
+          </div>
 
-          </div>
-          <div class="col-md my-2 fst-italic">Subtotal: <span id='prodSubtotal'>${item.currency} ${(item.quantity *
-              item.cost).toLocaleString('de-DE')}</span></div>
-          <div class="col">
-            <div class="btn ms-3 eliminar"><i id='${item.id}' class="bi bi-trash-fill"></i></div>
-          </div>
+        </div>
+        <div class="col-md my-2 fst-italic">Subtotal: <span id='prodSubtotal'>${item.currency} ${(item.quantity *
+            item.cost).toLocaleString('de-DE')}</span></div>
+        <div class="col">
+          <div class="btn ms-3 eliminar"><i id='${item.id}' class="bi bi-trash-fill"></i></div>
         </div>
       </div>
     </div>
-  </li>
+  </div>
+</li>
         `
 
     )
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   desplegarCarrito();
-  
+
 
 
   function amountControl() {
@@ -65,25 +65,25 @@ document.addEventListener('DOMContentLoaded', function () {
     let subtototalitems = 0;
     cant.forEach(element => {
 
-        element.addEventListener('input',() => {
+      element.addEventListener('input', () => {
         if (element.value > 0 && element.value < 100) {
-          
+
           calcSubtotal(element.id, element.value)
 
-         // console.log(subtototalitems)
-          
+          // console.log(subtototalitems)
+
           desplegarCarrito()
         }
 
-      }); 
+      });
 
       element.nextElementSibling.addEventListener('click', () => {
         if (element.value > 0 && element.value < 100) {
           element.value++
           calcSubtotal(element.id, element.value)
 
-         // console.log(subtototalitems)
-          
+          // console.log(subtototalitems)
+
           desplegarCarrito()
         }
 
@@ -93,8 +93,8 @@ document.addEventListener('DOMContentLoaded', function () {
           element.value--
           calcSubtotal(element.id, element.value)
 
-        //  console.log(subtototalitems)
-         
+          //  console.log(subtototalitems)
+
           desplegarCarrito()
         }
 
@@ -125,10 +125,10 @@ document.addEventListener('DOMContentLoaded', function () {
           }
 
           newCart.push(newItems)
-          
+
           localStorage.setItem('cart', JSON.stringify(newCart))
         });
-          console.log(newCart)
+        console.log(newCart)
       }
 
     });
