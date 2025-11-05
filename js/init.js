@@ -9,6 +9,13 @@ const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
 
+const themeSelect = document.getElementById("themeSwitch");
+const themeIcon = document.getElementById("themeIcon");
+const themeLabel = document.getElementById("themeLabel");
+const savedTheme = localStorage.getItem("theme") || "auto"; //toma el tema elegido, o el por defecto en caso de no haber ningúno guardado
+
+
+
 let showSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "block";
 };
@@ -43,19 +50,14 @@ let getJSONData = function (url) {
 };
 
 
-// mira si el usuario está logueado
-const logged = localStorage.getItem("usuario");
-if (!logged) {
-  // lo envia a login si no
-  window.location.href = "login.html";
-} else {
+//se asegura de que el usuario está logueado si no agrega el nombre de usuario a la barra de vavegación
+  const logged = localStorage.getItem("usuario");
+  if (!logged) {
+    window.location.href = "login.html";
+  } else {
+    document.getElementById("nickname").innerHTML = `${logedName()}`;
+  }
 
-  document.getElementById(
-    "nickname"
-    // muestra el nombre si está logueado
-  ).innerHTML = `${logedName()}`;
-
-}
 
 function logedName() {
   let user = JSON.parse(logged)
@@ -70,10 +72,6 @@ function logedName() {
 document.getElementById('cerrar').addEventListener('click', function () {
   localStorage.removeItem('usuario')
 })
-
-const themeSelect = document.getElementById("themeSwitch");
-const themeIcon = document.getElementById("themeIcon");
-const themeLabel = document.getElementById("themeLabel");
 
 const icons = {
   auto: `
@@ -91,12 +89,14 @@ const icons = {
                     </svg>`
 };
 
+
+//cambia el ícono del tema elegido
 function applyTheme(mode) {
   themeIcon.innerHTML = icons[mode];
 }
 
 
-const savedTheme = localStorage.getItem("theme") || "auto";
+
 if (themeSelect) themeSelect.value = savedTheme;
 applyTheme(savedTheme);
 
@@ -112,7 +112,7 @@ document.querySelectorAll("[data-theme]").forEach(btn => {
 
 if (themeSelect) {
   themeSelect.addEventListener("change", e => {
-    
+
     const value = e.target.value;
     console.log(value)
     localStorage.setItem("theme", value);
