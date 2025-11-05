@@ -112,26 +112,28 @@ document.querySelectorAll("[data-theme]").forEach(btn => {
 
 if (themeSelect) {
   themeSelect.addEventListener("change", e => {
+    
     const value = e.target.value;
+    console.log(value)
     localStorage.setItem("theme", value);
     applyTheme(value);
   });
 }
 
-
+//guarda el id de un producto en el localStorage
 function setItemId(id) {
   localStorage.setItem('ItemId', id)
   window.location.assign("product-info.html")
 
 }
 
+
+//permite tomar la id de un elemeento en cualquier grid
 function itemSet(grid, item) {
 
   document.getElementById(grid).addEventListener('click', (e) => {
-
     id = e.target.closest(item).id
     setItemId(id);
-
   })
 
 }
