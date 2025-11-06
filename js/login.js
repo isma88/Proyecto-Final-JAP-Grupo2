@@ -17,6 +17,6 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
 
 //valida email
 function esEmailValido(email) {
-  const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return regexEmail.test(email);
 }
