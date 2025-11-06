@@ -212,17 +212,17 @@ function updateCartDropdown() {
     `;
   });
 
-  // Mostrar subtotal y link al carrito completo
+   // Mostrar subtotal y link al carrito completo
   cartDropdown.innerHTML = `
     ${itemscarrito}
           <dl class="row">
       <dt class="col-sm-3">Subtotal</dt>
       <dd class="col-sm-8 text-end" id="cart-total">${cart[0].currency} ${subtotalGeneral.toLocaleString("de-DE")}</dd>
           <li class="text-center">
-      <botton class="inset-shadow " href="cart.html"  >
-      ir al carrito
-      </botton>
-    </li>
+  <button id="btn-carrito" class="inset-shadow btn btn-primary">
+    Ir al carrito
+  </button>
+</li>
   `;
 document.querySelectorAll('.removeProduct').forEach(element => {
   element.addEventListener('click', (e) =>{
@@ -244,3 +244,11 @@ function removeProductdeCart(id) {
 
   updateCartDropdown();
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const botonCarrito = document.getElementById('btn-carrito');
+
+  botonCarrito.addEventListener('click', () => {
+    window.location.href = 'cart.html';
+  });
+});

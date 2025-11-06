@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             <div class="btn-group" role="group" aria-label="Basic example">
               <button type="button" class="btn ">-</button>
-              <input class='form-control text-center w-50' id='${item.id}' type="number" name="cant"
+              <input class=' text-center w-50' id='${item.id}' type="number" name="cant"
                 value="${item.quantity}" min="1" max="69" step="1">
               <button type="button" class="btn ">+</button>
             </div>
@@ -64,6 +64,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const cant = document.querySelectorAll('[name="cant"]')
     let subtototalitems = 0;
     cant.forEach(element => {
+
+        element.addEventListener('input',() => {
+        if (element.value > 0 && element.value < 100) {
+          
+          calcSubtotal(element.id, element.value)
+
+         // console.log(subtototalitems)
+          
+          desplegarCarrito()
+        }
+
+      }); 
 
       element.nextElementSibling.addEventListener('click', () => {
         if (element.value > 0 && element.value < 100) {
