@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const container = document.querySelector("#container-carrito");
+  let container = document.querySelector("#container-carrito");
 
 
   function desplegarCarrito() {
     items = JSON.parse(localStorage.getItem('cart'))
-    covnert(items)
+    convert(items)
 
 
     if (items.length === 0) {
@@ -61,14 +61,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   function amountControl() {
-    const cant = document.querySelectorAll('[name="cant"]')
+    let cant = document.querySelectorAll('[name="cant"]')
     let subtototalitems = 0;
     cant.forEach(element => {
 
       element.addEventListener('input', () => {
         if (element.value > 0 && element.value < 100) {
 
-          calcSubtotal(element.id, element.value)
+          agregarCant(element.id, element.value)
 
           // console.log(subtototalitems)
 
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
       element.nextElementSibling.addEventListener('click', () => {
         if (element.value > 0 && element.value < 100) {
           element.value++
-          calcSubtotal(element.id, element.value)
+          agregarCant(element.id)
 
           // console.log(subtototalitems)
 
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
       element.previousElementSibling.addEventListener('click', () => {
         if (element.value > 1 && element.value < 100) {
           element.value--
-          calcSubtotal(element.id, element.value)
+          agregarCant(element.id)
 
           //  console.log(subtototalitems)
 
@@ -101,11 +101,11 @@ document.addEventListener('DOMContentLoaded', function () {
       })
 
 
-      function calcSubtotal(idCarrito) {
+      function agregarCant(idCarrito) {
 
 
         let items = JSON.parse(localStorage.getItem('cart'));
-        covnert(items)
+        convert(items)
         let newCart = []
         items.forEach(cartItems => {
 
@@ -118,9 +118,6 @@ document.addEventListener('DOMContentLoaded', function () {
             quantity: cartItems.quantity,
           }
           if (cartItems.id == idCarrito) {
-            subtototalitems = element.value * cartItems.cost
-
-            console.log(cartItems.quantity, element.value)
             newItems.quantity = parseInt(element.value)
           }
 
@@ -128,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           localStorage.setItem('cart', JSON.stringify(newCart))
         });
-        console.log(newCart)
+
       }
 
     });
@@ -138,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
     element.addEventListener('click', desplegarCarrito)
   });
 
-  function covnert() {
+  function convert() {
     monDeseada = document.querySelector('input[name="moneyRadio"]:checked').value
     items.forEach(element => {
       console.log(element.name, element.currency, element.cost, monDeseada == element.currency)

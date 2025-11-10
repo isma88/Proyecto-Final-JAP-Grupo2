@@ -68,28 +68,76 @@
     <div class="row">
     <div class="col-lg-8 col-sm-12" id="container-carrito">
         </div>
-      <div class="col-lg-4 col-sm-12">
-    <div class="card p-3 rounded-3 shadow-sm">
-      <div class="mb-3">
-        <div>Subtotal: <span id="subtotal" class="fst-italic">$123</span></div>
-      </div>
-
-      <div class="mb-3">
-        <h6 class="fw-bold">Enviar</h6>
-
-        <div class="form-check my-2 border border-light rounded-4">
-          <input class="form-check-input ms-1" type="radio" name="envio" id="retiro" value="0" checked>
-          <label class="form-check-label" for="retiro">Retirar en el local</label>
-        </div>
         
-        <div class="form-check my-2 border border-light rounded-4">
-          <input class="form-check-input ms-1" type="radio" name="envio" id="montevideo" value="5">
-          <label class="form-check-label" for="montevideo">Montevideo (+5%)</label>
-        </div>
+        
+<div class="accordion mt-3" id="accordionExample">
 
-        <div class="form-check my-2 border border-light rounded-4">
-          <input class="form-check-input ms-1" type="radio" name="envio" id="interior" value="7">
-          <label class="form-check-label" for="interior">Interior del país (+7%)</label>
+ 
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingPago">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePago"
+        aria-expanded="false" aria-controls="collapsePago">
+        Tipo de envío
+      </button>
+    </h2>
+    <div id="collapsePago" class="accordion-collapse collapse" aria-labelledby="headingPago" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <form id="form-pago">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="pago" id="pago1" value="Premium" checked>
+            <label class="form-check-label" for="pago1">
+              Premium 2 a 5 días (15%)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="pago" id="pago2" value="Express">
+            <label class="form-check-label" for="pago2">
+              Express 5 a 8 días (7%)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="pago" id="pago3" value="Standard">
+            <label class="form-check-label" for="pago3">
+              Standard 12 a 15 días (5%)
+            </label>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingDireccion">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDireccion"
+        aria-expanded="false" aria-controls="collapseDireccion">
+        Dirección de envío
+      </button>
+    </h2>
+    <div id="collapseDireccion" class="accordion-collapse collapse" aria-labelledby="headingDireccion" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <form id="form-envio">
+          <div class="mb-2">
+            <label for="direccion" class="form-label">Dirección</label>
+            <input type="text" class="form-control" id="direccion" placeholder="Ej: Av. Italia 1234">
+          </div>
+          <div class="mb-2">
+            <label for="ciudad" class="form-label">Ciudad</label>
+            <input type="text" class="form-control" id="ciudad" placeholder="Ej: Montevideo">
+          </div>
+          <div class="mb-2">
+            <label for="codigoPostal" class="form-label">Código postal</label>
+            <input type="text" class="form-control" id="codigoPostal" placeholder="Ej: 11800">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+        <div class="card-footer">
+          <div class="btn"> Comprar</div>
         </div>
       </div>
 

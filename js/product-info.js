@@ -1,20 +1,21 @@
-const current_ItemId = localStorage.getItem("ItemId");
+let current_ItemId = localStorage.getItem("ItemId");
 let current_products_info = PRODUCT_INFO_URL + current_ItemId + EXT_TYPE;
-//console.log(current_products_info);
 let list = [];
+let user =   JSON.parse(localStorage.getItem('usuario'))
+
 
 document.addEventListener("DOMContentLoaded", function () {
   getJSONData(current_products_info).then(function (result) {
     if (result.status === "ok") {
-      list = result.data;
-      //  console.log(list);
-      listElements();
+      list = result.data; //descarga lso elementos y los agrega a  list
+
+      listElements();//lista los elementos de list
       checkImg();
     }
   });
 });
 
-const listElements = () => {
+let listElements = () => {
   let name = list.name;
   let productCategory = list.category;
   let productDescription = list.description;
@@ -22,12 +23,11 @@ const listElements = () => {
   let productCurrency = list.currency;
   let productImages = list.images;
   let productsoldCount = list.soldCount;
-  let productid = list.id;
   cost = new Intl.NumberFormat('en-US',
     {
       style: 'currency',
       currency: productCurrency
-    }).format(productCost)
+    }).format(productCost) // le da formato al costo para que tenga puntos y comas
 
   document.getElementById('title').innerHTML = name
   document.getElementById('desc').innerHTML = productDescription
@@ -56,7 +56,6 @@ const listElements = () => {
 
   let relatedHTML = "";
   list.relatedProducts.forEach(rel => {
-    // console.log(list);
     relatedHTML += `
          <div id="${rel.id}" role="button" class="col grow col-md-3 col-6 col-sm-6">
       <div class="card h-100 shadow-lg">
@@ -71,7 +70,7 @@ const listElements = () => {
   document.getElementById("items").innerHTML = relatedHTML;
 };
 
-itemSet('items', '.col')
+itemSet('items', '.col')//define la grid y permite tomar el valor de id de un item en particular (usada en los elementos recomendados)
 
 
 
@@ -84,7 +83,7 @@ function addComment(mensaje, user, dateTime, score) {
           <div class="row g-4">
               <div class="col-md-2">
                   <div class="card-body">
-                      <img src="img/img_perfil.png" class="img-fluid start" alt="comentarios" style="max-width: 80px;">
+                      <img src="img/img_perfil.png" class="img-fluid start profileImg" alt="comentarios" style="width: 80px; height: 80px;">
                   </div>
               </div>
               <div class="col-md-6">
@@ -101,6 +100,8 @@ function addComment(mensaje, user, dateTime, score) {
               </div>
           </div>
       </div>`
+
+      
 }
 
 
@@ -146,7 +147,7 @@ document.getElementById('sendCom').addEventListener('click', () => {
 
   addComment(mensaje, logedName(), fulldate, paintStar())
 
-
+  
 })
 
 
@@ -215,8 +216,13 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   });
+  addProfileImg()
 });
 
+
+//#########################
+//  cambiador de imagenes del carrousel
+//#########################
 function checkImg() {
   let first = "true"
   let imgSelectors = document.querySelectorAll('[name="imgSelectors"]')
@@ -254,19 +260,19 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function botonañadircar() {
-  const addbtn = document.querySelector("#save button");
-  const amountInput = document.getElementById("amountInput");
-  const buyBtn  = document.getElementById('buy')
+ let addbtn = document.querySelector("#save button");
+ let amountInput = document.getElementById("amountInput");
+ let buyBtn  = document.getElementById('buy')
   addbtn.addEventListener("click", addCartItem );
   buyBtn.addEventListener("click", addCartItem );  
   
     function addCartItem() {
-    const quantity = parseInt(amountInput.value);
+   let quantity = parseInt(amountInput.value);
     if (!quantity || quantity <= 0) {
       return;
     }
 
-    const product = {
+   let product = {
       id: list.id,
       name: list.name,
       cost: list.cost,
@@ -279,7 +285,7 @@ function botonañadircar() {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     // Si el producto ya está en el carrito, solo aumenta la cantidad
-    const existe = cart.find(item => item.id === product.id);
+   let existe = cart.find(item => item.id === product.id);
     if (existe) {
       existe.quantity += quantity;
       existe.subtotal = existe.quantity * existe.cost;
@@ -297,3 +303,15 @@ function botonañadircar() {
   }
 
 }
+
+
+
+//agrega imagenes de perfil a los comentarios
+function addProfileImg() {
+  document.querySelectorAll(".profileImg").forEach(element => {
+
+    element.src = user.pfp
+    
+  });
+}
+
