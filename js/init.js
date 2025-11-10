@@ -137,3 +137,8 @@ function itemSet(grid, item) {
   })
 
 }
+
+function extractUser(){
+  let user = JSON.parse(localStorage.getItem('usuario'));
+  return user;
+}
