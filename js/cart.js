@@ -1,141 +1,104 @@
 document.addEventListener('DOMContentLoaded', function () {
-  let container = document.querySelector("#container-carrito");
+  const container = document.querySelector("#container-carrito");
 
-
+  // Mostrar el carrito
   function desplegarCarrito() {
-    items = JSON.parse(localStorage.getItem('cart'))
-    convert(items)
-
+    let items = JSON.parse(localStorage.getItem('cart')) || [];
+    convert(items);
 
     if (items.length === 0) {
       container.innerHTML = `<p class="text-center">Tu carrito está vacío.</p>`;
       return;
     }
+
     container.innerHTML = `
-    <ul class="list-group mx-5">    
-       
-        ${items.map((item) =>
+      <ul class="list-group mx-5">
+        ${items.map(item => `
+          <li class="list-group-item">
+            <div class="row align-items-center w-100 justify-content-center">
+              <img src="${item.image}" alt="" class="prod-img">
+              <div class="col">
+                <div class="row text-center align-items-center" id="dataCart">
+                  <div class="col-md my-2 fw-bold">${item.name}</div>
+                  <div class="col-md my-2 fst-italic">
+                    Precio: ${item.currency} ${(item.cost).toLocaleString('de-DE')}
+                  </div>
+                  <div class="col-md my-2 justify-content-center d-flex">
+                    <div class="btn-group" role="group">
+                      <button type="button" class="btn btn-outline-secondary" data-action="decrement">-</button>
+                      <input class="text-center w-50" id="${item.id}" name="cant"
+                        type="number" value="${item.quantity}" min="1" max="69">
+                      <button type="button" class="btn btn-outline-secondary" data-action="increment">+</button>
+                    </div>
+                  </div>
+                  <div class="col-md my-2 fst-italic">
+                    Subtotal:
+                    <span>${item.currency} ${(item.quantity * item.cost).toLocaleString('de-DE')}</span>
+                  </div>
+                  <div class="col">
+                    <button class="btn btn-danger eliminar" data-id="${item.id}">
+                      <i class="bi bi-trash-fill"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        `).join("")}
+      </ul>
+    `;
 
-      `
-      <li class="list-group-item">
-  <div class="row align-items-center w-100 justify-content-center">
-    <img src="${item.image}" alt="" class="prod-img">
-    <div class="col">
-      <div class="row text-center align-items-center" id="dataCart">
-        <div class="col-md my-2 fw-bold" id='name'>${item.name}</div>
-        <div class="col-md my-2 fst-italic" id='precio'>Precio: ${item.currency}
-          ${(item.cost).toLocaleString('de-DE')}</div>
-        <div class="col-md my-2 justify-content-center d-flex d-inline">
-
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn ">-</button>
-            <input class=' text-center w-50' id='${item.id}' type="number" name="cant" value="${item.quantity}" min="1"
-              max="69" step="1">
-            <button type="button" class="btn ">+</button>
-          </div>
-
-        </div>
-        <div class="col-md my-2 fst-italic">Subtotal: <span id='prodSubtotal'>${item.currency} ${(item.quantity *
-            item.cost).toLocaleString('de-DE')}</span></div>
-        <div class="col">
-          <div class="btn ms-3 eliminar"><i id='${item.id}' class="bi bi-trash-fill"></i></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</li>
-        `
-
-    )
-        .join("")}
-     
-      
-   </ul> `;
+    // funciones auxiliares
+    amountControl();
     eliminar();
-    amountControl()
-    updateCartDropdown()
+    updateCartDropdown();
   }
 
   desplegarCarrito();
 
+  // Control de cantidad
+ function amountControl() {
+  const inputs = document.querySelectorAll('input[name="cant"]');
 
-
-  function amountControl() {
-    let cant = document.querySelectorAll('[name="cant"]')
-    let subtototalitems = 0;
-    cant.forEach(element => {
-
-      element.addEventListener('input', () => {
-        if (element.value > 0 && element.value < 100) {
-
-          agregarCant(element.id, element.value)
-
-          // console.log(subtototalitems)
-
-          desplegarCarrito()
-        }
-
-      });
-
-      element.nextElementSibling.addEventListener('click', () => {
-        if (element.value > 0 && element.value < 100) {
-          element.value++
-          agregarCant(element.id)
-
-          // console.log(subtototalitems)
-
-          desplegarCarrito()
-        }
-
-      })
-      element.previousElementSibling.addEventListener('click', () => {
-        if (element.value > 1 && element.value < 100) {
-          element.value--
-          agregarCant(element.id)
-
-          //  console.log(subtototalitems)
-
-          desplegarCarrito()
-        }
-
-      })
-
-
-      function agregarCant(idCarrito) {
-
-
-        let items = JSON.parse(localStorage.getItem('cart'));
-        convert(items)
-        let newCart = []
-        items.forEach(cartItems => {
-
-          var newItems = {
-            id: cartItems.id,
-            name: cartItems.name,
-            cost: cartItems.cost,
-            currency: cartItems.currency,
-            image: cartItems.image,
-            quantity: cartItems.quantity,
-          }
-          if (cartItems.id == idCarrito) {
-            newItems.quantity = parseInt(element.value)
-          }
-
-          newCart.push(newItems)
-
-          localStorage.setItem('cart', JSON.stringify(newCart))
-        });
-
+  inputs.forEach(element => {
+    element.addEventListener('input', () => {
+      if (element.value > 0 && element.value < 100) {
+        actualizarCantidad(element.id, element.value);
+        desplegarCarrito();
       }
-
     });
+
+    
+    element.nextElementSibling.addEventListener('click', () => {
+      if (element.value > 0 && element.value < 100) {
+        element.value++;
+        actualizarCantidad(element.id, element.value);
+        desplegarCarrito();
+      }
+    });
+
+    
+    element.previousElementSibling.addEventListener('click', () => {
+      if (element.value > 1 && element.value < 100) { 
+        element.value--;
+        actualizarCantidad(element.id, element.value);
+        desplegarCarrito();
+      }
+    });
+  });
+}
+
+  //  Actualiza cantidad en el carrito
+  function actualizarCantidad(idCarrito, nuevaCantidad) {
+    const items = JSON.parse(localStorage.getItem('cart')) || [];
+    const nuevoCarrito = items.map(item =>
+      item.id == idCarrito ? { ...item, quantity: parseInt(nuevaCantidad) } : item
+    );
+    localStorage.setItem('cart', JSON.stringify(nuevoCarrito));
   }
 
-  document.querySelectorAll('input[name="moneyRadio"]').forEach(element => {
-    element.addEventListener('click', desplegarCarrito)
-  });
-
-  function convert() {
+  // Conversión de moneda
+  function convert(items) {
     monDeseada = document.querySelector('input[name="moneyRadio"]:checked').value
     items.forEach(element => {
       console.log(element.name, element.currency, element.cost, monDeseada == element.currency)
@@ -151,25 +114,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
 
-
-
   }
 
+  // Eliminar productos
   function eliminar() {
-    document.querySelectorAll('.eliminar').forEach((e) => {
-      e.addEventListener('click', (e) => {
-        e.stopImmediatePropagation()
-        id = e.currentTarget.children[0].id
-
-        removeProductdeCart(id)
-        desplegarCarrito()
-      })
-    })
+    document.querySelectorAll('.eliminar').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const id = e.currentTarget.dataset.id;
+        removeProductdeCart(id);
+        desplegarCarrito();
+      });
+    });
   }
 
-
-})
-
-
-
+  document.querySelectorAll('input[name="moneyRadio"]').forEach(radio => {
+    radio.addEventListener('click', desplegarCarrito);
+  });
+});
 
