@@ -137,40 +137,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Obtener datos guardados del usuario y su foto
-  let user = JSON.parse(localStorage.getItem("usuario"));
-
-   let navPFP = document.getElementById("nav-profile-pic");
-  // Buscar los elementos dentro de la navbar
-  let nameEl = document.getElementById("nav-username");
-
-  // Mostrar el nombre completo (si existe)
-  if (user && nameEl) {
-    nameEl.textContent = `${user.nombre || ""} ${user.apellido || ""}`.trim() || "Usuario";
-  } else if (nameEl) {
-    nameEl.textContent = "Invitado";
-  }
-
-  // Mostrar la foto del perfil guardada
-
-    navPFP.src = user.pfp || "img/img_perfil.png";
-  
-
-  // Funcionalidad de "Cerrar Sesión"
-  let cerrar = document.getElementById("cerrar");
-  if (cerrar) {
-    cerrar.addEventListener("click", () => {
-      localStorage.removeItem("usuario");
-      window.location.href = "login.html";
-    });
-  }
-
-  updateCartDropdown();
-
-});
-
-
 function updateCartDropdown() {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   let cartCount = document.getElementById("cart-count");
