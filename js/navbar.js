@@ -104,11 +104,11 @@ document.querySelector('nav').innerHTML = `
 
 document.addEventListener("DOMContentLoaded", () => {
   // Obtener datos guardados del usuario y su foto
-  const user = JSON.parse(localStorage.getItem("usuario"));
+  let user = JSON.parse(localStorage.getItem("usuario"));
 
-   const navPFP = document.getElementById("nav-profile-pic");
+  let navPFP = document.getElementById("nav-profile-pic");
   // Buscar los elementos dentro de la navbar
-  const nameEl = document.getElementById("nav-username");
+  let nameEl = document.getElementById("nav-username");
 
   // Mostrar el nombre completo (si existe)
   if (user && nameEl) {
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
   // Funcionalidad de "Cerrar Sesión"
-  const cerrar = document.getElementById("cerrar");
+  let cerrar = document.getElementById("cerrar");
   if (cerrar) {
     cerrar.addEventListener("click", () => {
       localStorage.removeItem("usuario");
@@ -139,11 +139,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   // Obtener datos guardados del usuario y su foto
-  const user = JSON.parse(localStorage.getItem("usuario"));
+  let user = JSON.parse(localStorage.getItem("usuario"));
 
-   const navPFP = document.getElementById("nav-profile-pic");
+   let navPFP = document.getElementById("nav-profile-pic");
   // Buscar los elementos dentro de la navbar
-  const nameEl = document.getElementById("nav-username");
+  let nameEl = document.getElementById("nav-username");
 
   // Mostrar el nombre completo (si existe)
   if (user && nameEl) {
@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
   // Funcionalidad de "Cerrar Sesión"
-  const cerrar = document.getElementById("cerrar");
+  let cerrar = document.getElementById("cerrar");
   if (cerrar) {
     cerrar.addEventListener("click", () => {
       localStorage.removeItem("usuario");
@@ -168,17 +168,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateCartDropdown();
 
-
 });
 
 
 function updateCartDropdown() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const cartCount = document.getElementById("cart-count");
-  const cartDropdown = document.getElementById("dropdown-menu");
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let cartCount = document.getElementById("cart-count");
+  let cartDropdown = document.getElementById("dropdown-menu");
 
   // Mostrar número de productos totales
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   cartCount.textContent = totalItems;
 
   if (cart.length === 0) {
@@ -186,13 +185,12 @@ function updateCartDropdown() {
     return;
   }
 
-
   // Generar lista de productos
   let subtotalGeneral = 0;
   let itemscarrito = "";
 
   cart.forEach(item => {
-    const subtotalItem = item.cost * item.quantity; 
+    let subtotalItem = item.cost * item.quantity; 
     subtotalGeneral += subtotalItem;
 
     itemscarrito += ` 
@@ -246,7 +244,7 @@ function removeProductdeCart(id) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const botonCarrito = document.getElementById('btn-carrito');
+  let botonCarrito = document.getElementById('btn-carrito');
 
   botonCarrito.addEventListener('click', () => {
     window.location.href = 'cart.html';

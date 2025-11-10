@@ -1,11 +1,11 @@
-    const nombre =  document.getElementById('nombre');
-    const apellido =  document.getElementById('apellido');
-    const email =  document.getElementById('mail');
-    const telefono =  document.getElementById('telefono');
-    const LocalStorageUser =   JSON.parse(localStorage.getItem('usuario'));
-    const profileImage = document.getElementById("profile-image");
-    const imageBack = document.querySelector('.image-back');
-    const fileInput = document.getElementById("file-input");
+    let nombre =  document.getElementById('nombre');
+    let apellido =  document.getElementById('apellido');
+    let email =  document.getElementById('mail');
+    let telefono =  document.getElementById('telefono');
+    let LocalStorageUser =   JSON.parse(localStorage.getItem('usuario'));
+    let profileImage = document.getElementById("profile-image");
+    let imageBack = document.querySelector('.image-back');
+    let fileInput = document.getElementById("file-input");
 
     document.getElementById('update').addEventListener('click', updateInfo);
     imageBack.addEventListener("click", () => fileInput.click());
@@ -33,10 +33,10 @@ function updateInfo() {
     
 //permite cargar una nueva imagen de perfil
 fileInput.addEventListener("change", (e) => {
-  const file = e.target.files[0];
+  let file = e.target.files[0];
   if (!file) return;
 
-  const reader = new FileReader();
+  let reader = new FileReader();
   reader.onload = () => {
     profileImage.src = reader.result;
     LocalStorageUser.pfp = reader.result

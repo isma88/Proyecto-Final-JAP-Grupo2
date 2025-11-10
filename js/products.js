@@ -1,18 +1,17 @@
-const current_catID = localStorage.getItem('catID')
+let current_catID = localStorage.getItem('catID')
 let current_products = PRODUCTS_URL + current_catID + EXT_TYPE
-console.log(current_products)
 let list = []
 let filteredlist = []
 
 //metodo de filtrado por costo 
 function costSort(a, b) {
-  console.log(a)
+
   return a.cost - b.cost
 
 }
 //metodo de filtrado por cantidad de ventas
 function soldCountSort(a, b) {
-  console.log(a)
+
   return a.soldCount - b.soldCount
 
 }
@@ -26,7 +25,6 @@ function sortListCostAsc() {
 
 //filtro costo amyor=menor
 function sortListCostDec() {
-  console.log(filteredlist)
   filteredlist.sort(costSort)
   filteredlist.reverse()
 
@@ -133,18 +131,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
 })
 
 //botones
-document.getElementById('sortListCostDec').addEventListener('click', sortListCostDec)
-document.getElementById('sortListCostAsc').addEventListener('click', sortListCostAsc)
-document.getElementById('sortListRel').addEventListener('click', sortListRel)
-document.getElementById('rangeValue').addEventListener('click', sortListCostRange)
-document.getElementById('search').addEventListener('keyup', search)
-document.getElementById('searchBtn').addEventListener('click', search)
-document.getElementById('searchForm').addEventListener('keydown',(e) => {if(e.key === 'Enter'){e.preventDefault(); e.stopPropagation()}})
+document.getElementById('sortListCostDec').addEventListener('click', sortListCostDec);
+document.getElementById('sortListCostAsc').addEventListener('click', sortListCostAsc);
+document.getElementById('sortListRel').addEventListener('click', sortListRel);
+document.getElementById('rangeValue').addEventListener('click', sortListCostRange);
+document.getElementById('search').addEventListener('keyup', search);
+document.getElementById('searchBtn').addEventListener('click', search);
+document.getElementById('searchForm').addEventListener('keydown',(e) => {if(e.key === 'Enter'){e.preventDefault(); e.stopPropagation()}});
 document.getElementById('min').addEventListener('keydown',(e) => {if(e.key === 'Enter'){e.preventDefault(); e.stopPropagation(); sortListCostRange(); console.log(e)}});
-document.getElementById('max').addEventListener('keydown',(e) => {if(e.key === 'Enter'){e.preventDefault(); e.stopPropagation(); sortListCostRange()}})
-  //filtros no tienen limpiar ni cambian con enter
+document.getElementById('max').addEventListener('keydown',(e) => {if(e.key === 'Enter'){e.preventDefault(); e.stopPropagation(); sortListCostRange()}});
 
-itemSet('items', '.col')
+itemSet('items', '.col')//define la grid y permite tomar el valor de id de un item en particular
 
 
 
