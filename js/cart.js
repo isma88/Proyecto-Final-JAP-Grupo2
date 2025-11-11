@@ -1,9 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const container = document.querySelector("#container-carrito");
 
+  const container = document.querySelector("#container-carrito");
+  document.querySelectorAll('input[name="pago"]').forEach(element => {
+    console.log(element)
+    
+    element.addEventListener("click", () => calcularSubtotal())
+  });
+  
   // Mostrar el carrito
   function desplegarCarrito() {
-    let items = JSON.parse(localStorage.getItem('cart')) || [];
+    let items = extractCart() || []; //descarga el carrito
     convert(items);
 
     if (items.length === 0) {
@@ -52,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
     amountControl();
     eliminar();
     updateCartDropdown();
+    console.log(calcularSubtotal())
   }
 
   desplegarCarrito();
@@ -113,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
     });
-
+      localStorage.setItem("cart", JSON.stringify(items))
   }
 
   // Eliminar productos
@@ -130,5 +137,43 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('input[name="moneyRadio"]').forEach(radio => {
     radio.addEventListener('click', desplegarCarrito);
   });
+
+
+ function calcularSubtotal(){  
+  carrito = extractCart()
+  let opSelected = document.querySelector('input[name="pago"]:checked')
+  let rawSubtotal = 0;
+      carrito.forEach(item => {
+        rawSubtotal += item.cost * item.quantity
+      })
+
+    switch (opSelected.value) {
+      case "Standard":
+          console.log(`estandar selecccionado `)
+          rawSubtotal * 0.05
+          return rawSubtotal
+        break;
+      
+      case "Express":
+          console.log("express")
+          rawSubtotal * 0.07
+          return rawSubtotal
+        break;
+    
+      case "Premium":
+        console.log("premium ")
+        rawSubtotal * 0.15
+          return rawSubtotal
+        break;
+
+      default:
+        rawSubtotal * 0.05
+          return rawSubtotal
+        break;
+    }
+    
+ }
+ calcularSubtotal()
+
 });
 

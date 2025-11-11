@@ -142,3 +142,8 @@ function extractUser(){
   let user = JSON.parse(localStorage.getItem('usuario'));
   return user;
 }
+
+function extractCart() {
+  let cart  = JSON.parse(localStorage.getItem('cart'))
+  return cart
+}
