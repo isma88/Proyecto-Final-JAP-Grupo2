@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
       list = result.data; //descarga lso elementos y los agrega a  list
 
       listElements();//lista los elementos de list
-      checkImg();
+      checkImg(); //marca la imagen seleccionada con un borde 
     }
   });
 });
@@ -40,19 +40,19 @@ let listElements = () => {
 
   for (img of productImages) {
     counter++
-
+      // carga las imagenes al carousel
     document.getElementById("carousel-inner").innerHTML +=
       ` <div class="carousel-item" id="carousel${counter}">
             <img src="${img}" class="d-block w-100" alt="...">
         </div>`
-
+    //agrega las imagenes como miniatura
     document.getElementById("imgSelectorsPlacer").innerHTML +=
       `<img src="${img}" type="radio" name="imgSelectors" id="img${counter}" role="button" style="width: 15rem;" data-bs-target="#imgcar" data-bs-slide-to="${counter}" 
                   aria-current="true" aria-label="Slide ${counter}" class="img-thumbnail" alt="..."  >`
 
 
   }
-  document.getElementById("carousel0").classList.add("active")
+  document.getElementById("carousel0").classList.add("active") //agrega la primer imagen como seleccionada para que sea cargada en el carousel
 
   let relatedHTML = "";
   list.relatedProducts.forEach(rel => {
@@ -105,7 +105,7 @@ function addComment(mensaje, user, dateTime, score) {
 }
 
 
-function starCalculator(score) {
+function starCalculator(score) { // toma un array que contiene elementos estrella y usando un valor del 1 al 5 les agrega la clase checked
   let stars_list = [`
              
                 <label for="star-1" class="bi bi-star-fill"></label>`,
@@ -119,7 +119,7 @@ function starCalculator(score) {
     `<label for="star-5" class="bi bi-star-fill"></label>
                `];
 
-  for (let i = 0; i <= score - 1; i++) {
+  for (let i = 0; i <= score - 1; i++) {  
     stars_list[i] = `<label for="star-1" class="bi bi-star-fill checked"></label>`
   }
 
@@ -128,12 +128,9 @@ function starCalculator(score) {
 
 }
 
-
-
-document.getElementById('sendCom').addEventListener('click', () => {
-  let mensaje = document.getElementById('textarea').value
-
-  let date = new Date();
+//devuelve la fecha en el momento de la creacion del mensaje
+function dateCreator() {
+    let date = new Date();
 
   let fullyear = date.getFullYear();
   let month = date.getMonth() + 1;
@@ -144,10 +141,14 @@ document.getElementById('sendCom').addEventListener('click', () => {
 
 
   var fulldate = fullyear + '-' + month + '-' + day + ' ' + hour + ':' + min + ':' + seconds;
+  return fulldate
+}
 
-  addComment(mensaje, logedName(), fulldate, paintStar())
+document.getElementById('sendCom').addEventListener('click', () => {
+  let mensaje = document.getElementById('textarea').value
 
-  
+  addComment(mensaje, logedName(), dateCreator(), paintStar())
+
 })
 
 
