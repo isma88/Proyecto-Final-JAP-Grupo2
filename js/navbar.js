@@ -1,5 +1,3 @@
-
-
 document.querySelector('nav').innerHTML = `
     <div class="container">
       <button class="navbar-toggler shadow-none bg-light" type="button" data-bs-toggle="collapse"
@@ -242,3 +240,11 @@ function removeProductdeCart(id) {
 
   updateCartDropdown();
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const botonCarrito = document.getElementById('btn-carrito');
+
+  botonCarrito.addEventListener('click', () => {
+    window.location.href = 'cart.html';
+  });
+});
