@@ -9,6 +9,13 @@ const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
 
+const themeSelect = document.getElementById("themeSwitch");
+const themeIcon = document.getElementById("themeIcon");
+const themeLabel = document.getElementById("themeLabel");
+const savedTheme = localStorage.getItem("theme") || "auto"; //toma el tema elegido, o el por defecto en caso de no haber ningúno guardado
+
+
+
 let showSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "block";
 };
@@ -43,19 +50,14 @@ let getJSONData = function (url) {
 };
 
 
-// mira si el usuario está logueado
-const logged = localStorage.getItem("usuario");
-if (!logged) {
-  // lo envia a login si no
-  window.location.href = "login.html";
-} else {
+//se asegura de que el usuario está logueado si no agrega el nombre de usuario a la barra de vavegación
+  let logged = localStorage.getItem("usuario");
+  if (!logged) {
+    window.location.href = "login.html";
+  } else {
+    document.getElementById("nickname").innerHTML = `${logedName()}`;
+  }
 
-  document.getElementById(
-    "nickname"
-    // muestra el nombre si está logueado
-  ).innerHTML = `${logedName()}`;
-
-}
 
 function logedName() {
   let user = JSON.parse(logged)
@@ -71,11 +73,7 @@ document.getElementById('cerrar').addEventListener('click', function () {
   localStorage.removeItem('usuario')
 })
 
-const themeSelect = document.getElementById("themeSwitch");
-const themeIcon = document.getElementById("themeIcon");
-const themeLabel = document.getElementById("themeLabel");
-
-const icons = {
+let icons = {
   auto: `
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" fill="currentColor" class="bi bi-highlights" viewBox="0 0 16 16">
                       <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-8 5v1H4.5a.5.5 0 0 0-.093.009A7 7 0 0 1 3.1 13zm0-1H2.255a7 7 0 0 1-.581-1H8zm-6.71-2a7 7 0 0 1-.22-1H8v1zM1 8q0-.51.07-1H8v1zm.29-2q.155-.519.384-1H8v1zm.965-2q.377-.54.846-1H8v1zm2.137-2A6.97 6.97 0 0 1 8 1v1z"/>
@@ -91,18 +89,20 @@ const icons = {
                     </svg>`
 };
 
+
+//cambia el ícono del tema elegido
 function applyTheme(mode) {
   themeIcon.innerHTML = icons[mode];
 }
 
 
-const savedTheme = localStorage.getItem("theme") || "auto";
+
 if (themeSelect) themeSelect.value = savedTheme;
 applyTheme(savedTheme);
 
 document.querySelectorAll("[data-theme]").forEach(btn => {
   btn.addEventListener("click", () => {
-    const selected = btn.getAttribute("data-theme");
+    let selected = btn.getAttribute("data-theme");
     localStorage.setItem("theme", selected);
     if (themeSelect) themeSelect.value = selected;
     applyTheme(selected);
@@ -112,26 +112,38 @@ document.querySelectorAll("[data-theme]").forEach(btn => {
 
 if (themeSelect) {
   themeSelect.addEventListener("change", e => {
-    const value = e.target.value;
+
+    let value = e.target.value;
+    console.log(value)
     localStorage.setItem("theme", value);
     applyTheme(value);
   });
 }
 
-
+//guarda el id de un producto en el localStorage
 function setItemId(id) {
   localStorage.setItem('ItemId', id)
   window.location.assign("product-info.html")
 
 }
 
+
+//permite tomar la id de un elemeento en cualquier grid
 function itemSet(grid, item) {
 
   document.getElementById(grid).addEventListener('click', (e) => {
-
     id = e.target.closest(item).id
     setItemId(id);
-
   })
 
+}
+
+function extractUser(){
+  let user = JSON.parse(localStorage.getItem('usuario'));
+  return user;
+}
+
+function extractCart() {
+  let cart  = JSON.parse(localStorage.getItem('cart'))
+  return cart
 }
