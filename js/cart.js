@@ -1,9 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const container = document.querySelector("#container-carrito");
 
+  const container = document.querySelector("#container-carrito");
+  document.querySelectorAll('input[name="pago"]').forEach(element => {
+    console.log(element)
+    
+    element.addEventListener("click", () => calcularSubtotal())
+  });
+  
   // Mostrar el carrito
   function desplegarCarrito() {
-    let items = JSON.parse(localStorage.getItem('cart')) || [];
+    let items = extractCart() || []; //descarga el carrito
     convert(items);
 
     if (items.length === 0) {
@@ -52,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
     amountControl();
     eliminar();
     updateCartDropdown();
+    console.log(calcularSubtotal())
   }
 
   desplegarCarrito();
@@ -113,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
     });
-
+      localStorage.setItem("cart", JSON.stringify(items))
   }
 
   // Eliminar productos
@@ -130,42 +137,107 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('input[name="moneyRadio"]').forEach(radio => {
     radio.addEventListener('click', desplegarCarrito);
   });
+
+
+ function calcularSubtotal(){  
+  carrito = extractCart()
+  let opSelected = document.querySelector('input[name="pago"]:checked')
+  let rawSubtotal = 0;
+      carrito.forEach(item => {
+        rawSubtotal += item.cost * item.quantity
+      })
+
+    switch (opSelected.value) {
+      case "Standard":
+          console.log(`estandar selecccionado `)
+          rawSubtotal * 0.05
+          return rawSubtotal
+        break;
+      
+      case "Express":
+          console.log("express")
+          rawSubtotal * 0.07
+          return rawSubtotal
+        break;
+    
+      case "Premium":
+        console.log("premium ")
+        rawSubtotal * 0.15
+          return rawSubtotal
+        break;
+
+      default:
+        rawSubtotal * 0.05
+          return rawSubtotal
+        break;
+    }
+    
+ }
+ calcularSubtotal()
+
 });
 
-  function validarDireccion() {
-    const direccion = document.getElementById('direccion').value.trim();
-    const ciudad = document.getElementById('ciudad').value.trim();
-    const codPostal = document.getElementById('codigoPostal').value.trim();
 
-    return (direccion != ' ') && (ciudad != ' ') && (codPostal != ' ');
+
+function validarDireccion() {
+  const departamento = document.getElementById('departamento').value.trim();
+  const localidad = document.getElementById('localidad').value.trim();
+  const calle = document.getElementById('calle').value.trim();
+  const numero = document.getElementById('numero').value.trim();
+  const esquina = document.getElementById('esquina').value.trim();
+
+  if (departamento === '' || localidad === '' || calle === '' || numero === '' || esquina === '') {
+    alert('Todos los campos de dirección son obligatorios');
+    return false;
   }
+  return true;
+}
 
-  function validarTipoEnvio() {
-    const radios = document.querySelectorAll('input[name="pago"]');
 
-    for (let radio of radios) {
-      if (radio.checked) {
-        return true;
-      }
-    }
+function validarTipoEnvio() {
+  const radio = document.querySelector('input[name="envio"]:checked');
 
+  if (!radio) {
+    alert('Seleccione un tipo de envío');
+    return false;
+  }
+  return true;
+}
+
+function validarCantidad() {
+  const items = JSON.parse(localStorage.getItem('cart')) || [];
+
+  if (items.length === 0) {
+    alert('El carrito está vacío');
     return false;
   }
 
+  return true;
+}
 
 
-  function validarCantidad() {
-    let items = JSON.parse(localStorage.getItem('cart')) || [];
-    const cantidad = document.getElementById('${item.id}').value.trim();
+function validarFormaPago() {
+  const formaPagoSeleccionada = document.querySelector('input[name="pago"]:checked');
 
-    if (isNaN(cantidad) || cantidad <= 0) {
-      return false;
-    }
+  if (!formaPagoSeleccionada) {
+    alert('Seleccione una forma de pago');
+    return false;
   }
+  return true;
+}
 
-  document.getElementsByClassName('btn').addEventListener('click', e =>{
 
-    if(validarCantidad() && validarTipoEnvio() && validarDireccion()){
-      alert("compra finalizada con exito.");
-    }
-  });
+
+
+document.querySelector('.card-footer .btn').addEventListener('click', (e) => {
+  e.preventDefault();
+
+  if (validarDireccion() &&
+      validarTipoEnvio() &&
+      validarCantidad() &&
+      validarFormaPago()) {
+
+    alert('¡Compra finalizada con éxito!');
+
+  }
+});
