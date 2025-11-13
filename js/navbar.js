@@ -147,7 +147,7 @@ function updateCartDropdown() {
   cartCount.textContent = totalItems;
 
   if (cart.length === 0) {
-    cartDropdown.innerHTML = '<li> <p><em>carrito vacio </em></p></li>';
+    cartDropdown.innerHTML = '<li> <p><em>carrito vacio </em></p></li> <li class="text-center"> <button id="btn-carrito" class="inset-shadow btn btn-primary"> Ir al carrito </button></li> ';
     return;
   }
 
