@@ -144,10 +144,10 @@ function dateCreator() {
   return fulldate
 }
 
-document.getElementById('sendCom').addEventListener('click', () => {
+document.getElementById('sendCom').addEventListener('click', () => { //al hacer click ejecuta la funcion addcoment 
   let mensaje = document.getElementById('textarea').value
 
-  addComment(mensaje, logedName(), dateCreator(), paintStar())
+  addComment(mensaje, logedName(), dateCreator(), paintStar()) 
 
 })
 

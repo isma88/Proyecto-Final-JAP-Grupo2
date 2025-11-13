@@ -1,5 +1,3 @@
-
-
 document.querySelector('nav').innerHTML = `
     <div class="container">
       <button class="navbar-toggler shadow-none bg-light" type="button" data-bs-toggle="collapse"
@@ -147,7 +145,7 @@ function updateCartDropdown() {
   cartCount.textContent = totalItems;
 
   if (cart.length === 0) {
-    cartDropdown.innerHTML = '<li> <p><em>carrito vacio </em></p></li> <li class="text-center"> <button id="btn-carrito" class="inset-shadow btn btn-primary"> Ir al carrito </button></li> ';
+    cartDropdown.innerHTML = '<li> <p><em>carrito vacio </em></p></li> <li class="text-center"> <a href="cart.html"> <button id="btn-carrito" class="inset-shadow btn btn-primary"> Ir al carrito </button></a></li> ';
     return;
   }
 
@@ -182,10 +180,10 @@ function updateCartDropdown() {
           <dl class="row">
       <dt class="col-sm-3">Subtotal</dt>
       <dd class="col-sm-8 text-end" id="cart-total">${cart[0].currency} ${subtotalGeneral.toLocaleString("de-DE")}</dd>
-          <li class="text-center">
+          <li class="text-center"><a href="cart.html">
   <button id="btn-carrito" class="inset-shadow btn btn-primary">
     Ir al carrito
-  </button>
+  </button></a>
 </li>
   `;
 document.querySelectorAll('.removeProduct').forEach(element => {
@@ -210,7 +208,7 @@ function removeProductdeCart(id) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  let botonCarrito = document.getElementById('btn-carrito');
+  const botonCarrito = document.getElementById('btn-carrito');
 
   botonCarrito.addEventListener('click', () => {
     window.location.href = 'cart.html';
