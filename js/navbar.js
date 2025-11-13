@@ -242,11 +242,3 @@ function removeProductdeCart(id) {
 
   updateCartDropdown();
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  let botonCarrito = document.getElementById('btn-carrito');
-
-  botonCarrito.addEventListener('click', () => {
-    window.location.href = 'cart.html';
-  });
-});
