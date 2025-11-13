@@ -10,8 +10,8 @@
 
 .form-control {
 
-    background-color: light-dark(white, var(--dark-innercard));
-    color: var(--text) !important;
+    background-color: light-dark(var(--dark-text),var(--dark-text));
+    color: light-dark(var(--light-text),var(--light-text));
 } 
 
 .card {
@@ -43,3 +43,30 @@ input[type=number] {
 input[type=number]:active, input[type=number]:focus {
  background-color: var(--dark-innercard);
 }
+.accordion-button {
+    background-color:light-dark(var(--dark-text),var(--dark-innercard));
+    color:light-dark(var(--light-text),var(--dark-text));
+  }
+
+  /* Fondo cuando el acordeón está abierto */
+  .accordion-button:not(.collapsed) {
+    background-color:light-dark(var(--dark-text),var(--dark-details));
+    color: light-dark(var(--light-text),var(--dark-text));
+    box-shadow: none;
+  }
+
+  /* El cuerpo del acordeón */
+  .accordion-body {
+    background-color: #fdfdfd;
+  }
+
+  /* Bordes redondeados suaves */
+  .accordion-item {
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+
+  .accordion-header{
+    background-color: light-dark(var(--dark-text),var(--dark-innercard))
+  }
