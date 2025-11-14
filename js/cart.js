@@ -298,7 +298,7 @@ function validarFormaPago() {
 }
 
 
-
+let modal = document.getElementsByClassName('modal');
 
 document.querySelector('#buyBtn').addEventListener('click', (e) => {
       validarFormaPago()
@@ -312,6 +312,11 @@ document.querySelector('#buyBtn').addEventListener('click', (e) => {
       validarFormaPago()) {
 
   //  alert('¡Compra finalizada con éxito!');
+
+  e.relatedTarget(modal.focus())
+  
+
+
 
   }
 });
