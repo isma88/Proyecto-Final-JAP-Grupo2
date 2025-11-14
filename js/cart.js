@@ -177,3 +177,67 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+
+
+function validarDireccion() {
+  const departamento = document.getElementById('departamento').value.trim();
+  const localidad = document.getElementById('localidad').value.trim();
+  const calle = document.getElementById('calle').value.trim();
+  const numero = document.getElementById('numero').value.trim();
+  const esquina = document.getElementById('esquina').value.trim();
+
+  if (departamento === '' || localidad === '' || calle === '' || numero === '' || esquina === '') {
+    alert('Todos los campos de dirección son obligatorios');
+    return false;
+  }
+  return true;
+}
+
+
+function validarTipoEnvio() {
+  const radio = document.querySelector('input[name="envio"]:checked');
+
+  if (!radio) {
+    alert('Seleccione un tipo de envío');
+    return false;
+  }
+  return true;
+}
+
+function validarCantidad() {
+  const items = JSON.parse(localStorage.getItem('cart')) || [];
+
+  if (items.length === 0) {
+    alert('El carrito está vacío');
+    return false;
+  }
+
+  return true;
+}
+
+
+function validarFormaPago() {
+  const formaPagoSeleccionada = document.querySelector('input[name="pago"]:checked');
+
+  if (!formaPagoSeleccionada) {
+    alert('Seleccione una forma de pago');
+    return false;
+  }
+  return true;
+}
+
+
+
+
+document.querySelector('.card-footer .btn').addEventListener('click', (e) => {
+  e.preventDefault();
+
+  if (validarDireccion() &&
+      validarTipoEnvio() &&
+      validarCantidad() &&
+      validarFormaPago()) {
+
+    alert('¡Compra finalizada con éxito!');
+
+  }
+});
