@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
+  let elSubtotal = document.getElementById('subtotal')
+  let elTotal = document.getElementById('total')
 
   const container = document.querySelector("#container-carrito");
-  document.querySelectorAll('input[name="pago"]').forEach(element => {
+  document.querySelectorAll('input[name="envio"]').forEach(element => {
     console.log(element)
     
     element.addEventListener("click", () => calcularSubtotal())
@@ -59,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
     eliminar();
     updateCartDropdown();
     console.log(calcularSubtotal())
+    showSubtotal(calcularSubtotal())
   }
 
   desplegarCarrito();
@@ -141,40 +144,56 @@ document.addEventListener('DOMContentLoaded', function () {
 
  function calcularSubtotal(){  
   carrito = extractCart()
-  let opSelected = document.querySelector('input[name="pago"]:checked')
+  let opSelected = document.querySelector('input[name="envio"]:checked')
   let rawSubtotal = 0;
+  let taxTotal = 0 ;
+
+  
       carrito.forEach(item => {
         rawSubtotal += item.cost * item.quantity
       })
+    
+    //agrega subtotal sin convertir al elemento subtotal
 
     switch (opSelected.value) {
       case "Standard":
           console.log(`estandar selecccionado `)
-          rawSubtotal * 0.05
-          return rawSubtotal
+          taxTotal = rawSubtotal * 1.05
+          return  {taxTotal:taxTotal, rawSubtotal:rawSubtotal}
         break;
       
       case "Express":
           console.log("express")
-          rawSubtotal * 0.07
-          return rawSubtotal
+          taxTotal = rawSubtotal * 1.07
+          return  {taxTotal:taxTotal, rawSubtotal:rawSubtotal}
         break;
     
       case "Premium":
         console.log("premium ")
-        rawSubtotal * 0.15
-          return rawSubtotal
+        taxTotal = rawSubtotal * 1.15
+          return  {taxTotal:taxTotal, rawSubtotal:rawSubtotal}
         break;
 
       default:
-        rawSubtotal * 0.05
-          return rawSubtotal
+        taxTotal = rawSubtotal * 1.05
+          return {taxTotal:taxTotal, rawSubtotal:rawSubtotal}
         break;
     }
+
+    
     
  }
- calcularSubtotal()
 
+
+ function showSubtotal(totals) {
+  let selCurr = document.querySelector('input[name="moneyRadio"]:checked').value || [] 
+  console.log(selCurr)
+  elTotal.innerHTML = selCurr + totals.taxTotal.toLocaleString('de-DE')
+  elSubtotal.innerHTML = selCurr + totals.rawSubtotal.toLocaleString('de-DE')
+
+  
+}
+ 
 });
 
 
@@ -186,11 +205,48 @@ function validarDireccion() {
   const numero = document.getElementById('numero').value.trim();
   const esquina = document.getElementById('esquina').value.trim();
 
-  if (departamento === '' || localidad === '' || calle === '' || numero === '' || esquina === '') {
-    alert('Todos los campos de dirección son obligatorios');
-    return false;
+  let valid = true;
+
+  // validar cada campo por separado y aplicar/remover la clase is-invalid
+  if (departamento === '') {
+    document.getElementById('departamento').classList.add('is-invalid');
+    valid = false;
+  } else {
+    document.getElementById('departamento').classList.remove('is-invalid');
   }
-  return true;
+
+  if (localidad === '') {
+    document.getElementById('localidad').classList.add('is-invalid');
+    valid = false;
+  } else {
+    document.getElementById('localidad').classList.remove('is-invalid');
+  }
+
+  if (calle === '') {
+    document.getElementById('calle').classList.add('is-invalid');
+    valid = false;
+  } else {
+    document.getElementById('calle').classList.remove('is-invalid');
+  }
+
+  if (numero === '') {
+    document.getElementById('numero').classList.add('is-invalid');
+    valid = false;
+  } else {
+    document.getElementById('numero').classList.remove('is-invalid');
+  }
+
+  if (esquina === '') {
+    document.getElementById('esquina').classList.add('is-invalid');
+    valid = false;
+  } else {
+    document.getElementById('esquina').classList.remove('is-invalid');
+  }
+  if (!valid) {
+    document.getElementById('collapseDireccion').classList.remove('collapse')
+  }
+
+  return valid;
 }
 
 
@@ -198,6 +254,7 @@ function validarTipoEnvio() {
   const radio = document.querySelector('input[name="envio"]:checked');
 
   if (!radio) {
+    collapseEnvio.classList.remove('collapse')
     alert('Seleccione un tipo de envío');
     return false;
   }
@@ -208,7 +265,7 @@ function validarCantidad() {
   const items = JSON.parse(localStorage.getItem('cart')) || [];
 
   if (items.length === 0) {
-    alert('El carrito está vacío');
+ //   alert('El carrito está vacío');
     return false;
   }
 
@@ -218,26 +275,36 @@ function validarCantidad() {
 
 function validarFormaPago() {
   const formaPagoSeleccionada = document.querySelector('input[name="pago"]:checked');
-
+  let tarjeta = document.getElementById('pago1')
+  let transferencia = document.getElementById('pago2')
+  let collapsePago =  document.getElementById('collapsePago')
   if (!formaPagoSeleccionada) {
-    alert('Seleccione una forma de pago');
+ //   alert('Seleccione una forma de pago');
+    collapsePago.classList.remove('collapse')
+    tarjeta.classList.add('is-invalid')
+    transferencia.classList.add('is-invalid')
     return false;
   }
+  tarjeta.classList.remove ('is-invalid')
+    transferencia.classList.remove ('is-invalid')
   return true;
 }
 
 
 
 
-document.querySelector('.card-footer .btn').addEventListener('click', (e) => {
-  e.preventDefault();
-
+document.querySelector('#buyBtn').addEventListener('click', (e) => {
+      validarFormaPago()
+      validarDireccion()
+      validarTipoEnvio()
+       validarCantidad()
+       
   if (validarDireccion() &&
       validarTipoEnvio() &&
       validarCantidad() &&
       validarFormaPago()) {
 
-    alert('¡Compra finalizada con éxito!');
+  //  alert('¡Compra finalizada con éxito!');
 
   }
 });
