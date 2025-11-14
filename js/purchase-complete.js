@@ -31,10 +31,4 @@ document.addEventListener('DOMContentLoaded', ()=>{
         `).join("")}
       </ul>
     `;
-
-            
-
-
-
-
 });
