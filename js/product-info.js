@@ -75,7 +75,7 @@ itemSet('items', '.col')//define la grid y permite tomar el valor de id de un it
 
 
 
-function addComment(mensaje, user, dateTime, score) {
+function addComment(message, user, dateTime, score) {
 
 
   document.getElementById('mensajes').innerHTML +=
@@ -89,7 +89,7 @@ function addComment(mensaje, user, dateTime, score) {
               <div class="col-md-6">
                   <div class="card-body">
                       <h5 class="card-title">${user}</h5>
-                      <p class="card-text">${mensaje}</p>
+                      <p class="card-text">${message}</p>
                       <p class="card-text"><small class="text-muted">${dateTime}</small></p>
                   </div>
               </div>
@@ -145,9 +145,9 @@ function dateCreator() {
 }
 
 document.getElementById('sendCom').addEventListener('click', () => { //al hacer click ejecuta la funcion addcoment 
-  let mensaje = document.getElementById('textarea').value
+  let message = document.getElementById('textarea').value
 
-  addComment(mensaje, logedName(), dateCreator(), paintStar()) 
+  addComment(message, logedName(), dateCreator(), paintStar()) 
 
 })
 

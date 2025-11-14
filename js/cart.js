@@ -1,14 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
+  let Subtotal = document.getElementById('subtotal')
+  let Total = document.getElementById('total')
 
   const container = document.querySelector("#container-carrito");
-  document.querySelectorAll('input[name="pago"]').forEach(element => {
+  document.querySelectorAll('input[name="envio"]').forEach(element => {
     console.log(element)
     
-    element.addEventListener("click", () => calcularSubtotal())
+    element.addEventListener("click", () => calculateSubtotal())
   });
   
   // Mostrar el carrito
-  function desplegarCarrito() {
+  function displayCart() {
     let items = extractCart() || []; //descarga el carrito
     convert(items);
 
@@ -42,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <span>${item.currency} ${(item.quantity * item.cost).toLocaleString('de-DE')}</span>
                   </div>
                   <div class="col">
-                    <button class="btn btn-danger eliminar" data-id="${item.id}">
+                    <button class="btn btn-danger remove" data-id="${item.id}">
                       <i class="bi bi-trash-fill"></i>
                     </button>
                   </div>
@@ -56,12 +58,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // funciones auxiliares
     amountControl();
-    eliminar();
+    remove();
     updateCartDropdown();
-    console.log(calcularSubtotal())
+    console.log(calculateSubtotal())
+    showSubtotal(calculateSubtotal())
   }
 
-  desplegarCarrito();
+  displayCart();
 
   // Control de cantidad
  function amountControl() {
@@ -70,8 +73,8 @@ document.addEventListener('DOMContentLoaded', function () {
   inputs.forEach(element => {
     element.addEventListener('input', () => {
       if (element.value > 0 && element.value < 100) {
-        actualizarCantidad(element.id, element.value);
-        desplegarCarrito();
+        updateQuantity(element.id, element.value);
+        displayCart();
       }
     });
 
@@ -79,8 +82,8 @@ document.addEventListener('DOMContentLoaded', function () {
     element.nextElementSibling.addEventListener('click', () => {
       if (element.value > 0 && element.value < 100) {
         element.value++;
-        actualizarCantidad(element.id, element.value);
-        desplegarCarrito();
+        updateQuantity(element.id, element.value);
+        displayCart();
       }
     });
 
@@ -88,32 +91,32 @@ document.addEventListener('DOMContentLoaded', function () {
     element.previousElementSibling.addEventListener('click', () => {
       if (element.value > 1 && element.value < 100) { 
         element.value--;
-        actualizarCantidad(element.id, element.value);
-        desplegarCarrito();
+        updateQuantity(element.id, element.value);
+        displayCart();
       }
     });
   });
 }
 
   //  Actualiza cantidad en el carrito
-  function actualizarCantidad(idCarrito, nuevaCantidad) {
+  function updateQuantity(idCart, newQuantity) {
     const items = JSON.parse(localStorage.getItem('cart')) || [];
-    const nuevoCarrito = items.map(item =>
-      item.id == idCarrito ? { ...item, quantity: parseInt(nuevaCantidad) } : item
+    const newCart = items.map(item =>
+      item.id == idCart ? { ...item, quantity: parseInt(newQuantity) } : item
     );
-    localStorage.setItem('cart', JSON.stringify(nuevoCarrito));
+    localStorage.setItem('cart', JSON.stringify(newCart));
   }
 
   // Conversión de moneda
   function convert(items) {
-    monDeseada = document.querySelector('input[name="moneyRadio"]:checked').value
+     desiredCurrency = document.querySelector('input[name="moneyRadio"]:checked').value
     items.forEach(element => {
-      console.log(element.name, element.currency, element.cost, monDeseada == element.currency)
-      if (element.currency !== monDeseada && monDeseada == "UYU") {
+      console.log(element.name, element.currency, element.cost,  desiredCurrency == element.currency)
+      if (element.currency !== desiredCurrency && desiredCurrency == "UYU") {
         element.cost = element.cost * 40
         console.log(element.cost)
         element.currency = "UYU"
-      } else if (element.currency !== monDeseada && monDeseada == "USD") {
+      } else if (element.currency !== desiredCurrency && desiredCurrency == "USD") {
         element.cost = element.cost / 40
         console.log(element.cost)
         element.currency = "USD"
@@ -124,56 +127,185 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Eliminar productos
-  function eliminar() {
-    document.querySelectorAll('.eliminar').forEach(btn => {
+  function remove() {
+    document.querySelectorAll('.remove').forEach(btn => {
       btn.addEventListener('click', e => {
         const id = e.currentTarget.dataset.id;
-        removeProductdeCart(id);
-        desplegarCarrito();
+        removeProductCart(id);
+        displayCart();
       });
     });
   }
 
   document.querySelectorAll('input[name="moneyRadio"]').forEach(radio => {
-    radio.addEventListener('click', desplegarCarrito);
+    radio.addEventListener('click', displayCart);
   });
 
 
- function calcularSubtotal(){  
-  carrito = extractCart()
-  let opSelected = document.querySelector('input[name="pago"]:checked')
+ function calculateSubtotal(){  
+  cart = extractCart()
+  let opSelected = document.querySelector('input[name="envio"]:checked')
   let rawSubtotal = 0;
-      carrito.forEach(item => {
+  let taxTotal = 0 ;
+
+  
+      cart.forEach(item => {
         rawSubtotal += item.cost * item.quantity
       })
+    
+    //agrega subtotal sin convertir al elemento subtotal
 
     switch (opSelected.value) {
       case "Standard":
           console.log(`estandar selecccionado `)
-          rawSubtotal * 0.05
-          return rawSubtotal
+          taxTotal = rawSubtotal * 1.05
+          return  {taxTotal:taxTotal, rawSubtotal:rawSubtotal}
         break;
       
       case "Express":
           console.log("express")
-          rawSubtotal * 0.07
-          return rawSubtotal
+          taxTotal = rawSubtotal * 1.07
+          return  {taxTotal:taxTotal, rawSubtotal:rawSubtotal}
         break;
     
       case "Premium":
         console.log("premium ")
-        rawSubtotal * 0.15
-          return rawSubtotal
+        taxTotal = rawSubtotal * 1.15
+          return  {taxTotal:taxTotal, rawSubtotal:rawSubtotal}
         break;
 
       default:
-        rawSubtotal * 0.05
-          return rawSubtotal
+        taxTotal = rawSubtotal * 1.05
+          return {taxTotal:taxTotal, rawSubtotal:rawSubtotal}
         break;
     }
+
+    
     
  }
- calcularSubtotal()
 
+
+ function showSubtotal(totals) {
+  let selCurr = document.querySelector('input[name="moneyRadio"]:checked').value || [] 
+  console.log(selCurr)
+  Total.innerHTML = selCurr + totals.taxTotal.toLocaleString('de-DE')
+  Subtotal.innerHTML = selCurr + totals.rawSubtotal.toLocaleString('de-DE')
+
+  
+}
+ 
+});
+
+
+
+function validateAddress() {
+  const departamento = document.getElementById('departamento').value.trim();
+  const localidad = document.getElementById('localidad').value.trim();
+  const calle = document.getElementById('calle').value.trim();
+  const numero = document.getElementById('numero').value.trim();
+  const esquina = document.getElementById('esquina').value.trim();
+
+  let valid = true;
+
+  // validar cada campo por separado y aplicar/remover la clase is-invalid
+  if (departamento === '') {
+    document.getElementById('departamento').classList.add('is-invalid');
+    valid = false;
+  } else {
+    document.getElementById('departamento').classList.remove('is-invalid');
+  }
+
+  if (localidad === '') {
+    document.getElementById('localidad').classList.add('is-invalid');
+    valid = false;
+  } else {
+    document.getElementById('localidad').classList.remove('is-invalid');
+  }
+
+  if (calle === '') {
+    document.getElementById('calle').classList.add('is-invalid');
+    valid = false;
+  } else {
+    document.getElementById('calle').classList.remove('is-invalid');
+  }
+
+  if (numero === '') {
+    document.getElementById('numero').classList.add('is-invalid');
+    valid = false;
+  } else {
+    document.getElementById('numero').classList.remove('is-invalid');
+  }
+
+  if (esquina === '') {
+    document.getElementById('esquina').classList.add('is-invalid');
+    valid = false;
+  } else {
+    document.getElementById('esquina').classList.remove('is-invalid');
+  }
+  if (!valid) {
+    document.getElementById('collapseDireccion').classList.remove('collapse')
+  }
+
+  return valid;
+}
+
+
+function validateShipment() {
+  const radio = document.querySelector('input[name="envio"]:checked');
+
+  if (!radio) {
+    collapseEnvio.classList.remove('collapse')
+    alert('Seleccione un tipo de envío');
+    return false;
+  }
+  return true;
+}
+
+function validateQuantity() {
+  const items = JSON.parse(localStorage.getItem('cart')) || [];
+
+  if (items.length === 0) {
+ //   alert('El carrito está vacío');
+    return false;
+  }
+
+  return true;
+}
+
+
+function validatePaymentMethod() {
+  const formaPagoSeleccionada = document.querySelector('input[name="pago"]:checked');
+  let tarjeta = document.getElementById('pago1')
+  let transferencia = document.getElementById('pago2')
+  let collapsePago =  document.getElementById('collapsePago')
+  if (!formaPagoSeleccionada) {
+ //   alert('Seleccione una forma de pago');
+    collapsePago.classList.remove('collapse')
+    tarjeta.classList.add('is-invalid')
+    transferencia.classList.add('is-invalid')
+    return false;
+  }
+  tarjeta.classList.remove ('is-invalid')
+    transferencia.classList.remove ('is-invalid')
+  return true;
+}
+
+
+
+
+document.querySelector('#buyBtn').addEventListener('click', (e) => {
+      validatePaymentMethod ()
+      validateAddress()
+      validateShipment()
+       validateQuantity()
+       
+  if (validateAddress() &&
+      validateShipment() &&
+     validateQuantity() &&
+      validatePaymentMethod()) {
+
+     window.location.href = "purchase-complete.html"   
+
+  }
 });
 
