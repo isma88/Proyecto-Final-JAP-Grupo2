@@ -1,3 +1,5 @@
+@import url(colors.css);
+
 .prod-img { 
     max-width: 11rem !important; 
     min-width: auto;
@@ -80,3 +82,15 @@ input[type=number]:active, input[type=number]:focus {
   border-bottom: none;
   border: 1px solid light-dark(var(--dark-text), var(--dark-details));
 }
+
+
+.modal-content {
+  
+ background: linear-gradient(to right, #ffffff, #b58d89);
+}
+
+.modal-body {
+  text-decoration: solid !important; 
+  color: green !important;
+}
+

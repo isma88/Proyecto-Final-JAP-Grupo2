@@ -298,8 +298,10 @@ function validarFormaPago() {
 }
 
 
+
 document.querySelector('#buyBtn').addEventListener('click', (e) => {
-      validarFormaPago()
+  var myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
+   /*   validarFormaPago()
       validarDireccion()
       validarTipoEnvio()
        validarCantidad()
@@ -307,18 +309,11 @@ document.querySelector('#buyBtn').addEventListener('click', (e) => {
   if (validarDireccion() &&
       validarTipoEnvio() &&
       validarCantidad() &&
-      validarFormaPago()) {
+      validarFormaPago()) */{
 
   //  alert('¡Compra finalizada con éxito!');
 
-  return {
-   
-  }
-
-  /*e.relatedTarget(modal.focus())*/
-  
-
-
+  myModal.show();
 
   }
 });

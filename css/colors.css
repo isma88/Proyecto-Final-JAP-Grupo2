@@ -16,6 +16,7 @@
     --dark-btn: #9B2242;
     --dark-innercard:#575757;
 
+
     --background: light-dark(var(--light-bg), var(--dark-bg));
     --card: light-dark(var(--light-card), var(--dark-card));
     --text: light-dark(var(--light-text), var(--dark-text));
@@ -28,6 +29,8 @@
     --dark-filter: brightness(0) invert(1) grayscale(1) contrast(100) drop-shadow(2px 2px 2px);
 
     --current-filter: light-dark(var(--light-filter), var(--dark-filter));
+
+    
 
 }   
 
