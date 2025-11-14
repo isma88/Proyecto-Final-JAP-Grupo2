@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('input[name="envio"]').forEach(element => {
     console.log(element)
     
-    element.addEventListener("click", () => calcularSubtotal())
+    element.addEventListener("click", () => showSubtotal(calcularSubtotal()))
   });
   
   // Mostrar el carrito
@@ -157,6 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     switch (opSelected.value) {
       case "Standard":
+
           console.log(`estandar selecccionado `)
           taxTotal = rawSubtotal * 1.05
           return  {taxTotal:taxTotal, rawSubtotal:rawSubtotal}
@@ -164,21 +165,27 @@ document.addEventListener('DOMContentLoaded', function () {
       
       case "Express":
           console.log("express")
-          taxTotal = rawSubtotal * 1.07
-          return  {taxTotal:taxTotal, rawSubtotal:rawSubtotal}
+          taxTotal = rawSubtotal * 1.07  
+          console.log(taxTotal)
+          return  {taxTotal:taxTotal, rawSubtotal:rawSubtotal};
         break;
     
       case "Premium":
         console.log("premium ")
         taxTotal = rawSubtotal * 1.15
+        console.log(taxTotal)
           return  {taxTotal:taxTotal, rawSubtotal:rawSubtotal}
         break;
 
       default:
         taxTotal = rawSubtotal * 1.05
           return {taxTotal:taxTotal, rawSubtotal:rawSubtotal}
-        break;
+        break; 
+
+
     }
+
+  
 
     
     
