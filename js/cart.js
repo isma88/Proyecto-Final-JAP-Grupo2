@@ -301,7 +301,7 @@ function validarFormaPago() {
 
 document.querySelector('#buyBtn').addEventListener('click', (e) => {
   var myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
-   /*   validarFormaPago()
+     validarFormaPago()
       validarDireccion()
       validarTipoEnvio()
        validarCantidad()
@@ -309,7 +309,7 @@ document.querySelector('#buyBtn').addEventListener('click', (e) => {
   if (validarDireccion() &&
       validarTipoEnvio() &&
       validarCantidad() &&
-      validarFormaPago()) */{
+      validarFormaPago()) {
 
   //  alert('¡Compra finalizada con éxito!');
 
