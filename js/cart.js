@@ -310,7 +310,7 @@ document.querySelector('#buyBtn').addEventListener('click', (e) => {
       validarCantidad() &&
       validarFormaPago()) {
 
-  //  alert('¡Compra finalizada con éxito!');
+     window.location.href = "purchase-complete.html"   
 
  
 
