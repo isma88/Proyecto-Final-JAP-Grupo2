@@ -298,8 +298,6 @@ function validarFormaPago() {
 }
 
 
-let modal = document.getElementsByClassName('modal');
-
 document.querySelector('#buyBtn').addEventListener('click', (e) => {
       validarFormaPago()
       validarDireccion()
@@ -313,7 +311,11 @@ document.querySelector('#buyBtn').addEventListener('click', (e) => {
 
   //  alert('¡Compra finalizada con éxito!');
 
-  e.relatedTarget(modal.focus())
+  return {
+   
+  }
+
+  /*e.relatedTarget(modal.focus())*/
   
 
 
