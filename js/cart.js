@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('input[name="envio"]').forEach(element => {
     console.log(element)
     
-    element.addEventListener("click", () => calculateSubtotal())
+    element.addEventListener("click", () => displayCart())
   });
   
   // Mostrar el carrito
@@ -60,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
     amountControl();
     remove();
     updateCartDropdown();
-    console.log(calculateSubtotal())
     showSubtotal(calculateSubtotal())
   }
 
@@ -123,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
     });
-      localStorage.setItem("cart", JSON.stringify(items))
+      localStorage.setItem("cart", JSON.stringify(items)) //guarda los valores convertidos de cada item en el carrito
   }
 
   // Eliminar productos
@@ -159,19 +158,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     switch (opSelected.value) {
       case "Standard":
-          console.log(`estandar selecccionado `)
+         
           taxTotal = rawSubtotal * 1.05
           return  {taxTotal:taxTotal, rawSubtotal:rawSubtotal}
         break;
       
       case "Express":
-          console.log("express")
+        
           taxTotal = rawSubtotal * 1.07
           return  {taxTotal:taxTotal, rawSubtotal:rawSubtotal}
         break;
     
       case "Premium":
-        console.log("premium ")
+       
         taxTotal = rawSubtotal * 1.15
           return  {taxTotal:taxTotal, rawSubtotal:rawSubtotal}
         break;
