@@ -1,5 +1,3 @@
-
-
 document.querySelector('nav').innerHTML = `
     <div class="container">
       <button class="navbar-toggler shadow-none bg-light" type="button" data-bs-toggle="collapse"
@@ -102,13 +100,14 @@ document.querySelector('nav').innerHTML = `
       </div>
     </div>`
 
+
 document.addEventListener("DOMContentLoaded", () => {
   // Obtener datos guardados del usuario y su foto
-  const user = JSON.parse(localStorage.getItem("usuario"));
+  let user = extractUser();
 
-   const navPFP = document.getElementById("nav-profile-pic");
+   let navPFP = document.getElementById("nav-profile-pic");
   // Buscar los elementos dentro de la navbar
-  const nameEl = document.getElementById("nav-username");
+  let nameEl = document.getElementById("nav-username");
 
   // Mostrar el nombre completo (si existe)
   if (user && nameEl) {
@@ -123,79 +122,42 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
   // Funcionalidad de "Cerrar Sesión"
-  const cerrar = document.getElementById("cerrar");
-  if (cerrar) {
-    cerrar.addEventListener("click", () => {
+  let close = document.getElementById("cerrar");
+  if (close) {
+    close.addEventListener("click", () => {
       localStorage.removeItem("usuario");
       window.location.href = "login.html";
     });
   }
 
   updateCartDropdown();
-
-
-});
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  // Obtener datos guardados del usuario y su foto
-  const user = JSON.parse(localStorage.getItem("usuario"));
-
-   const navPFP = document.getElementById("nav-profile-pic");
-  // Buscar los elementos dentro de la navbar
-  const nameEl = document.getElementById("nav-username");
-
-  // Mostrar el nombre completo (si existe)
-  if (user && nameEl) {
-    nameEl.textContent = `${user.nombre || ""} ${user.apellido || ""}`.trim() || "Usuario";
-  } else if (nameEl) {
-    nameEl.textContent = "Invitado";
-  }
-
-  // Mostrar la foto del perfil guardada
-
-    navPFP.src = user.pfp || "img/img_perfil.png";
-  
-
-  // Funcionalidad de "Cerrar Sesión"
-  const cerrar = document.getElementById("cerrar");
-  if (cerrar) {
-    cerrar.addEventListener("click", () => {
-      localStorage.removeItem("usuario");
-      window.location.href = "login.html";
-    });
-  }
-
-  updateCartDropdown();
-
 
 });
 
 
 function updateCartDropdown() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const cartCount = document.getElementById("cart-count");
-  const cartDropdown = document.getElementById("dropdown-menu");
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let cartCount = document.getElementById("cart-count");
+  let cartDropdown = document.getElementById("dropdown-menu");
 
   // Mostrar número de productos totales
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   cartCount.textContent = totalItems;
 
   if (cart.length === 0) {
-    cartDropdown.innerHTML = '<li> <p><em>carrito vacio </em></p></li>';
+    cartDropdown.innerHTML = '<li> <p><em>carrito vacio </em></p></li> <li class="text-center"> <a href="cart.html"> <button id="btn-carrito" class="inset-shadow btn btn-primary"> Ir al carrito </button></a></li> ';
     return;
   }
 
-
   // Generar lista de productos
   let subtotalGeneral = 0;
-  let itemscarrito = "";
+  let itemscart = "";
 
   cart.forEach(item => {
-    const subtotalItem = item.cost * item.quantity; 
+    let subtotalItem = item.cost * item.quantity; 
     subtotalGeneral += subtotalItem;
 
-    itemscarrito += ` 
+    itemscart += ` 
     <li  class="mb-2">
       <div class="d-flex justify-content-between align-items-center">
       <img id="nav-product" class=img src="${item.image}" alt="${item.image}" width="50" height="50">
@@ -214,25 +176,25 @@ function updateCartDropdown() {
 
    // Mostrar subtotal y link al carrito completo
   cartDropdown.innerHTML = `
-    ${itemscarrito}
+    ${itemscart}
           <dl class="row">
       <dt class="col-sm-3">Subtotal</dt>
       <dd class="col-sm-8 text-end" id="cart-total">${cart[0].currency} ${subtotalGeneral.toLocaleString("de-DE")}</dd>
-          <li class="text-center">
+          <li class="text-center"><a href="cart.html">
   <button id="btn-carrito" class="inset-shadow btn btn-primary">
     Ir al carrito
-  </button>
+  </button></a>
 </li>
   `;
 document.querySelectorAll('.removeProduct').forEach(element => {
   element.addEventListener('click', (e) =>{
     e.stopPropagation();
-    removeProductdeCart(element.id)})
+    removeProductCart(element.id)})
   
 });
 
 }
-function removeProductdeCart(id) {
+function removeProductCart(id) {
 
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -246,9 +208,9 @@ function removeProductdeCart(id) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const botonCarrito = document.getElementById('btn-carrito');
+  const btnCart = document.getElementById('btn-carrito');
 
-  botonCarrito.addEventListener('click', () => {
+  btnCart.addEventListener('click', () => {
     window.location.href = 'cart.html';
   });
 });
