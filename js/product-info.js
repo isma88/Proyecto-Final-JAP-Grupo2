@@ -75,15 +75,14 @@ itemSet('items', '.col')//define la grid y permite tomar el valor de id de un it
 
 
 
-function addComment(message, user, dateTime, score) {
-
-
+function addComment(message, user, dateTime, score, pfp) {
+ pfp = pfp || "img/img_perfil.png"
   document.getElementById('mensajes').innerHTML +=
     `<div class="card mb-4 mt-1 h-100 shadow-md card-coment">
           <div class="row g-4">
               <div class="col-md-2">
                   <div class="card-body">
-                      <img src="img/img_perfil.png" class="img-fluid start profileImg" alt="comentarios" style="width: 80px; height: 80px;">
+                      <img src="${pfp}" alt="img/img_perfil.png" class="img-fluid start profileImg" alt="comentarios" style="width: 80px; height: 90px;">
                   </div>
               </div>
               <div class="col-md-6">
@@ -103,6 +102,7 @@ function addComment(message, user, dateTime, score) {
 
       
 }
+
 
 
 function starCalculator(score) { // toma un array que contiene elementos estrella y usando un valor del 1 al 5 les agrega la clase checked
@@ -147,7 +147,7 @@ function dateCreator() {
 document.getElementById('sendCom').addEventListener('click', () => { //al hacer click ejecuta la funcion addcoment 
   let message = document.getElementById('textarea').value
 
-  addComment(message, logedName(), dateCreator(), paintStar()) 
+  addComment(message, logedName(), dateCreator(), paintStar(), extractUser().pfp) 
 
 })
 

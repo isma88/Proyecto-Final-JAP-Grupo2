@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (items.length === 0) {
       container.innerHTML = `<p class="text-center">Tu carrito está vacío.</p>`;
-      return;
-    }
+      
+    }else {
 
     container.innerHTML = `
       <ul class="list-group mx-5">
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
           </li>
         `).join("")}
       </ul>
-    `;
+    `};
 
     // funciones auxiliares
     amountControl();
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.remove').forEach(btn => {
       btn.addEventListener('click', e => {
         const id = e.currentTarget.dataset.id;
-        removeProductCart(id);
+        removeProductCart(id); // esta funciion viene de navbar donde se encuentra el resto de la funcionalidad de carrito
         displayCart();
       });
     });
@@ -150,7 +150,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   
       cart.forEach(item => {
+        
         rawSubtotal += item.cost * item.quantity
+        console.log(rawSubtotal)
       })
     
     //agrega subtotal sin convertir al elemento subtotal
@@ -187,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
  function showSubtotal(totals) {
   let selCurr = document.querySelector('input[name="moneyRadio"]:checked').value || [] 
-  console.log(selCurr)
+  
   Total.innerHTML = selCurr + totals.taxTotal.toLocaleString('de-DE')
   Subtotal.innerHTML = selCurr + totals.rawSubtotal.toLocaleString('de-DE')
 
@@ -278,6 +280,7 @@ function validatePaymentMethod() {
   let tarjeta = document.getElementById('pago1')
   let transferencia = document.getElementById('pago2')
   let collapsePago =  document.getElementById('collapsePago')
+
   if (!formaPagoSeleccionada) {
  //   alert('Seleccione una forma de pago');
     collapsePago.classList.remove('collapse')

@@ -103,7 +103,7 @@ document.querySelector('nav').innerHTML = `
 
 document.addEventListener("DOMContentLoaded", () => {
   // Obtener datos guardados del usuario y su foto
-  let user = JSON.parse(localStorage.getItem("usuario"));
+  let user = extractUser();
 
    let navPFP = document.getElementById("nav-profile-pic");
   // Buscar los elementos dentro de la navbar

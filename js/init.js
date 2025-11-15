@@ -59,7 +59,7 @@ let getJSONData = function (url) {
   }
 
 
-function logedName() {
+function logedName() { //devuelve exclusivamente el nombre dle usuario logueado
   let user = JSON.parse(logged)
   if (!user.nombre == '') {
     return user.nombre
