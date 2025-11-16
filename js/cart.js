@@ -1,23 +1,23 @@
 document.addEventListener('DOMContentLoaded', function () {
-  let elSubtotal = document.getElementById('subtotal')
-  let elTotal = document.getElementById('total')
+  let Subtotal = document.getElementById('subtotal')
+  let Total = document.getElementById('total')
 
   const container = document.querySelector("#container-carrito");
   document.querySelectorAll('input[name="envio"]').forEach(element => {
     console.log(element)
     
-    element.addEventListener("click", () => calcularSubtotal())
+    element.addEventListener("click", () => displayCart())
   });
   
   // Mostrar el carrito
-  function desplegarCarrito() {
+  function displayCart() {
     let items = extractCart() || []; //descarga el carrito
     convert(items);
 
     if (items.length === 0) {
       container.innerHTML = `<p class="text-center">Tu carrito está vacío.</p>`;
-      return;
-    }
+      
+    }else {
 
     container.innerHTML = `
       <ul class="list-group mx-5">
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <span>${item.currency} ${(item.quantity * item.cost).toLocaleString('de-DE')}</span>
                   </div>
                   <div class="col">
-                    <button class="btn btn-danger eliminar" data-id="${item.id}">
+                    <button class="btn btn-danger remove" data-id="${item.id}">
                       <i class="bi bi-trash-fill"></i>
                     </button>
                   </div>
@@ -54,17 +54,16 @@ document.addEventListener('DOMContentLoaded', function () {
           </li>
         `).join("")}
       </ul>
-    `;
+    `};
 
     // funciones auxiliares
     amountControl();
-    eliminar();
+    remove();
     updateCartDropdown();
-    console.log(calcularSubtotal())
-    showSubtotal(calcularSubtotal())
+    showSubtotal(calculateSubtotal())
   }
 
-  desplegarCarrito();
+  displayCart();
 
   // Control de cantidad
  function amountControl() {
@@ -73,8 +72,8 @@ document.addEventListener('DOMContentLoaded', function () {
   inputs.forEach(element => {
     element.addEventListener('input', () => {
       if (element.value > 0 && element.value < 100) {
-        actualizarCantidad(element.id, element.value);
-        desplegarCarrito();
+        updateQuantity(element.id, element.value);
+        displayCart();
       }
     });
 
@@ -82,8 +81,8 @@ document.addEventListener('DOMContentLoaded', function () {
     element.nextElementSibling.addEventListener('click', () => {
       if (element.value > 0 && element.value < 100) {
         element.value++;
-        actualizarCantidad(element.id, element.value);
-        desplegarCarrito();
+        updateQuantity(element.id, element.value);
+        displayCart();
       }
     });
 
@@ -91,85 +90,87 @@ document.addEventListener('DOMContentLoaded', function () {
     element.previousElementSibling.addEventListener('click', () => {
       if (element.value > 1 && element.value < 100) { 
         element.value--;
-        actualizarCantidad(element.id, element.value);
-        desplegarCarrito();
+        updateQuantity(element.id, element.value);
+        displayCart();
       }
     });
   });
 }
 
   //  Actualiza cantidad en el carrito
-  function actualizarCantidad(idCarrito, nuevaCantidad) {
-    const items = JSON.parse(localStorage.getItem('cart')) || [];
-    const nuevoCarrito = items.map(item =>
-      item.id == idCarrito ? { ...item, quantity: parseInt(nuevaCantidad) } : item
+  function updateQuantity(idCart, newQuantity) {
+    const items = extractCart() || [];
+    const newCart = items.map(item =>
+      item.id == idCart ? { ...item, quantity: parseInt(newQuantity) } : item
     );
-    localStorage.setItem('cart', JSON.stringify(nuevoCarrito));
+    localStorage.setItem('cart', JSON.stringify(newCart));
   }
 
   // Conversión de moneda
   function convert(items) {
-    monDeseada = document.querySelector('input[name="moneyRadio"]:checked').value
+     desiredCurrency = document.querySelector('input[name="moneyRadio"]:checked').value
     items.forEach(element => {
-      console.log(element.name, element.currency, element.cost, monDeseada == element.currency)
-      if (element.currency !== monDeseada && monDeseada == "UYU") {
+      console.log(element.name, element.currency, element.cost,  desiredCurrency == element.currency)
+      if (element.currency !== desiredCurrency && desiredCurrency == "UYU") {
         element.cost = element.cost * 40
         console.log(element.cost)
         element.currency = "UYU"
-      } else if (element.currency !== monDeseada && monDeseada == "USD") {
+      } else if (element.currency !== desiredCurrency && desiredCurrency == "USD") {
         element.cost = element.cost / 40
         console.log(element.cost)
         element.currency = "USD"
       }
 
     });
-      localStorage.setItem("cart", JSON.stringify(items))
+      localStorage.setItem("cart", JSON.stringify(items)) //guarda los valores convertidos de cada item en el carrito
   }
 
   // Eliminar productos
-  function eliminar() {
-    document.querySelectorAll('.eliminar').forEach(btn => {
+  function remove() {
+    document.querySelectorAll('.remove').forEach(btn => {
       btn.addEventListener('click', e => {
         const id = e.currentTarget.dataset.id;
-        removeProductdeCart(id);
-        desplegarCarrito();
+        removeProductCart(id); // esta funciion viene de navbar donde se encuentra el resto de la funcionalidad de carrito
+        displayCart();
       });
     });
   }
 
   document.querySelectorAll('input[name="moneyRadio"]').forEach(radio => {
-    radio.addEventListener('click', desplegarCarrito);
+    radio.addEventListener('click', displayCart);
   });
 
 
- function calcularSubtotal(){  
-  carrito = extractCart()
+ function calculateSubtotal(){  
+  cart = extractCart()
   let opSelected = document.querySelector('input[name="envio"]:checked')
   let rawSubtotal = 0;
   let taxTotal = 0 ;
 
   
-      carrito.forEach(item => {
+      cart.forEach(item => {
+        
         rawSubtotal += item.cost * item.quantity
+        console.log(rawSubtotal)
       })
     
     //agrega subtotal sin convertir al elemento subtotal
 
     switch (opSelected.value) {
       case "Standard":
-          console.log(`estandar selecccionado `)
+         
           taxTotal = rawSubtotal * 1.05
           return  {taxTotal:taxTotal, rawSubtotal:rawSubtotal}
         break;
       
       case "Express":
-          console.log("express")
+        
           taxTotal = rawSubtotal * 1.07
           return  {taxTotal:taxTotal, rawSubtotal:rawSubtotal}
         break;
     
       case "Premium":
-        console.log("premium ")
+       
         taxTotal = rawSubtotal * 1.15
           return  {taxTotal:taxTotal, rawSubtotal:rawSubtotal}
         break;
@@ -187,9 +188,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
  function showSubtotal(totals) {
   let selCurr = document.querySelector('input[name="moneyRadio"]:checked').value || [] 
-  console.log(selCurr)
-  elTotal.innerHTML = selCurr + totals.taxTotal.toLocaleString('de-DE')
-  elSubtotal.innerHTML = selCurr + totals.rawSubtotal.toLocaleString('de-DE')
+  
+  Total.innerHTML = selCurr + totals.taxTotal.toLocaleString('de-DE')
+  Subtotal.innerHTML = selCurr + totals.rawSubtotal.toLocaleString('de-DE')
 
   
 }
@@ -198,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-function validarDireccion() {
+function validateAddress() {
   const departamento = document.getElementById('departamento').value.trim();
   const localidad = document.getElementById('localidad').value.trim();
   const calle = document.getElementById('calle').value.trim();
@@ -250,7 +251,7 @@ function validarDireccion() {
 }
 
 
-function validarTipoEnvio() {
+function validateShipment() {
   const radio = document.querySelector('input[name="envio"]:checked');
 
   if (!radio) {
@@ -261,7 +262,7 @@ function validarTipoEnvio() {
   return true;
 }
 
-function validarCantidad() {
+function validateQuantity() {
   const items = JSON.parse(localStorage.getItem('cart')) || [];
 
   if (items.length === 0) {
@@ -273,11 +274,12 @@ function validarCantidad() {
 }
 
 
-function validarFormaPago() {
+function validatePaymentMethod() {
   const formaPagoSeleccionada = document.querySelector('input[name="pago"]:checked');
   let tarjeta = document.getElementById('pago1')
   let transferencia = document.getElementById('pago2')
   let collapsePago =  document.getElementById('collapsePago')
+
   if (!formaPagoSeleccionada) {
  //   alert('Seleccione una forma de pago');
     collapsePago.classList.remove('collapse')
@@ -294,15 +296,15 @@ function validarFormaPago() {
 
 
 document.querySelector('#buyBtn').addEventListener('click', (e) => {
-      validarFormaPago()
-      validarDireccion()
-      validarTipoEnvio()
-       validarCantidad()
+      validatePaymentMethod ()
+      validateAddress()
+      validateShipment()
+       validateQuantity()
        
-  if (validarDireccion() &&
-      validarTipoEnvio() &&
-      validarCantidad() &&
-      validarFormaPago()) {
+  if (validateAddress() &&
+      validateShipment() &&
+     validateQuantity() &&
+      validatePaymentMethod()) {
 
      window.location.href = "purchase-complete.html"   
 
