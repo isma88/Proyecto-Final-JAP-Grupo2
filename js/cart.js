@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //  Actualiza cantidad en el carrito
   function updateQuantity(idCart, newQuantity) {
-    const items = JSON.parse(localStorage.getItem('cart')) || [];
+    const items = extractCart() || [];
     const newCart = items.map(item =>
       item.id == idCart ? { ...item, quantity: parseInt(newQuantity) } : item
     );
