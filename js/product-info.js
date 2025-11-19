@@ -1,5 +1,6 @@
 let current_ItemId = localStorage.getItem("ItemId");
 let current_products_info = PRODUCT_INFO_URL + current_ItemId + EXT_TYPE;
+console.log(current_products_info)
 let list = [];
 let user =   JSON.parse(localStorage.getItem('usuario'))
 
@@ -203,7 +204,7 @@ function paintStar() {
 
 document.addEventListener("DOMContentLoaded", function () {
   let commentsUrl = PRODUCT_INFO_COMMENTS_URL + current_ItemId + EXT_TYPE;
-
+  console.log(commentsUrl, "coments")
   getJSONData(commentsUrl).then(function (result) {
     if (result.status === "ok") {
       let comments = result.data;
