@@ -1,5 +1,6 @@
 let current_catID = localStorage.getItem('catID')
 let current_products = PRODUCTS_URL + current_catID + EXT_TYPE
+ console.log(current_products)
 let list = []
 let filteredlist = []
 
@@ -121,11 +122,12 @@ function search() {
 //bajar json
 document.addEventListener("DOMContentLoaded", function (e) {
   getJSONData(current_products).then(function (result) {
+    
     if (result.status === "ok") {
       list = result.data.products
       filteredlist = list
       productList(list)
-
+     
     }
   });
 })
