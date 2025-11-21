@@ -8,6 +8,22 @@ const port = 3000;
 app.use(express.json());
 app.use(cors({origin: '*'}));
 
+//post token login
+app.post("/login",(req,res) => {
+   const {username,password} = req.body;
+   if (username === "admin" && password === "admin") {
+      const token = jwt.sign ({ username}, SECRET_KEY);
+      res.status(200).json({token});
+   } else{
+      res.status(401).json({message:"usuario y/o contraseña incorrecto"});
+   }
+});
+app.use("/cat",(req, res, next) => {
+   try{
+      const decod
+   }
+}
+)
 //get categories
 const CATEGORIES_URL = require("./emercado-api-main/cats/cat")
 app.get("/cat", (req, res) => { 
@@ -37,13 +53,3 @@ app.listen(port, () => {
     console.log(`http://localhost:${port}`)
 })
 
-app.post("/login",(req,res) => {
-   const {username,password} = req.body;
-   if (username === "admin" && password === "admin") {
-      const token = jwt.sing ({ username}, SECRET_KEY);
-      res.status(200).json({token});
-   } else{
-      res.status(401).json({message:"usuario y/o contraseña incorrecto"});
-   }
-
-});
