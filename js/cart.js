@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+  detectLogin()
   let Subtotal = document.getElementById('subtotal')
   let Total = document.getElementById('total')
 
