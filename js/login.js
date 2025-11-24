@@ -7,9 +7,20 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
   let error = document.querySelector(".error-msg")
 
   if (validEmail(email) && (email !== "" || contrasena !== "")) {
-    usuario = { nombre: "", apellido: "", email: email, telefono: "", pfp: "" }
-    localStorage.setItem("usuario", JSON.stringify(usuario));
-    window.location.href = "index.html";
+    usuario = { nombre: "", apellido: "", email: email, telefono: "", pfp: "", token: ""}
+      localStorage.setItem("usuario", JSON.stringify(usuario));
+    getJSONData(LOGIN, "POST").then(function (result) { 
+       if(result.status === "ok") { 
+         console.log(result.data)
+         usuario.token = result.data.token
+         localStorage.setItem("usuario", JSON.stringify(usuario));
+         window.location.href = "index.html";
+       }else {
+        console.log(result.status)
+       }
+     })
+    
+    
   } else
     error.style.display = "block";
 }

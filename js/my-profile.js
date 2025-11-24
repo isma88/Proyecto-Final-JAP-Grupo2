@@ -43,6 +43,8 @@ fileInput.addEventListener("change", (e) => {
    updateInfo();
   };
   reader.readAsDataURL(file);
+
+  detectLogin()
 });
 
 
