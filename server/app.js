@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
+const cartRouter = require("./routes/cartRoute");
 const SECRET_KEY = "CLAVE ULTRA SECRETA";
 const port = 3000; 
 
@@ -54,9 +55,10 @@ app.get("/api/products_comments/:id", (req, res) => {
       res.json(link)                                                                                         
 })
 
-
+app.use("/api/cart", cartRouter)
 
 app.listen(port, () => { 
     console.log(`http://localhost:${port}`)
 })
 
+   
