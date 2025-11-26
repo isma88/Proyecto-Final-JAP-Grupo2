@@ -3,6 +3,7 @@ const PRODUCTS_URL = "http://localhost:3000/api/cats_products";
 const PRODUCT_INFO_URL = "http://localhost:3000/api/products";
 const PRODUCT_INFO_COMMENTS_URL = "http://localhost:3000/api/products_comments/";
 const LOGIN = "http://localhost:3000/login"
+const CART = "http://localhost:3000/api/cart"
 const EXT_TYPE = ".json";
 
 const themeSelect = document.getElementById("themeSwitch");
@@ -64,6 +65,26 @@ let getJSONData = function (url, method) {
     });
 };
 
+// Enviar carrito al backend
+ async function sendCart (){
+  let user = extractUser()
+  let cart = extractCart()
+  cart.push(user)
+  console.log(cart)
+   return fetch(CART,{
+      method: "POST",
+      headers: {'Content-Type':"application/json","access-token": user.token},
+      body: JSON.stringify(cart)
+    })
+    .then(res =>{
+      if (res.ok){
+        return res.json()
+      }else {
+        throw Error(res.statusText);
+      }
+    })
+    .catch(err => console.log(err))
+}
 
 //se asegura de que el usuario está logueado, si no lo envia al login, si está logueado carga su nombre en el menu
 let logged = extractUser()

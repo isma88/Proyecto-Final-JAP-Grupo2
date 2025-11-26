@@ -294,9 +294,7 @@ function validatePaymentMethod() {
 }
 
 
-
-
-document.querySelector('#buyBtn').addEventListener('click', (e) => {
+document.querySelector('#buyBtn').addEventListener('click', async (e) => {
       validatePaymentMethod ()
       validateAddress()
       validateShipment()
@@ -306,8 +304,8 @@ document.querySelector('#buyBtn').addEventListener('click', (e) => {
       validateShipment() &&
      validateQuantity() &&
       validatePaymentMethod()) {
-
-     window.location.href = "purchase-complete.html"   
+       await sendCart();
+    //  window.location.href = "purchase-complete.html"   
 
   }
 });
