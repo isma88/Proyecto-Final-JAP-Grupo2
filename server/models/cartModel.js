@@ -6,30 +6,40 @@ const pool  = mariaBD.createPool ({
     user: "root",
     password: "12345",
     database: "ecommercejap"
-
 })
 
 
 const createCart = async (data) => { 
     console.log(data)
-   /* try {
+   try {
         conn = await pool.getConnection()
-            const rows = await conn.query(
-                `INSERT INTO products(Name,Currency,Cost) VALUES('nombre', 'USD', 14000);c 
-                set @id_products = LAST_INSERT_ID();
-                INSERT INTO users(Name,Last_name,Email, PASSWORD, Phone_number) VALUES('v', 'a', '@', 'a', 12);
+         /*   const rows = await conn.query(
+                `
+               	INSERT INTO users (Name, Last_name, Email, Password, Phone_number)
+                VALUES ('a', 'a', 'a', '123', 123);
                 set @id_users = LAST_INSERT_ID();
+                
+                
+                INSERT INTO products (Name, Currency, Cost)
+                VALUES ('a', 'a', 123);
+                set @id_products = LAST_INSERT_ID();
+                
+                INSERT INTO purchase (user_id, total_amount)
+                VALUES (@id_users, 123);
+                set @id_purchase = LAST_INSERT_ID();
 
-                INSERT INTO buy(id_user,id_product,quantity) VALUES(@id_users, @id_products, 50);`,[ ]
+                INSERT INTO purchase_item (purchase_id, product_id, quantity, unit_price)
+                VALUES (@id_purchase, @id_products, 51, 500);
+                `,[ ]
             );
-            return rows
+            return rows*/
         
     } catch (err) {
         console.log(err)
     }finally {
         if (conn) conn.release();
     }
-    return false */
+    return false 
 };
 
 
