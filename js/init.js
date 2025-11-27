@@ -69,12 +69,14 @@ let getJSONData = function (url, method) {
  async function sendCart (){
   let user = extractUser()
   let cart = extractCart()
-  cart.push(user)
-  console.log(cart)
+  let data = {}
+  data.user = user
+  data.cart = cart
+  console.log(data)
    return fetch(CART,{
       method: "POST",
       headers: {'Content-Type':"application/json","access-token": user.token},
-      body: JSON.stringify(cart)
+      body: JSON.stringify(data)
     })
     .then(res =>{
       if (res.ok){
