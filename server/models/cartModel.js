@@ -4,7 +4,7 @@ const mariaBD = require("mariadb")
 const pool  = mariaBD.createPool ({
     host: "localhost",
     user: "root",
-    password: "bruno123",
+    password: "admin",
     database: "ecommercejap",
     multipleStatements: true
 })
