@@ -70,6 +70,7 @@ let getJSONData = function (url, method) {
   let user = extractUser()
   let cart = extractCart()
   let data = {}
+  user.pfp = ""
   data.user = user
   data.cart = cart
   console.log(data)
