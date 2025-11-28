@@ -121,6 +121,7 @@ function search() {
 }
 //bajar json
 document.addEventListener("DOMContentLoaded", function (e) {
+  detectLogin()
   getJSONData(current_products).then(function (result) {
     
     if (result.status === "ok") {

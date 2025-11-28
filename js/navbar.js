@@ -213,4 +213,5 @@ document.addEventListener('DOMContentLoaded', () => {
   btnCart.addEventListener('click', () => {
     window.location.href = 'cart.html';
   });
+  
 });

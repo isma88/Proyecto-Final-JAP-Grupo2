@@ -1,10 +1,9 @@
-const CATEGORIES_URL = "http://localhost:3000/cat";
-const PUBLISH_PRODUCT_URL ="https://japceibal.github.io/emercado-api/sell/publish.json";
-const PRODUCTS_URL = "http://localhost:3000/cats_products";
-const PRODUCT_INFO_URL = "http://localhost:3000/products";
-const PRODUCT_INFO_COMMENTS_URL = "http://localhost:3000/products_comments/";
-const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
-const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
+const CATEGORIES_URL = "http://localhost:3000/api/cat";
+const PRODUCTS_URL = "http://localhost:3000/api/cats_products";
+const PRODUCT_INFO_URL = "http://localhost:3000/api/products";
+const PRODUCT_INFO_COMMENTS_URL = "http://localhost:3000/api/products_comments/";
+const LOGIN = "http://localhost:3000/login"
+const CART = "http://localhost:3000/api/cart"
 const EXT_TYPE = ".json";
 
 const themeSelect = document.getElementById("themeSwitch");
@@ -22,14 +21,29 @@ let hideSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "none";
 };
 
-let getJSONData = function (url) {
+let getJSONData = function (url, method) {
+  let user =  extractUser()
   let result = {};
+  let myMethod = { 
+    method: "GET",
+    headers: { "Content-Type": "application/json", "access-token": user.token},
+  }
+
+  if (method) { 
+    myMethod.method = "POST"
+    myMethod.body =  JSON.stringify(user)
+  }
+
+
   showSpinner();
-  return fetch(url)
+  return  fetch(url,myMethod)
+
     .then((response) => {
+     
       if (response.ok) {
         return response.json();
-      } else {
+
+      }else {
         throw Error(response.statusText);
       }
     })
@@ -42,23 +56,53 @@ let getJSONData = function (url) {
     .catch(function (error) {
       result.status = "error";
       result.data = error;
+      if(result.data.message === "Unauthorized") {
+        window.location.href = "login.html";
+      }
       hideSpinner();
+       console.log(result)
       return result;
     });
 };
 
+// Enviar carrito al backend
+ async function sendCart (){
+  let user = extractUser()
+  let cart = extractCart()
+  let data = {}
+  user.pfp = ""
+  data.user = user
+  data.cart = cart
+  console.log(data)
+   return fetch(CART,{
+      method: "POST",
+      headers: {'Content-Type':"application/json","access-token": user.token},
+      body: JSON.stringify(data)
+    })
+    .then(res =>{
+      if (res.ok){
+        return res.json()
+      }else {
+        throw Error(res.statusText);
+      }
+    })
+    .catch(err => console.log(err))
+}
 
-//se asegura de que el usuario está logueado si no agrega el nombre de usuario a la barra de vavegación
-  let logged = localStorage.getItem("usuario");
+//se asegura de que el usuario está logueado, si no lo envia al login, si está logueado carga su nombre en el menu
+let logged = extractUser()
+function detectLogin(){
   if (!logged) {
-    window.location.href = "login.html";
-  } else {
-    document.getElementById("nickname").innerHTML = `${logedName()}`;
-  }
+      window.location.href = "login.html";
+    } else {
+      document.getElementById("nickname").innerHTML = `${logedName()}`;
+    }
+}  
 
+ 
 
 function logedName() { //devuelve exclusivamente el nombre dle usuario logueado
-  let user = JSON.parse(logged)
+  let user = logged
   if (!user.nombre == '') {
     return user.nombre
   } else {

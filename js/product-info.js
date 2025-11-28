@@ -6,6 +6,7 @@ let user =   JSON.parse(localStorage.getItem('usuario'))
 
 
 document.addEventListener("DOMContentLoaded", function () {
+  detectLogin()
   getJSONData(current_products_info).then(function (result) {
     if (result.status === "ok") {
       list = result.data; //descarga lso elementos y los agrega a  list

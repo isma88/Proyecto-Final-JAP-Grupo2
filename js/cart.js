@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+  detectLogin()
   let Subtotal = document.getElementById('subtotal')
   let Total = document.getElementById('total')
 
@@ -99,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //  Actualiza cantidad en el carrito
   function updateQuantity(idCart, newQuantity) {
-    const items = JSON.parse(localStorage.getItem('cart')) || [];
+    const items = extractCart() || [];
     const newCart = items.map(item =>
       item.id == idCart ? { ...item, quantity: parseInt(newQuantity) } : item
     );
@@ -298,8 +299,7 @@ function validatePaymentMethod() {
 }
 
 
-
-document.querySelector('#buyBtn').addEventListener('click', (e) => {
+document.querySelector('#buyBtn').addEventListener('click', async (e) => {
       validatePaymentMethod ()
       validateAddress()
       validateShipment()
@@ -309,8 +309,8 @@ document.querySelector('#buyBtn').addEventListener('click', (e) => {
       validateShipment() &&
      validateQuantity() &&
       validatePaymentMethod()) {
-
-     window.location.href = "purchase-complete.html"   
+       await sendCart();
+    //  window.location.href = "purchase-complete.html"   
 
  
 
