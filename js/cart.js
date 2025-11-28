@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  detectLogin()
+  detectLogin()//se asegura de que el usuario está logueado, si no lo envia al login, si está logueado carga su nombre en el menu
   let Subtotal = document.getElementById('subtotal')
   let Total = document.getElementById('total')
 
@@ -305,7 +305,7 @@ document.querySelector('#buyBtn').addEventListener('click', async (e) => {
      validateQuantity() &&
       validatePaymentMethod()) {
        await sendCart();
-    //  window.location.href = "purchase-complete.html"   
+      window.location.href = "purchase-complete.html"   
 
   }
 });

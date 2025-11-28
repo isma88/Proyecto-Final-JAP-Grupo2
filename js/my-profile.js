@@ -44,7 +44,7 @@ fileInput.addEventListener("change", (e) => {
   };
   reader.readAsDataURL(file);
 
-  detectLogin()
+  detectLogin()//se asegura de que el usuario está logueado, si no lo envia al login, si está logueado carga su nombre en el menu
 });
 
 

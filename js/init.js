@@ -60,7 +60,7 @@ let getJSONData = function (url, method) {
         window.location.href = "login.html";
       }
       hideSpinner();
-       console.log(result)
+       
       return result;
     });
 };
@@ -179,12 +179,12 @@ function itemSet(grid, item) {
   })
 
 }
-
+//extrae el usuario del localstorage y lo devuelve como objeto js
 function extractUser(){
   let user = JSON.parse(localStorage.getItem('usuario'));
   return user;
 }
-
+//extrae el carrito del localstorage y lo devuelve como objeto js
 function extractCart() {
   let cart  = JSON.parse(localStorage.getItem('cart'))
   return cart

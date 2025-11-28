@@ -1,6 +1,6 @@
 
 const mariaBD = require("mariadb")
-
+// Crea la conexion con la base de datos.
 const pool  = mariaBD.createPool ({
     host: "localhost",
     user: "root",
@@ -18,7 +18,7 @@ const createCart = async (data) => {
         conn = await pool.getConnection()
 
       
-
+         // Inserta usuario y guarda el ID generado en la base de datos.
         let sql = `INSERT INTO users (Name, Last_name, Email, Password, Phone_number)
                 VALUES (?, ?, ?, ?, ?);
                 set @id_users = LAST_INSERT_ID();`; 
@@ -27,7 +27,7 @@ const createCart = async (data) => {
 
         for (let items of data.cart) {
         
-        
+        // Inserta cada ítem del carrito a la base de datos.
         let sql = `INSERT INTO products (Name, Currency, Cost)
                 VALUES (?, ?, ?);
                 set @id_products = LAST_INSERT_ID();

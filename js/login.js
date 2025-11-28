@@ -5,18 +5,17 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
   let email = document.getElementById("usuario").value.trim();
   let contrasena = document.getElementById("contraseña").value.trim();
   let error = document.querySelector(".error-msg")
-
-  if (validEmail(email) && (email !== "" || contrasena !== "")) {
-    usuario = { nombre: "", apellido: "", email: email, telefono: "", pfp: "", token: ""}
-      localStorage.setItem("usuario", JSON.stringify(usuario));
-    getJSONData(LOGIN, "POST").then(function (result) { 
+  
+  if (validEmail(email) && (email !== "" || contrasena !== "")) { // Valida los campos
+    usuario = { nombre: "", apellido: "", email: email, telefono: "", pfp: "", token: ""} // Crea el objeto usuario con sus propiedades
+      localStorage.setItem("usuario", JSON.stringify(usuario)); // Guarda el usuario en el localStorage
+    getJSONData(LOGIN, "POST").then(function (result) { // Solicita el token
        if(result.status === "ok") { 
-         console.log(result.data)
-         usuario.token = result.data.token
-         localStorage.setItem("usuario", JSON.stringify(usuario));
+         usuario.token = result.data.token // Guarda el token en el objeto usuario
+         localStorage.setItem("usuario", JSON.stringify(usuario)); 
          window.location.href = "index.html";
        }else {
-        console.log(result.status)
+        return false
        }
      })
     
@@ -26,7 +25,7 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
 }
 );
 
-//valida email
+// Valida si el mail tiene formato valido
 function validEmail(email) {
   let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return regexEmail.test(email);
