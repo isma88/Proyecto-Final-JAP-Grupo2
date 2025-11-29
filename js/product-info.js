@@ -311,7 +311,7 @@ function botonañadircar() {
 function addProfileImg() {
   document.querySelectorAll(".profileImg").forEach(element => {
 
-    element.src = user.pfp
+    element.src = user.pfp || "img/img_perfil.png"
     
   });
 }

@@ -48,6 +48,7 @@ const createCart = async (data) => {
        
         
     } catch (err) {
+        return err
         console.log(err)
     }finally {
         if (conn) conn.release();
