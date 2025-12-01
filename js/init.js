@@ -60,7 +60,7 @@ let getJSONData = function (url, method) {
         window.location.href = "login.html";
       }
       hideSpinner();
-       console.log(result)
+       
       return result;
     });
 };
@@ -73,7 +73,7 @@ let getJSONData = function (url, method) {
   user.pfp = ""
   data.user = user
   data.cart = cart
-  console.log(data)
+    showSpinner();
    return fetch(CART,{
       method: "POST",
       headers: {'Content-Type':"application/json","access-token": user.token},
@@ -81,12 +81,18 @@ let getJSONData = function (url, method) {
     })
     .then(res =>{
       if (res.ok){
+        hideSpinner()
         return res.json()
       }else {
+        hideSpinner()
         throw Error(res.statusText);
       }
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      hideSpinner()
+      console.log(err)
+      
+    })
 }
 
 //se asegura de que el usuario está logueado, si no lo envia al login, si está logueado carga su nombre en el menu
@@ -179,12 +185,12 @@ function itemSet(grid, item) {
   })
 
 }
-
+//extrae el usuario del localstorage y lo devuelve como objeto js
 function extractUser(){
   let user = JSON.parse(localStorage.getItem('usuario'));
   return user;
 }
-
+//extrae el carrito del localstorage y lo devuelve como objeto js
 function extractCart() {
   let cart  = JSON.parse(localStorage.getItem('cart'))
   return cart

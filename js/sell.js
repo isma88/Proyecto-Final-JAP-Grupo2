@@ -28,7 +28,7 @@ function updateTotalCosts(){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
-    detectLogin()
+    detectLogin()//se asegura de que el usuario está logueado, si no lo envia al login, si está logueado carga su nombre en el menu
     document.getElementById("productCountInput").addEventListener("change", function(){
         productCount = this.value;
         updateTotalCosts();

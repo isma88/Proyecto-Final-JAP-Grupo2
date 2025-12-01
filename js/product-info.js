@@ -1,12 +1,12 @@
 let current_ItemId = localStorage.getItem("ItemId");
 let current_products_info = PRODUCT_INFO_URL + current_ItemId + EXT_TYPE;
-console.log(current_products_info)
+
 let list = [];
 let user =   JSON.parse(localStorage.getItem('usuario'))
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  detectLogin()
+  detectLogin()//se asegura de que el usuario está logueado, si no lo envia al login, si está logueado carga su nombre en el menu
   getJSONData(current_products_info).then(function (result) {
     if (result.status === "ok") {
       list = result.data; //descarga lso elementos y los agrega a  list
@@ -205,7 +205,7 @@ function paintStar() {
 
 document.addEventListener("DOMContentLoaded", function () {
   let commentsUrl = PRODUCT_INFO_COMMENTS_URL + current_ItemId + EXT_TYPE;
-  console.log(commentsUrl, "coments")
+  
   getJSONData(commentsUrl).then(function (result) {
     if (result.status === "ok") {
       let comments = result.data;
@@ -223,9 +223,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-//#########################
-//  cambiador de imagenes del carrousel
-//#########################
+//  cambia las imagenes del carousel
 function checkImg() {
   let first = "true"
   let imgSelectors = document.querySelectorAll('[name="imgSelectors"]')
@@ -238,7 +236,7 @@ function checkImg() {
   })
 
 }
-
+// le agrega un marco a la imagen seleccionada
 function choseImg(e) {
 
   for (imgs of imgSelectors) {
@@ -313,7 +311,7 @@ function botonañadircar() {
 function addProfileImg() {
   document.querySelectorAll(".profileImg").forEach(element => {
 
-    element.src = user.pfp
+    element.src = user.pfp || "img/img_perfil.png"
     
   });
 }

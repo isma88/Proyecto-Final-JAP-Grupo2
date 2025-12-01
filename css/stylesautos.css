@@ -295,7 +295,7 @@ input {
     .products .box-container .box {
         grid-template-columns: repeat(2, 1fr);
     }
-    header img {
+    header #headerimg {
         
        width: 70vw;
        height: auto;
