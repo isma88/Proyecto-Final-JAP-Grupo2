@@ -81,7 +81,7 @@ function search() {
 
 }
 
-//tomar id de producto seleccionado
+
 
 
 
@@ -120,12 +120,14 @@ function search() {
 }
 //bajar json
 document.addEventListener("DOMContentLoaded", function (e) {
+  detectLogin()//se asegura de que el usuario está logueado, si no lo envia al login, si está logueado carga su nombre en el menu
   getJSONData(current_products).then(function (result) {
+    
     if (result.status === "ok") {
       list = result.data.products
       filteredlist = list
       productList(list)
-
+     
     }
   });
 })
@@ -138,7 +140,7 @@ document.getElementById('rangeValue').addEventListener('click', sortListCostRang
 document.getElementById('search').addEventListener('keyup', search);
 document.getElementById('searchBtn').addEventListener('click', search);
 document.getElementById('searchForm').addEventListener('keydown',(e) => {if(e.key === 'Enter'){e.preventDefault(); e.stopPropagation()}});
-document.getElementById('min').addEventListener('keydown',(e) => {if(e.key === 'Enter'){e.preventDefault(); e.stopPropagation(); sortListCostRange(); console.log(e)}});
+document.getElementById('min').addEventListener('keydown',(e) => {if(e.key === 'Enter'){e.preventDefault(); e.stopPropagation(); sortListCostRange();}});
 document.getElementById('max').addEventListener('keydown',(e) => {if(e.key === 'Enter'){e.preventDefault(); e.stopPropagation(); sortListCostRange()}});
 
 itemSet('items', '.col')//define la grid y permite tomar el valor de id de un item en particular

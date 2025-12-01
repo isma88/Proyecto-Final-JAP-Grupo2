@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
+  detectLogin()//se asegura de que el usuario está logueado, si no lo envia al login, si está logueado carga su nombre en el menu
   let Subtotal = document.getElementById('subtotal')
   let Total = document.getElementById('total')
 
   const container = document.querySelector("#container-carrito");
   document.querySelectorAll('input[name="envio"]').forEach(element => {
-    console.log(element)
+  
     
     element.addEventListener("click", () => displayCart())
   });
@@ -110,14 +111,14 @@ document.addEventListener('DOMContentLoaded', function () {
   function convert(items) {
      desiredCurrency = document.querySelector('input[name="moneyRadio"]:checked').value
     items.forEach(element => {
-      console.log(element.name, element.currency, element.cost,  desiredCurrency == element.currency)
+     
       if (element.currency !== desiredCurrency && desiredCurrency == "UYU") {
         element.cost = element.cost * 40
-        console.log(element.cost)
+    
         element.currency = "UYU"
       } else if (element.currency !== desiredCurrency && desiredCurrency == "USD") {
         element.cost = element.cost / 40
-        console.log(element.cost)
+    
         element.currency = "USD"
       }
 
@@ -151,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
       cart.forEach(item => {
         
         rawSubtotal += item.cost * item.quantity
-        console.log(rawSubtotal)
+    
       })
     
     //agrega subtotal sin convertir al elemento subtotal
@@ -293,9 +294,7 @@ function validatePaymentMethod() {
 }
 
 
-
-
-document.querySelector('#buyBtn').addEventListener('click', (e) => {
+document.querySelector('#buyBtn').addEventListener('click', async (e) => {
       validatePaymentMethod ()
       validateAddress()
       validateShipment()
@@ -305,8 +304,21 @@ document.querySelector('#buyBtn').addEventListener('click', (e) => {
       validateShipment() &&
      validateQuantity() &&
       validatePaymentMethod()) {
+        try {
+            let res = await sendCart()
+            if(res.name === 'SqlError' ) {
+              alert(res.sqlMessage)
+            } else { 
+              return    window.location.href = "purchase-complete.html"   
+              
+            }
+          
 
-     window.location.href = "purchase-complete.html"   
+        }catch(err) { 
+          throw  console.log(err)
+        }
+     
+    
 
   }
 });

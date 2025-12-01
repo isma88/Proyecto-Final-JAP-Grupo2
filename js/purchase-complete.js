@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', ()=>{
     let container =  document.querySelector('#container-carrito-final');
     let items = extractCart();
-
+    detectLogin()//se asegura de que el usuario está logueado, si no lo envia al login, si está logueado carga su nombre en el menu
     container.innerHTML = `
      <ul class="list-group mx-5">
         ${items.map(item => `
@@ -31,10 +31,4 @@ document.addEventListener('DOMContentLoaded', ()=>{
         `).join("")}
       </ul>
     `;
-
-            
-
-
-
-
 });

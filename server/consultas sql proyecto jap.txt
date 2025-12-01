@@ -1,0 +1,288 @@
+-- ============================================
+-- CONSULTAS SQL PARA ECOMMERCE
+-- ============================================
+
+-- ============================================
+-- 1. USUARIOS (USERS)
+-- ============================================
+
+-- 1.1 Registrar nuevo usuario
+INSERT INTO Users (email, password, phone_number, name, last_name)
+VALUES (?, ?, ?, ?, ?);
+
+-- 1.2 Obtener usuario por email (para login)
+SELECT user_id, email, password, name, last_name, phone_number
+FROM Users
+WHERE email = ?;
+
+-- 1.3 Obtener usuario por ID
+SELECT user_id, email, name, last_name, phone_number
+FROM Users
+WHERE user_id = ?;
+
+-- 1.4 Verificar si email ya existe (para validar registro)
+SELECT COUNT(*) as existe
+FROM Users
+WHERE email = ?;
+
+-- 1.5 Actualizar datos del usuario
+UPDATE Users
+SET name = ?, last_name = ?, phone_number = ?
+WHERE user_id = ?;
+
+-- 1.6 Cambiar contraseña
+UPDATE Users
+SET password = ?
+WHERE user_id = ?;
+
+-- 1.7 Listar todos los usuarios (admin)
+SELECT user_id, email, name, last_name, phone_number
+FROM Users
+ORDER BY user_id DESC;
+
+
+-- ============================================
+-- 2. PRODUCTOS (PRODUCT)
+-- ============================================
+
+-- 2.1 Obtener todos los productos
+SELECT product_id, name, cost, currency
+FROM Product
+ORDER BY name;
+
+-- 2.2 Obtener producto por ID
+SELECT product_id, name, cost, currency
+FROM Product
+WHERE product_id = ?;
+
+-- 2.3 Buscar productos por nombre
+SELECT product_id, name, cost, currency
+FROM Product
+WHERE name LIKE CONCAT('%', ?, '%');
+
+-- 2.4 Insertar nuevo producto
+INSERT INTO Product (name, cost, currency)
+VALUES (?, ?, ?);
+
+-- 2.5 Actualizar producto
+UPDATE Product
+SET name = ?, cost = ?, currency = ?
+WHERE product_id = ?;
+
+-- 2.6 Eliminar producto
+DELETE FROM Product
+WHERE product_id = ?;
+
+-- 2.7 Filtrar productos por rango de precio
+SELECT product_id, name, cost, currency
+FROM Product
+WHERE cost BETWEEN ? AND ?
+ORDER BY cost ASC;
+
+
+-- ============================================
+-- 3. COMPRAS (PURCHASE)
+-- ============================================
+
+-- 3.1 Crear nueva compra (devuelve el ID insertado)
+INSERT INTO Purchase (user_id, total_amount)
+VALUES (?, ?);
+
+-- 3.2 Obtener compras de un usuario
+SELECT purchase_id, user_id, purchase_date, total_amount
+FROM Purchase
+WHERE user_id = ?
+ORDER BY purchase_date DESC;
+
+-- 3.3 Obtener detalle de una compra específica
+SELECT p.purchase_id, p.purchase_date, p.total_amount,
+       u.name, u.last_name, u.email
+FROM Purchase p
+INNER JOIN Users u ON p.user_id = u.user_id
+WHERE p.purchase_id = ?;
+
+-- 3.4 Obtener todas las compras (admin)
+SELECT p.purchase_id, p.purchase_date, p.total_amount,
+       u.name, u.last_name, u.email
+FROM Purchase p
+INNER JOIN Users u ON p.user_id = u.user_id
+ORDER BY p.purchase_date DESC;
+
+-- 3.5 Obtener total gastado por un usuario
+SELECT SUM(total_amount) as total_gastado
+FROM Purchase
+WHERE user_id = ?;
+
+
+-- ============================================
+-- 4. ITEMS DE COMPRA (PURCHASE_ITEM)
+-- ============================================
+
+-- 4.1 Insertar items del carrito (se ejecuta múltiples veces)
+INSERT INTO Purchase_Item (purchase_id, product_id, quantity, unit_price)
+VALUES (?, ?, ?, ?);
+
+-- 4.2 Obtener items de una compra
+SELECT pi.item_id, pi.quantity, pi.unit_price,
+       pr.product_id, pr.name, pr.currency,
+       (pi.quantity * pi.unit_price) as subtotal
+FROM Purchase_Item pi
+INNER JOIN Product pr ON pi.product_id = pr.product_id
+WHERE pi.purchase_id = ?;
+
+-- 4.3 Obtener detalle completo de una compra (compra + items)
+SELECT 
+    p.purchase_id,
+    p.purchase_date,
+    p.total_amount,
+    u.name as usuario_nombre,
+    u.email,
+    pi.item_id,
+    pr.name as producto_nombre,
+    pi.quantity,
+    pi.unit_price,
+    (pi.quantity * pi.unit_price) as subtotal
+FROM Purchase p
+INNER JOIN Users u ON p.user_id = u.user_id
+INNER JOIN Purchase_Item pi ON p.purchase_id = pi.purchase_id
+INNER JOIN Product pr ON pi.product_id = pr.product_id
+WHERE p.purchase_id = ?;
+
+
+-- ============================================
+-- 5. ESTADÍSTICAS Y REPORTES
+-- ============================================
+
+-- 5.1 Productos más vendidos
+SELECT pr.product_id, pr.name, 
+       SUM(pi.quantity) as total_vendido,
+       COUNT(DISTINCT pi.purchase_id) as num_compras
+FROM Product pr
+INNER JOIN Purchase_Item pi ON pr.product_id = pi.product_id
+GROUP BY pr.product_id, pr.name
+ORDER BY total_vendido DESC
+LIMIT 10;
+
+-- 5.2 Usuarios con más compras
+SELECT u.user_id, u.name, u.last_name, u.email,
+       COUNT(p.purchase_id) as total_compras,
+       SUM(p.total_amount) as total_gastado
+FROM Users u
+INNER JOIN Purchase p ON u.user_id = p.user_id
+GROUP BY u.user_id, u.name, u.last_name, u.email
+ORDER BY total_compras DESC;
+
+-- 5.3 Ventas por fecha
+SELECT DATE(purchase_date) as fecha, 
+       COUNT(*) as num_compras,
+       SUM(total_amount) as total_ventas
+FROM Purchase
+GROUP BY DATE(purchase_date)
+ORDER BY fecha DESC;
+
+-- 5.4 Total de ingresos
+SELECT SUM(total_amount) as ingresos_totales
+FROM Purchase;
+
+-- 5.5 Historial completo de compras de un usuario
+SELECT 
+    p.purchase_id,
+    p.purchase_date,
+    p.total_amount,
+    COUNT(pi.item_id) as cantidad_productos
+FROM Purchase p
+LEFT JOIN Purchase_Item pi ON p.purchase_id = pi.purchase_id
+WHERE p.user_id = ?
+GROUP BY p.purchase_id, p.purchase_date, p.total_amount
+ORDER BY p.purchase_date DESC;
+
+
+-- ============================================
+-- 6. VALIDACIONES Y VERIFICACIONES
+-- ============================================
+
+-- 6.1 Verificar si un producto existe
+SELECT EXISTS(
+    SELECT 1 FROM Product WHERE product_id = ?
+) as existe;
+
+-- 6.2 Verificar stock disponible (si tuvieras campo stock)
+-- SELECT stock FROM Product WHERE product_id = ?;
+
+-- 6.3 Verificar si una compra pertenece a un usuario
+SELECT COUNT(*) as pertenece
+FROM Purchase
+WHERE purchase_id = ? AND user_id = ?;
+
+
+-- ============================================
+-- 7. TRANSACCIONES PARA CREAR COMPRA COMPLETA
+-- ============================================
+
+-- 7.1 Proceso completo de compra (usar en una transacción)
+START TRANSACTION;
+
+-- Paso 1: Insertar la compra
+INSERT INTO Purchase (user_id, total_amount)
+VALUES (?, ?);
+
+-- Paso 2: Obtener el ID de la compra recién creada
+SET @purchase_id = LAST_INSERT_ID();
+
+-- Paso 3: Insertar cada item del carrito
+INSERT INTO Purchase_Item (purchase_id, product_id, quantity, unit_price)
+VALUES 
+    (@purchase_id, ?, ?, ?),
+    (@purchase_id, ?, ?, ?),
+    (@purchase_id, ?, ?, ?);
+
+COMMIT;
+
+-- Si algo falla:
+-- ROLLBACK;
+
+
+-- ============================================
+-- 8. BÚSQUEDAS Y FILTROS AVANZADOS
+-- ============================================
+
+-- 8.1 Buscar compras por rango de fechas
+SELECT purchase_id, user_id, purchase_date, total_amount
+FROM Purchase
+WHERE purchase_date BETWEEN ? AND ?
+ORDER BY purchase_date DESC;
+
+-- 8.2 Buscar compras por monto
+SELECT purchase_id, user_id, purchase_date, total_amount
+FROM Purchase
+WHERE total_amount >= ?
+ORDER BY total_amount DESC;
+
+-- 8.3 Productos comprados por un usuario
+SELECT DISTINCT pr.product_id, pr.name, pr.cost, pr.currency
+FROM Product pr
+INNER JOIN Purchase_Item pi ON pr.product_id = pi.product_id
+INNER JOIN Purchase p ON pi.purchase_id = p.purchase_id
+WHERE p.user_id = ?;
+
+
+-- ============================================
+-- NOTAS DE USO:
+-- ============================================
+-- Los signos "?" representan parámetros preparados (prepared statements)
+-- Siempre usa prepared statements para prevenir SQL injection
+-- 
+-- Ejemplo en Node.js:
+-- connection.query('SELECT * FROM Users WHERE email = ?', [email], callback);
+--
+-- Para transacciones en Node.js con mysql2:
+-- const connection = await pool.getConnection();
+-- await connection.beginTransaction();
+-- try {
+--     await connection.query(...);
+--     await connection.commit();
+-- } catch (error) {
+--     await connection.rollback();
+-- } finally {
+--     connection.release();
+-- }
